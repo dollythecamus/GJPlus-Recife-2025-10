@@ -28,4 +28,4 @@ func trigger_next():
 		print("write some story")
 		trigger_next()
 	
-	cur += 1
+	cur = clamp(cur + 1, 0, GLOBAL.progression.size()-1)

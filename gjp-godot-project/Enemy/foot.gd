@@ -27,7 +27,7 @@ func _ready() -> void:
 	else:
 		all_feet[n] = []
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	settled_place = settled_place_node.global_position
 	
 	match state:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=14 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://ASCII/FreeMono.ttf" id="1_272bh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://scripts/spawner.gd" id="7_ycdy4"]
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://UI/health_UI.gd" id="8_kek77"]
+[ext_resource type="Shader" uid="uid://dyf33chp2byqa" path="res://effects/crt.gdshader" id="10_4c57u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ixuk"]
 font = ExtResource("1_272bh")
@@ -26,6 +27,23 @@ font_color = Color(0.9019608, 0.047058824, 0.03137255, 1)
 outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
+shader = ExtResource("10_4c57u")
+shader_parameter/resolution = Vector2(640, 440)
+shader_parameter/scan_line_amount = 0.270000012825
+shader_parameter/warp_amount = 1.5000000712500001
+shader_parameter/noise_amount = 0.0150000007125
+shader_parameter/interference_amount = 0.1910000090725
+shader_parameter/grille_amount = 0.1200000057
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4400000209
+shader_parameter/aberation_amount = 0.490000023275
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [node name="Node" type="Node" node_paths=PackedStringArray("root", "player", "spawner")]
 script = ExtResource("1_4c57u")
@@ -114,7 +132,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -126.999954
-offset_top = 20.000008
+offset_top = 20.0
 offset_right = 311.00006
 offset_bottom = 286.0
 grow_horizontal = 2
@@ -224,98 +242,6 @@ label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="heart2" type="Control" parent="Control/health"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/health/heart2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = 12.5
-offset_right = 23.0
-offset_bottom = 61.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.0460035
-text = "<3"
-label_settings = ExtResource("8_5vw27")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="heart3" type="Control" parent="Control/health"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/health/heart3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = 12.5
-offset_right = 23.0
-offset_bottom = 61.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.0460035
-text = "<3"
-label_settings = ExtResource("8_5vw27")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="heart4" type="Control" parent="Control/health"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/health/heart4"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = 12.5
-offset_right = 23.0
-offset_bottom = 61.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.0460035
-text = "<3"
-label_settings = ExtResource("8_5vw27")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="heart5" type="Control" parent="Control/health"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/health/heart5"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = 12.5
-offset_right = 23.0
-offset_bottom = 61.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.0460035
-text = "<3"
-label_settings = ExtResource("8_5vw27")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="level" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 12
@@ -325,5 +251,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="ColorRect" parent="Control2"]
+material = SubResource("ShaderMaterial_efxa6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="HIT" from="main/Player" to="Control/health" method="_on_player_hit"]

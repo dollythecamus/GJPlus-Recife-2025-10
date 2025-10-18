@@ -4,6 +4,9 @@ extends HBoxContainer
 
 var clock = 0
 
+func _ready() -> void:
+	update()
+
 func update():
 	var c = get_children()
 	var diff = int(round(player_health.health) - c.size())
@@ -12,11 +15,13 @@ func update():
 		return
 	
 	if diff < 0:
-		get_children()[0].queue_free()
+		for i in abs(diff):
+			get_children()[0].queue_free()
 	
 	elif diff > 0:
-		var new = get_children()[0].duplicate()
-		add_child(new)
+		for i in abs(diff):
+			var new = get_children()[0].duplicate()
+			add_child(new)
 
 func _process(delta: float) -> void:
 	clock += delta

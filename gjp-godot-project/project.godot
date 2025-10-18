@@ -23,7 +23,7 @@ Globals="*res://globals.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=440
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -89,4 +89,4 @@ attack={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.14361668, 0.012699539, 0.23324794, 1)
+environment/defaults/default_clear_color=Color(0.108630605, 6.8153146e-05, 0.15933827, 1)
