@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://bo7ywcd7gytsp"]
 
+[ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://ASCII/FreeMono.ttf" id="1_272bh"]
 [ext_resource type="Script" uid="uid://dnwtw5wvliagv" path="res://morse.gd" id="2_5vw27"]
 [ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="3_kek77"]
 [ext_resource type="PackedScene" uid="uid://g1jidhsjrkag" path="res://Weapons/pistol.tscn" id="5_efxa6"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="6_dg77c"]
-[ext_resource type="PackedScene" uid="uid://d2rcub2addc8f" path="res://Enemy/types/enemyZeroII.tscn" id="7_kek77"]
 [ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://scripts/spawner.gd" id="7_ycdy4"]
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://UI/health_UI.gd" id="8_kek77"]
@@ -21,13 +21,17 @@ shadow_size = 0
 [sub_resource type="LabelSettings" id="LabelSettings_mbk3n"]
 line_spacing = -20.0
 font = ExtResource("1_272bh")
-font_size = 28
-font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+font_size = 48
+font_color = Color(0.9019608, 0.047058824, 0.03137255, 1)
 outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" node_paths=PackedStringArray("root", "player", "spawner")]
+script = ExtResource("1_4c57u")
+root = NodePath("main")
+player = NodePath("main/Player")
+spawner = NodePath("main/pivot/spawner")
 
 [node name="main" type="Node2D" parent="."]
 
@@ -55,6 +59,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 script = ExtResource("2_5vw27")
+metadata/_edit_lock_ = true
 
 [node name="ASCII3" type="Label" parent="main/cenario"]
 texture_filter = 1
@@ -76,6 +81,7 @@ label_settings = SubResource("LabelSettings_1ixuk")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="ASCII4" type="Label" parent="main/cenario"]
 texture_filter = 1
@@ -98,6 +104,7 @@ label_settings = SubResource("LabelSettings_1ixuk")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="ASCII5" type="Label" parent="main/cenario"]
 texture_filter = 1
@@ -120,12 +127,14 @@ label_settings = SubResource("LabelSettings_1ixuk")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="main" instance=ExtResource("3_kek77")]
 position = Vector2(211, 106)
+metadata/_edit_group_ = true
 
 [node name="Weapon" parent="main" instance=ExtResource("5_efxa6")]
-position = Vector2(502, 247)
+position = Vector2(66, 267)
 
 [node name="pivot" type="Node2D" parent="main"]
 position = Vector2(317, 214)
@@ -133,11 +142,12 @@ script = ExtResource("6_dg77c")
 to_point = true
 rpm = 1
 
-[node name="spawner" type="Node2D" parent="main/pivot" node_paths=PackedStringArray("root", "player")]
+[node name="spawner" type="Node2D" parent="main/pivot" node_paths=PackedStringArray("player", "root", "hint")]
 position = Vector2(624, 0)
 script = ExtResource("7_ycdy4")
-root = NodePath("../..")
 player = NodePath("../../Player")
+root = NodePath("../..")
+hint = NodePath("../../hint")
 
 [node name="hint" type="Node2D" parent="main"]
 visible = false
@@ -167,10 +177,6 @@ label_settings = SubResource("LabelSettings_mbk3n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Enemy" parent="main" node_paths=PackedStringArray("target") instance=ExtResource("7_kek77")]
-position = Vector2(47, 75)
-target = NodePath("../Player")
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -179,8 +185,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="health" type="HBoxContainer" parent="Control"]
+[node name="health" type="HBoxContainer" parent="Control" node_paths=PackedStringArray("player_health")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,6 +199,7 @@ grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 script = ExtResource("8_kek77")
+player_health = NodePath("../../main/Player/Health")
 
 [node name="heart" type="Control" parent="Control/health"]
 custom_minimum_size = Vector2(30, 30)
@@ -318,6 +326,4 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[connection signal="health_changed" from="main/Player/Health" to="Control/health" method="update"]
-
-[editable path="main/Player"]
+[connection signal="HIT" from="main/Player" to="Control/health" method="_on_player_hit"]

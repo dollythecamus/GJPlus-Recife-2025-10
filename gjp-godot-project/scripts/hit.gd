@@ -5,6 +5,8 @@ class_name Hit
 @export var health : Health
 @export var mover : Mover
 
+signal HIT
+
 var flashed = false:
 	set(v):
 		if v:
@@ -14,8 +16,9 @@ var flashed = false:
 			flashed = false
 			flash.visible = false
 
-func hit(dmg, dir):
+func hit(dmg, knock, dir):
 	flashed = true
 	health.health -= dmg
 	if mover != null:
-		mover.velocity += dir * dmg * 60
+		mover.velocity += dir * dmg * knock
+	HIT.emit()

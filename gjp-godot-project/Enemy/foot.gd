@@ -96,6 +96,5 @@ func pos(x):
 	else:
 		return 1
 
-
 func _on_state_change(v: Variant) -> void:
 	state = v

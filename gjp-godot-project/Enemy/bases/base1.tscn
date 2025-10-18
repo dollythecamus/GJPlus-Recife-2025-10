@@ -1,14 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://c34ykm2xq0oxw"]
+[gd_scene load_steps=18 format=3 uid="uid://c34ykm2xq0oxw"]
 
-[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="1_2pb1h"]
-[ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/AI/enemy.gd" id="1_eqilm"]
-[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_ncf7h"]
-[ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="2_px1sc"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_ncf7h"]
-[ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="5_m6jha"]
-[ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="6_glvfu"]
-[ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://scripts/health.gd" id="8_0rspp"]
-[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="9_54umi"]
+[ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_mrk53"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_11gi7"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_15vee"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_ocxj8"]
+[ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="4_054tx"]
+[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="5_pcifv"]
+[ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="6_rh57g"]
+[ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="7_fulks"]
+[ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://scripts/health.gd" id="8_1gm15"]
+[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="9_ofohk"]
+[ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="10_01aqo"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_54umi"]
 target_nodepath = NodePath("../t2R")
@@ -46,12 +48,18 @@ modification_count = 2
 modifications/0 = SubResource("SkeletonModification2DCCDIK_54umi")
 modifications/1 = SubResource("SkeletonModification2DCCDIK_l1wq4")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_11gi7"]
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ht4ig"]
+radius = 7.000005
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6jha"]
 radius = 14.0
 height = 48.0
 
 [node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover")]
-script = ExtResource("1_eqilm")
+script = ExtResource("1_mrk53")
 mover = NodePath("Skeleton2D/root/Mover")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
@@ -61,16 +69,26 @@ modification_stack = SubResource("SkeletonModificationStack2D_v21hd")
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
+[node name="RB" type="RigidBody2D" parent="Skeleton2D/root"]
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/RB"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_11gi7")
+
 [node name="leg2" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(18.000061, 12.000022)
-rotation = 0.5524738
-scale = Vector2(0.9999997, 0.9999997)
+rotation = 0.38364512
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(1, 0, 0, 1, 18, 12)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root/leg2"]
-position = Vector2(13, -15)
+position = Vector2(13.000004, -15.000002)
+rotation = -0.34075448
 rest = Transform2D(1, 0, 0, 1, 13, -15)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -83,6 +101,18 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg2/leg1/leg2")
 
+[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
+position = Vector2(-1.0124142, 2.9958389)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_11gi7")
+knockback = 200
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg2/leg1/leg2/Hurt"]
+position = Vector2(5.5006804e-08, 1.9065562e-06)
+shape = SubResource("CircleShape2D_ht4ig")
+
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg2/leg1")
 
@@ -91,14 +121,16 @@ remote_path = NodePath("../../../../visual/root/leg2")
 
 [node name="leg3" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-17.000046, 13.00002)
-rotation = -0.2812414
-scale = Vector2(0.9999993, 0.9999993)
+rotation = -0.19069591
+scale = Vector2(0.9999992, 0.9999992)
 rest = Transform2D(1, 0, 0, 1, -17, 13)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root/leg3"]
-position = Vector2(-12, -16)
+position = Vector2(-12.000006, -16)
+rotation = 0.2538192
+scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(1, 0, 0, 1, -12, -16)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -111,6 +143,18 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg3/leg1/leg2")
 
+[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
+position = Vector2(-0.7848253, 3.0633419)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_11gi7")
+knockback = 200
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg3/leg1/leg2/Hurt"]
+position = Vector2(5.5006804e-08, 1.9065562e-06)
+shape = SubResource("CircleShape2D_ht4ig")
+
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg3/leg1")
 
@@ -121,14 +165,14 @@ remote_path = NodePath("../../../../visual/root/leg3")
 remote_path = NodePath("../../../visual/root")
 
 [node name="Mover" type="Node" parent="Skeleton2D/root"]
-script = ExtResource("2_ncf7h")
+script = ExtResource("2_15vee")
 speed = 100.0
 acceleration = 1000.0
 friction = 0.93
 metadata/_custom_type_script = "uid://brtc2oowy8obq"
 
 [node name="Pointer" type="Node2D" parent="Skeleton2D/root"]
-script = ExtResource("3_ncf7h")
+script = ExtResource("3_ocxj8")
 rotate_parent = true
 to_point = true
 
@@ -139,9 +183,10 @@ position = Vector2(50, 21)
 position = Vector2(-47, 15)
 
 [node name="Hit" type="Area2D" parent="Skeleton2D/root" node_paths=PackedStringArray("flash", "health", "mover")]
-collision_layer = 24
-collision_mask = 24
-script = ExtResource("5_m6jha")
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_054tx")
 flash = NodePath("../../../visual/root/flash")
 health = NodePath("../../../Health")
 mover = NodePath("../Mover")
@@ -155,14 +200,14 @@ shape = SubResource("CapsuleShape2D_m6jha")
 [node name="root" type="Node2D" parent="visual"]
 
 [node name="leg2" type="Node2D" parent="visual/root"]
-position = Vector2(18.000061, 12.000023)
-rotation = 0.5524762
-scale = Vector2(0.99999833, 0.99999833)
+position = Vector2(18.000061, 12.000022)
+rotation = 0.5524755
+scale = Vector2(0.9999994, 0.9999994)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg2"]
-position = Vector2(13.000074, -14.999987)
-rotation = -0.5566191
-scale = Vector2(0.9999988, 0.9999988)
+position = Vector2(13.00005, -14.9999695)
+rotation = -0.5566186
+scale = Vector2(0.999999, 0.999999)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg2/leg1"]
 position = Vector2(13, 15.000002)
@@ -185,7 +230,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "\""
-label_settings = ExtResource("1_2pb1h")
+label_settings = ExtResource("5_pcifv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -207,7 +252,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("1_2pb1h")
+label_settings = ExtResource("5_pcifv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -229,24 +274,24 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("1_2pb1h")
+label_settings = ExtResource("5_pcifv")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="leg3" type="Node2D" parent="visual/root"]
-position = Vector2(-17.000046, 13.000019)
-rotation = -0.28124636
-scale = Vector2(0.9999977, 0.9999977)
+position = Vector2(-17.000046, 13.00002)
+rotation = -0.28124472
+scale = Vector2(0.9999992, 0.9999992)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg3"]
-position = Vector2(-12.000053, -16.000084)
-rotation = 0.35219038
+position = Vector2(-12.000015, -16.000011)
+rotation = 0.35219103
 scale = Vector2(1.0000002, 1.0000002)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg3/leg1"]
-position = Vector2(-13.000004, 15.000002)
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(-13.000004, 14.999998)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="l2" type="Label" parent="visual/root/leg3/leg1/leg2"]
 texture_filter = 1
@@ -266,7 +311,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "\""
-label_settings = ExtResource("1_2pb1h")
+label_settings = ExtResource("5_pcifv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -288,7 +333,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("1_2pb1h")
+label_settings = ExtResource("5_pcifv")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -311,7 +356,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("1_2pb1h")
+label_settings = ExtResource("5_pcifv")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -333,7 +378,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "[I]"
-label_settings = ExtResource("1_2pb1h")
+label_settings = ExtResource("5_pcifv")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -360,28 +405,32 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "[I]"
-label_settings = ExtResource("6_glvfu")
+label_settings = ExtResource("6_rh57g")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
 position = Vector2(50, 21)
-script = ExtResource("2_px1sc")
+script = ExtResource("7_fulks")
 settled_place_node = NodePath("../Skeleton2D/root/t2R")
 preference = 1.0
 
 [node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
 position = Vector2(-47, 15)
-script = ExtResource("2_px1sc")
+script = ExtResource("7_fulks")
 settled_place_node = NodePath("../Skeleton2D/root/t2L")
 preference = -1.0
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("8_0rspp")
+script = ExtResource("8_1gm15")
 
 [node name="AI" type="Node" parent="."]
-script = ExtResource("9_54umi")
+script = ExtResource("9_ofohk")
 
-[connection signal="state_change" from="." to="t2R" method="_on_state_change"]
-[connection signal="state_change" from="." to="t2L" method="_on_state_change"]
+[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("10_01aqo")
+root = NodePath("../Skeleton2D/root")
+
+[connection signal="state_change" from="AI" to="t2R" method="_on_state_change"]
+[connection signal="state_change" from="AI" to="t2L" method="_on_state_change"]

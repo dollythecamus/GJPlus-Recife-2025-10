@@ -1,11 +1,14 @@
 extends Node
 class_name GLOBAL
 
+var builds = {
+	"arm": preload("res://Enemy/builds/arm.tscn")
+}
+
 const progression = [
-	"weapon:pistol:1",
 	"enemy:ZeroI:1",
 	"enemy:ZeroII:1",
-	"power:health:3"
+	"enemy:ZeroIV:1"
 ]
 
 const ENEMY = "enemy"

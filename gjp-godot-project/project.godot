@@ -15,6 +15,10 @@ run/main_scene="uid://bo7ywcd7gytsp"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -78,6 +82,11 @@ attack={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_4="PlayerHits"
+2d_physics/layer_5="EnemyHits"
+
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.065161206, 0.0028450044, 0.12348355, 1)
+environment/defaults/default_clear_color=Color(0.14361668, 0.012699539, 0.23324794, 1)

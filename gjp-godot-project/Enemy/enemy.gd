@@ -1,0 +1,17 @@
+extends Node2D
+
+@export var mover : Mover
+@export var target : Node2D
+@onready var AI = $AI
+@onready var build = $Build
+
+func _ready() -> void:
+	$Skeleton2D/root/Pointer.target = target
+
+signal died
+
+func _process(_delta: float) -> void:
+	AI.run()
+
+func _exit_tree() -> void:
+	died.emit()

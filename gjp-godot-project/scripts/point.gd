@@ -1,7 +1,6 @@
 extends Node2D
 class_name Pointer
 
-
 @export var rotate_parent = false
 @onready var n = get_parent() if rotate_parent else self
 

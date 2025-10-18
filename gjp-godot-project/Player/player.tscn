@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://27ex2tehfssw"]
+[gd_scene load_steps=14 format=3 uid="uid://27ex2tehfssw"]
 
 [ext_resource type="Script" uid="uid://b1m8s1s8kes6l" path="res://Player/playerControls.gd" id="1_4ntmi"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://ASCII/player_ascii.tres" id="2_gwnis"]
@@ -14,6 +14,15 @@ line_spacing = -20.0
 font = ExtResource("5_fhl08")
 font_size = 48
 font_color = Color(0.1882353, 0.84313726, 0.8745098, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_od3ui"]
+line_spacing = -14.739
+font = ExtResource("5_fhl08")
+font_size = 28
+font_color = Color(1, 1, 1, 0.6156863)
 outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
@@ -81,6 +90,32 @@ label_settings = SubResource("LabelSettings_fhl08")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="flash" type="Node2D" parent="visual"]
+visible = false
+
+[node name="ASCII" type="Label" parent="visual/flash"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.9797425, 1.9797425)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o
+*"
+label_settings = SubResource("LabelSettings_od3ui")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="move" type="Node" parent="."]
 script = ExtResource("3_btcbx")
 speed = 300.0
@@ -114,6 +149,7 @@ vertical_alignment = 1
 
 [node name="Pickup" type="Area2D" parent="."]
 collision_mask = 2
+monitorable = false
 script = ExtResource("5_k53q1")
 
 [node name="Col" type="CollisionShape2D" parent="Pickup"]
@@ -121,14 +157,21 @@ shape = SubResource("CircleShape2D_gwnis")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("7_vtle1")
-health = 3
+is_player = true
+health = 5
 metadata/_custom_type_script = "uid://cyo8c06s31fwq"
 
-[node name="Hit" type="Area2D" parent="."]
+[node name="Hit" type="Area2D" parent="." node_paths=PackedStringArray("flash", "health", "mover")]
 collision_layer = 24
 collision_mask = 24
+monitoring = false
 script = ExtResource("8_od3ui")
+flash = NodePath("../visual/flash")
+health = NodePath("../Health")
+mover = NodePath("../move")
 metadata/_custom_type_script = "uid://bnrviih0008y5"
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Hit"]
 shape = SubResource("CapsuleShape2D_od3ui")
+
+[connection signal="HIT" from="Hit" to="." method="_on_hit"]

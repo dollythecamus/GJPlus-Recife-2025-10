@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc8xhsymu8msk"]
+[gd_scene load_steps=20 format=3 uid="uid://bc8xhsymu8msk"]
 
-[ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/AI/enemy.gd" id="1_o2xll"]
+[ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_o2xll"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_pmg5d"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_sdcpi"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_v8n71"]
 [ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="4_mv0vr"]
@@ -9,6 +10,7 @@
 [ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="7_y6b7q"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://scripts/health.gd" id="8_8m5eh"]
 [ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="9_1up2p"]
+[ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="10_b1qns"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_2pb1h"]
 target_nodepath = NodePath("../t1R")
@@ -78,6 +80,12 @@ modifications/1 = SubResource("SkeletonModification2DCCDIK_eqilm")
 modifications/2 = SubResource("SkeletonModification2DCCDIK_ncf7h")
 modifications/3 = SubResource("SkeletonModification2DCCDIK_m6jha")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmg5d"]
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpwo2"]
+radius = 7.000005
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6jha"]
 radius = 14.0
 height = 48.0
@@ -92,6 +100,15 @@ modification_stack = SubResource("SkeletonModificationStack2D_2pb1h")
 [node name="root" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
+
+[node name="RB" type="RigidBody2D" parent="Skeleton2D/root"]
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/RB"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_pmg5d")
 
 [node name="leg0" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(17, -7)
@@ -116,6 +133,19 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg0/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg0/leg1/leg2")
 
+[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg0/leg1/leg2"]
+position = Vector2(3.0564325, 1.9126529)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("2_pmg5d")
+knockback = 150
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg0/leg1/leg2/Hurt"]
+position = Vector2(5.5006804e-08, 1.9065562e-06)
+shape = SubResource("CircleShape2D_cpwo2")
+
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg0/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg0/leg1")
 
@@ -124,8 +154,8 @@ remote_path = NodePath("../../../../visual/root/leg0")
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-15, -6)
-rotation = -0.14035118
-scale = Vector2(0.9999997, 0.9999997)
+rotation = -0.14035119
+scale = Vector2(0.99999946, 0.99999946)
 rest = Transform2D(1, 0, 0, 1, -15, -6)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -144,6 +174,19 @@ editor_settings/show_bone_gizmo = false
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg1/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg1/leg1/leg2")
+
+[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg1/leg1/leg2"]
+position = Vector2(-1.110399, 2.9609196)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("2_pmg5d")
+knockback = 150
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg1/leg1/leg2/Hurt"]
+position = Vector2(5.5006804e-08, 1.9065562e-06)
+shape = SubResource("CircleShape2D_cpwo2")
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg1/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg1/leg1")
@@ -174,6 +217,19 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg2/leg1/leg2")
 
+[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
+position = Vector2(-1.110399, 2.9609196)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("2_pmg5d")
+knockback = 150
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg2/leg1/leg2/Hurt"]
+position = Vector2(5.5006804e-08, 1.9065562e-06)
+shape = SubResource("CircleShape2D_cpwo2")
+
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg2/leg1")
 
@@ -203,6 +259,19 @@ editor_settings/show_bone_gizmo = false
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg3/leg1/leg2")
+
+[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
+position = Vector2(-1.110399, 2.9609196)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("2_pmg5d")
+knockback = 150
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg3/leg1/leg2/Hurt"]
+position = Vector2(5.5006804e-08, 1.9065562e-06)
+shape = SubResource("CircleShape2D_cpwo2")
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg3/leg1")
@@ -238,8 +307,9 @@ position = Vector2(50, 21)
 position = Vector2(-47, 15)
 
 [node name="Hit" type="Area2D" parent="Skeleton2D/root" node_paths=PackedStringArray("flash", "health", "mover")]
-collision_layer = 24
-collision_mask = 24
+collision_layer = 16
+collision_mask = 0
+monitoring = false
 script = ExtResource("4_mv0vr")
 flash = NodePath("../../../visual/root/flash")
 health = NodePath("../../../Health")
@@ -334,17 +404,16 @@ vertical_alignment = 1
 
 [node name="leg1" type="Node2D" parent="visual/root"]
 position = Vector2(-15, -6)
-rotation = -0.16495122
-scale = Vector2(0.99999815, 0.99999815)
+rotation = -0.16495207
+scale = Vector2(0.9999978, 0.9999978)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg1"]
-position = Vector2(-13.999983, -17.000015)
-rotation = 0.12791382
-scale = Vector2(1.0000004, 1.0000004)
+position = Vector2(-13.999959, -17.000015)
+rotation = 0.12791583
+scale = Vector2(1.0000006, 1.0000006)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg1/leg1"]
-position = Vector2(-12.999994, 15.999998)
-scale = Vector2(0.9999999, 0.9999999)
+position = Vector2(-12.999998, 15.999998)
 
 [node name="l2" type="Label" parent="visual/root/leg1/leg1/leg2"]
 texture_filter = 1
@@ -678,7 +747,6 @@ health = 20
 [node name="AI" type="Node" parent="."]
 script = ExtResource("9_1up2p")
 
-[connection signal="state_change" from="." to="t1R" method="_on_state_change"]
-[connection signal="state_change" from="." to="t1L" method="_on_state_change"]
-[connection signal="state_change" from="." to="t2R" method="_on_state_change"]
-[connection signal="state_change" from="." to="t2L" method="_on_state_change"]
+[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("10_b1qns")
+root = NodePath("../Skeleton2D/root")

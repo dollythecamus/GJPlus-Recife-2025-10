@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://g1jidhsjrkag"]
+[gd_scene load_steps=8 format=3 uid="uid://g1jidhsjrkag"]
 
-[ext_resource type="Script" uid="uid://bfmcdibk1qguv" path="res://Weapons/weapon.gd" id="1_rh005"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="2_wqlkq"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="3_i040i"]
 [ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://scripts/pickable.gd" id="4_041lk"]
@@ -12,7 +11,6 @@
 radius = 19.026299
 
 [node name="Pistol" type="Node2D"]
-script = ExtResource("1_rh005")
 
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("2_wqlkq")
@@ -26,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 41.792652
-offset_top = -6.0582685
-offset_right = 91.79265
-offset_bottom = 22.94173
+offset_left = 43.000004
+offset_top = -4.000001
+offset_right = 93.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 2.4289114
@@ -69,10 +67,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.207348
-offset_top = -7.0582695
-offset_right = 43.792652
-offset_bottom = 21.94173
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 44.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -90,10 +88,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.207348
-offset_top = -15.0582695
-offset_right = 45.792652
-offset_bottom = 13.9417305
+offset_left = -1.0
+offset_top = -18.0
+offset_right = 49.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "-"
+label_settings = ExtResource("3_i040i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -19.0
+offset_right = 54.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)

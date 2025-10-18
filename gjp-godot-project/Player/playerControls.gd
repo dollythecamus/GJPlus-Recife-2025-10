@@ -17,4 +17,13 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack"):
 		if pickup.picked != null:
-			pickup.picked.get_node("Shooter").fire(true)
+			var shooter = pickup.picked.get_node("Shooter")
+			if shooter != null:
+				shooter.fire(true)
+			#var attack = pickup.picked.get_node("Attack")
+			#if attack != null:
+			#	pass # TODO
+
+signal HIT
+func _on_hit() -> void:
+	HIT.emit()
