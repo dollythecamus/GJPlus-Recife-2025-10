@@ -3,7 +3,7 @@ extends Node2D
 @export var settled_place_node : Node2D
 @export_range(-1, 1, 1) var preference : float
 
-static var all_feet = []
+static var all_feet = {}
 
 enum STATES {WALK, IDLE, RUN}
 var state = STATES.WALK
@@ -19,8 +19,13 @@ var is_stepping = false
 
 @onready var settled_place : = settled_place_node.global_position
 
+@onready var n = get_parent()
+
 func _ready() -> void:
-	all_feet.append(self)
+	if all_feet.has(n):
+		all_feet[n].append(self)
+	else:
+		all_feet[n] = []
 
 func _process(delta: float) -> void:
 	settled_place = settled_place_node.global_position
@@ -80,7 +85,7 @@ func _step():
 	settled = true
 
 func none_stepping():
-	return not all_feet.any(_is_stepping)
+	return not all_feet[n].any(_is_stepping)
 
 func _is_stepping(other):
 	return other.is_stepping

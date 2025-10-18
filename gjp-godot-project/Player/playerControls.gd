@@ -5,9 +5,16 @@ class_name PlayerControls
 @export var roll : Node
 @export var pickup : Pickup
 
-func _process(_delta: float) -> void:
+var c = 0
+
+func _process(delta: float) -> void:
 	move.direction  = Input.get_vector("move_left","move_right","move_up","move_down")
+	
+	c += delta
+	
+	if not move.direction.is_zero_approx():
+		$visual.rotation = sin(c * 10) * .2
 	
 	if Input.is_action_just_pressed("attack"):
 		if pickup.picked != null:
-			pickup.picked.attack()
+			pickup.picked.get_node("Shooter").fire(true)

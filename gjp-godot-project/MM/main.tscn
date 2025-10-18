@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx5cm77wde43g"]
+
+[ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://ASCII/FreeMono.ttf" id="1_baqfw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2go0y"]
+font = ExtResource("1_baqfw")
+font_size = 28
+font_color = Color(0.92156863, 0.12156863, 0.18431373, 1)
+outline_size = 1
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 27.0
+offset_right = 208.0
+offset_bottom = 130.0
+text = "main menu"
+label_settings = SubResource("LabelSettings_2go0y")

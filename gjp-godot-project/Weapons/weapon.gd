@@ -1,4 +1,2 @@
 extends Node
-
-func attack():
-	$Shooter.fire()
+class_name Weapon
