@@ -15,3 +15,7 @@ func _process(_delta: float) -> void:
 
 func _exit_tree() -> void:
 	died.emit()
+
+func die():
+	# vfx here
+	queue_free()

@@ -5,7 +5,7 @@ extends Node
 
 @onready var n := get_parent()
 
-func fire(is_player = false):
+func attack(is_player = false):
 	var new = projectile.instantiate()
 	var m = new.get_node("Mover")
 	m.direction = p.vec.normalized() if not p.vec.is_zero_approx() else Vector2.from_angle(p.rotation)

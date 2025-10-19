@@ -17,6 +17,18 @@ var clock = 0
 var last = Vector2.ZERO
 var vec = Vector2.ZERO
 
+var has_clicked_with_mouse = false
+var joysticking = true
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and not has_clicked_with_mouse:
+		has_clicked_with_mouse = true
+		joysticking = false
+	if event is InputEventJoypadMotion:
+		if event.axis_value > .1:
+			joysticking = true
+			has_clicked_with_mouse = false
+
 func _process(delta: float) -> void:
 	# the pickup area circles the parent node (player) in the direction of the mouse
 	if not to_point:
@@ -24,9 +36,12 @@ func _process(delta: float) -> void:
 	
 	if target != null:
 		point_to_target()
-	
 	elif aim:
-		point_to_aim()
+		if joysticking:
+			point_to_aim()
+		
+		elif has_clicked_with_mouse:
+			point_to_mouse()
 	
 	elif rpm != -1:
 		spin(delta)
@@ -38,9 +53,6 @@ func _process(delta: float) -> void:
 		n.scale.y = -1
 	else:
 		n.scale.y = 1
-	
-	#else:
-	#	point_to(self, (get_global_mouse_position() - n.global_position).angle())
 
 func point_to_aim():
 	vec = Input.get_vector("point_left","point_right","point_up", "point_down")
@@ -51,9 +63,15 @@ func point_to_aim():
 func point_to_target():
 	point_to(n, (target.global_position - n.global_position).angle() + angle_offset)
 
+func point_to_mouse():
+	vec = get_global_mouse_position() - global_position
+	
+	if vec.length() > 0:
+		point_to(n, vec.angle())
+
 func point_to(node, angle):
 	node.rotation = angle
 
 func spin(delta):
 	clock += delta * rpm
-	point_to(n, sin(clock) * 4)
+	point_to(n, Vector2(cos(clock), sin(clock)).angle())

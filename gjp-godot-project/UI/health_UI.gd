@@ -4,6 +4,8 @@ extends HBoxContainer
 
 var clock = 0
 
+@onready var heart_icon = get_children()[0].duplicate()
+
 func _ready() -> void:
 	update()
 
@@ -16,11 +18,12 @@ func update():
 	
 	if diff < 0:
 		for i in abs(diff):
-			get_children()[0].queue_free()
-	
+			if get_child_count() > 0:
+				get_children()[0].queue_free()
+		
 	elif diff > 0:
 		for i in abs(diff):
-			var new = get_children()[0].duplicate()
+			var new = heart_icon.duplicate()
 			add_child(new)
 
 func _process(delta: float) -> void:
@@ -32,6 +35,8 @@ func _process(delta: float) -> void:
 		i.get_child(0).position.y += sin((clock + j) * 10) * .1
 		j += 1
 
-
 func _on_player_hit() -> void:
+	update()
+
+func _on_health_health_changed(v: Variant) -> void:
 	update()

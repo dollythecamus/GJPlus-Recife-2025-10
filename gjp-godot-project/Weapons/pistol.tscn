@@ -14,7 +14,6 @@ radius = 19.026299
 
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("2_wqlkq")
-aim = true
 flips_at_half = true
 
 [node name="ASCII4" type="Label" parent="Pointer"]
@@ -138,7 +137,7 @@ speed = 400.0
 acceleration = 900.0
 friction = 0.9
 
-[node name="Shooter" type="Node" parent="." node_paths=PackedStringArray("p")]
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p")]
 script = ExtResource("6_wqlkq")
 projectile = ExtResource("7_i040i")
 p = NodePath("../Pointer")

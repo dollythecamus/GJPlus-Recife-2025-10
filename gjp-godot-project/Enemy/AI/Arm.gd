@@ -6,6 +6,7 @@ var n
 @onready var iktargetrest = $ArmRest
 
 @export var weapon_hook : Node2D
+@export var pickup : Pickup
 
 @export var reach := 100
 @export var stab_duration = .6

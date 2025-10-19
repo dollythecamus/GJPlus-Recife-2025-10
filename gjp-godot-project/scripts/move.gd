@@ -17,3 +17,10 @@ func _process(delta: float) -> void:
 
 func mag(x):
 	velocity = direction * Vector2(x, x)
+
+func enable():
+	set_process(true)
+
+func disable():
+	set_process(false)
+	

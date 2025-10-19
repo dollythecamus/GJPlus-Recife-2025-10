@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://byq4nuf6mctml"]
+[gd_scene load_steps=9 format=3 uid="uid://byq4nuf6mctml"]
 
 [ext_resource type="Script" uid="uid://jxgjoof2suin" path="res://Enemy/AI/Arm.gd" id="1_bln4r"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="1_ij6br"]
+[ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://scripts/pickup.gd" id="2_31f2g"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_utogo"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ij6br"]
@@ -23,12 +24,16 @@ joint_data/1/editor_draw_gizmo = false
 modification_count = 1
 modifications/0 = SubResource("SkeletonModification2DCCDIK_ij6br")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_utogo"]
+radius = 17.029387
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_31f2g"]
 radius = 7.000005
 
-[node name="Arm" type="Node2D" node_paths=PackedStringArray("weapon_hook")]
+[node name="Arm" type="Node2D" node_paths=PackedStringArray("weapon_hook", "pickup")]
 script = ExtResource("1_bln4r")
 weapon_hook = NodePath("Skeleton/arm0/arm1/arm2/Hook")
+pickup = NodePath("Skeleton/arm0/arm1/arm2/Hook/Pickup")
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 modification_stack = SubResource("SkeletonModificationStack2D_bln4r")
@@ -53,6 +58,14 @@ remote_path = NodePath("../../../../arms/arm10/arm2/arm3")
 [node name="Hook" type="Node2D" parent="Skeleton/arm0/arm1/arm2"]
 position = Vector2(5, -2)
 
+[node name="Pickup" type="Area2D" parent="Skeleton/arm0/arm1/arm2/Hook"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_31f2g")
+
+[node name="Col" type="CollisionShape2D" parent="Skeleton/arm0/arm1/arm2/Hook/Pickup"]
+shape = SubResource("CircleShape2D_utogo")
+
 [node name="Hurt" type="Area2D" parent="Skeleton/arm0/arm1/arm2"]
 position = Vector2(3.0000002, -0.9999988)
 collision_layer = 0
@@ -61,7 +74,7 @@ script = ExtResource("2_utogo")
 knockback = 200
 metadata/_custom_type_script = "uid://taq2rij2glt4"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/arm0/arm1/arm2/Hurt"]
+[node name="Col" type="CollisionShape2D" parent="Skeleton/arm0/arm1/arm2/Hurt"]
 position = Vector2(5.5006804e-08, 1.9065562e-06)
 shape = SubResource("CircleShape2D_31f2g")
 

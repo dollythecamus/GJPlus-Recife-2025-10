@@ -8,17 +8,21 @@ class_name Pickable
 var target
 var picked = false
 
+signal PICKED(n)
+
 func release():
 	target = null
 	picked = false
+	point.to_point = picked
 
 func pick(node):
 	target = node
 	picked = true
+	point.to_point = picked
+	PICKED.emit(node)
 
 func _process(_delta: float) -> void:
 	move_to_target()
-	point.to_point = picked
 
 func move_to_target():
 	if target == null:

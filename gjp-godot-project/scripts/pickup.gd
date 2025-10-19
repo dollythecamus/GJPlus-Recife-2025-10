@@ -5,6 +5,11 @@ class_name Pickup
 
 var picked = null
 
+func release():
+	if picked != null:
+		picked.get_node("Pickable").release()
+		picked = null
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pick"):
 		var a = get_overlapping_areas()

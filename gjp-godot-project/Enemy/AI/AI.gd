@@ -3,7 +3,10 @@ extends Node
 @onready var target = get_parent().target
 @onready var mover = get_parent().mover
 
-const seek_distance = 90
+static var others = []
+
+const seek_distance = 80
+const others_distance = 100
 
 enum STATES {WALK, IDLE, RUN}
 var state = STATES.WALK:
@@ -13,8 +16,12 @@ var state = STATES.WALK:
 
 signal state_change(v)
 
+func _init() -> void:
+	others.append(self)
+
 func run():
 	get_close_avoid()
+	balance_others_distances()
 
 func get_close_avoid():
 	if target == null:
@@ -26,3 +33,20 @@ func get_close_avoid():
 	else:
 		mover.direction = Vector2.ZERO
 		state = STATES.IDLE
+
+func balance_others_distances():
+	if target == null:
+		return
+	
+	var resulting = Vector2.ZERO
+	
+	for i in others:
+		if i == self:
+			continue
+		
+		var distance = i.global_position - self.global_position
+		
+	
+
+func _exit_tree() -> void:
+	others.erase(self)

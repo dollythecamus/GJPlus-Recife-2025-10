@@ -1,16 +1,16 @@
 [gd_scene load_steps=18 format=3 uid="uid://c34ykm2xq0oxw"]
 
-[ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_mrk53"]
-[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_11gi7"]
-[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_15vee"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_ocxj8"]
-[ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="4_054tx"]
-[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="5_pcifv"]
-[ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="6_rh57g"]
-[ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="7_fulks"]
-[ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://scripts/health.gd" id="8_1gm15"]
-[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="9_ofohk"]
-[ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="10_01aqo"]
+[ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_5uqmw"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_c3y0i"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="3_oe0k2"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="4_wkrge"]
+[ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="5_4w5a1"]
+[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="6_dv5h5"]
+[ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="7_r228y"]
+[ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="8_4kjaj"]
+[ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://scripts/health.gd" id="9_rvvtk"]
+[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="10_5rgmk"]
+[ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="11_gttpy"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_54umi"]
 target_nodepath = NodePath("../t2R")
@@ -59,7 +59,7 @@ radius = 14.0
 height = 48.0
 
 [node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover")]
-script = ExtResource("1_mrk53")
+script = ExtResource("1_5uqmw")
 mover = NodePath("Skeleton2D/root/Mover")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
@@ -71,8 +71,6 @@ editor_settings/show_bone_gizmo = false
 
 [node name="RB" type="RigidBody2D" parent="Skeleton2D/root"]
 gravity_scale = 0.0
-freeze = true
-freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/RB"]
 rotation = 1.5707964
@@ -105,7 +103,7 @@ remote_path = NodePath("../../../../../../visual/root/leg2/leg1/leg2")
 position = Vector2(-1.0124142, 2.9958389)
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("2_11gi7")
+script = ExtResource("2_c3y0i")
 knockback = 200
 metadata/_custom_type_script = "uid://taq2rij2glt4"
 
@@ -147,7 +145,7 @@ remote_path = NodePath("../../../../../../visual/root/leg3/leg1/leg2")
 position = Vector2(-0.7848253, 3.0633419)
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("2_11gi7")
+script = ExtResource("2_c3y0i")
 knockback = 200
 metadata/_custom_type_script = "uid://taq2rij2glt4"
 
@@ -165,14 +163,14 @@ remote_path = NodePath("../../../../visual/root/leg3")
 remote_path = NodePath("../../../visual/root")
 
 [node name="Mover" type="Node" parent="Skeleton2D/root"]
-script = ExtResource("2_15vee")
+script = ExtResource("3_oe0k2")
 speed = 100.0
 acceleration = 1000.0
 friction = 0.93
 metadata/_custom_type_script = "uid://brtc2oowy8obq"
 
 [node name="Pointer" type="Node2D" parent="Skeleton2D/root"]
-script = ExtResource("3_ocxj8")
+script = ExtResource("4_wkrge")
 rotate_parent = true
 to_point = true
 
@@ -186,7 +184,7 @@ position = Vector2(-47, 15)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
-script = ExtResource("4_054tx")
+script = ExtResource("5_4w5a1")
 flash = NodePath("../../../visual/root/flash")
 health = NodePath("../../../Health")
 mover = NodePath("../Mover")
@@ -230,7 +228,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "\""
-label_settings = ExtResource("5_pcifv")
+label_settings = ExtResource("6_dv5h5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -252,7 +250,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("5_pcifv")
+label_settings = ExtResource("6_dv5h5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -274,7 +272,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("5_pcifv")
+label_settings = ExtResource("6_dv5h5")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -311,7 +309,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "\""
-label_settings = ExtResource("5_pcifv")
+label_settings = ExtResource("6_dv5h5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -333,7 +331,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("5_pcifv")
+label_settings = ExtResource("6_dv5h5")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -356,7 +354,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "|"
-label_settings = ExtResource("5_pcifv")
+label_settings = ExtResource("6_dv5h5")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -378,7 +376,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "[I]"
-label_settings = ExtResource("5_pcifv")
+label_settings = ExtResource("6_dv5h5")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -405,31 +403,31 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
 text = "[I]"
-label_settings = ExtResource("6_rh57g")
+label_settings = ExtResource("7_r228y")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
 position = Vector2(50, 21)
-script = ExtResource("7_fulks")
+script = ExtResource("8_4kjaj")
 settled_place_node = NodePath("../Skeleton2D/root/t2R")
 preference = 1.0
 
 [node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
 position = Vector2(-47, 15)
-script = ExtResource("7_fulks")
+script = ExtResource("8_4kjaj")
 settled_place_node = NodePath("../Skeleton2D/root/t2L")
 preference = -1.0
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("8_1gm15")
+script = ExtResource("9_rvvtk")
 
 [node name="AI" type="Node" parent="."]
-script = ExtResource("9_ofohk")
+script = ExtResource("10_5rgmk")
 
 [node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("10_01aqo")
+script = ExtResource("11_gttpy")
 root = NodePath("../Skeleton2D/root")
 
 [connection signal="state_change" from="AI" to="t2R" method="_on_state_change"]

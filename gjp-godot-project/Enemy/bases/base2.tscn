@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bc8xhsymu8msk"]
+[gd_scene load_steps=19 format=3 uid="uid://bc8xhsymu8msk"]
 
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_o2xll"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_pmg5d"]
@@ -80,9 +80,6 @@ modifications/1 = SubResource("SkeletonModification2DCCDIK_eqilm")
 modifications/2 = SubResource("SkeletonModification2DCCDIK_ncf7h")
 modifications/3 = SubResource("SkeletonModification2DCCDIK_m6jha")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmg5d"]
-height = 44.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpwo2"]
 radius = 7.000005
 
@@ -100,15 +97,6 @@ modification_stack = SubResource("SkeletonModificationStack2D_2pb1h")
 [node name="root" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
-
-[node name="RB" type="RigidBody2D" parent="Skeleton2D/root"]
-gravity_scale = 0.0
-freeze = true
-freeze_mode = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/RB"]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_pmg5d")
 
 [node name="leg0" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(17, -7)
@@ -155,7 +143,7 @@ remote_path = NodePath("../../../../visual/root/leg0")
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-15, -6)
 rotation = -0.14035119
-scale = Vector2(0.99999946, 0.99999946)
+scale = Vector2(0.99999917, 0.99999917)
 rest = Transform2D(1, 0, 0, 1, -15, -6)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -404,16 +392,15 @@ vertical_alignment = 1
 
 [node name="leg1" type="Node2D" parent="visual/root"]
 position = Vector2(-15, -6)
-rotation = -0.16495207
-scale = Vector2(0.9999978, 0.9999978)
+rotation = -0.16495094
+scale = Vector2(0.9999985, 0.9999985)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg1"]
-position = Vector2(-13.999959, -17.000015)
-rotation = 0.12791583
-scale = Vector2(1.0000006, 1.0000006)
+position = Vector2(-13.9999895, -17.000008)
+rotation = 0.12791309
 
 [node name="leg2" type="Node2D" parent="visual/root/leg1/leg1"]
-position = Vector2(-12.999998, 15.999998)
+position = Vector2(-13.000004, 16)
 
 [node name="l2" type="Label" parent="visual/root/leg1/leg1/leg2"]
 texture_filter = 1
