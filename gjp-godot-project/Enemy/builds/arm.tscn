@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://byq4nuf6mctml"]
+[gd_scene load_steps=10 format=3 uid="uid://byq4nuf6mctml"]
 
 [ext_resource type="Script" uid="uid://jxgjoof2suin" path="res://Enemy/AI/Arm.gd" id="1_bln4r"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="1_ij6br"]
@@ -29,6 +29,9 @@ radius = 17.029387
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_31f2g"]
 radius = 7.000005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0uujy"]
+radius = 95.02105
 
 [node name="Arm" type="Node2D" node_paths=PackedStringArray("weapon_hook", "pickup")]
 script = ExtResource("1_bln4r")
@@ -61,6 +64,7 @@ position = Vector2(5, -2)
 [node name="Pickup" type="Area2D" parent="Skeleton/arm0/arm1/arm2/Hook"]
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource("2_31f2g")
 
 [node name="Col" type="CollisionShape2D" parent="Skeleton/arm0/arm1/arm2/Hook/Pickup"]
@@ -239,3 +243,14 @@ rotation = -1.5214517
 [node name="ArmT0" type="Node2D" parent="."]
 position = Vector2(48, -48.000004)
 rotation = -0.26255706
+
+[node name="detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Col" type="CollisionShape2D" parent="detector"]
+shape = SubResource("CircleShape2D_0uujy")
+
+[connection signal="area_entered" from="detector" to="." method="_on_detector_area_entered"]
+[connection signal="area_exited" from="detector" to="." method="_on_detector_area_exited"]

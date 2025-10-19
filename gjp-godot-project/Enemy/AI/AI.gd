@@ -17,12 +17,22 @@ var state = STATES.WALK:
 
 signal state_change(v)
 
+var fire_cycle = 3
+var fc = 0
+
 func _init() -> void:
 	others.append(self)
 
-func run():
+func run(delta):
+	fc += delta
+	
 	get_close_avoid()
 	balance_others_distances()
+	var gun = root.get_node_or_null("Guns")
+	if gun != null:
+		if fc >= fire_cycle:
+			gun.fire()
+			fc = 0
 
 func get_close_avoid():
 	if target == null:

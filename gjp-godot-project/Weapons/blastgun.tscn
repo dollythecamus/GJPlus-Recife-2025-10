@@ -188,6 +188,9 @@ label_settings = ExtResource("2_n1ebl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="point" type="Node2D" parent="Pointer"]
+position = Vector2(49, 0)
+
 [node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
 collision_layer = 2
 script = ExtResource("3_nlyoc")
@@ -203,7 +206,8 @@ speed = 400.0
 acceleration = 900.0
 friction = 0.9
 
-[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p")]
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "point")]
 script = ExtResource("5_qetip")
 projectile = ExtResource("6_igdab")
 p = NodePath("../Pointer")
+point = NodePath("../Pointer/point")

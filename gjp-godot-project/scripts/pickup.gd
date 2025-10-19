@@ -4,6 +4,7 @@ class_name Pickup
 @onready var n := get_parent()
 
 var picked = null
+@export var is_player = false
 
 func release():
 	if picked != null:
@@ -11,6 +12,9 @@ func release():
 		picked = null
 
 func _process(_delta: float) -> void:
+	if not is_player:
+		return
+	
 	if Input.is_action_just_pressed("pick"):
 		var a = get_overlapping_areas()
 		if a.size() > 0:

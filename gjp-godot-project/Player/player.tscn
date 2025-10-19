@@ -151,6 +151,7 @@ vertical_alignment = 1
 collision_mask = 2
 monitorable = false
 script = ExtResource("5_k53q1")
+is_player = true
 
 [node name="Col" type="CollisionShape2D" parent="Pickup"]
 shape = SubResource("CircleShape2D_gwnis")

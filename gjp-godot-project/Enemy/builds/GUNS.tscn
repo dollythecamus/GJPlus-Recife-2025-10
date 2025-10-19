@@ -1,0 +1,202 @@
+[gd_scene load_steps=6 format=3 uid="uid://slth1v2nekfv"]
+
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="1_lhq3s"]
+[ext_resource type="Script" uid="uid://dhdulmd7dg0as" path="res://Enemy/AI/guns.gd" id="1_uin3o"]
+[ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Weapons/shooter.gd" id="2_0i6mo"]
+[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="2_tf4ti"]
+[ext_resource type="PackedScene" uid="uid://dd8gkhx2o8btb" path="res://Weapons/Projectiles/bullet2.tscn" id="5_uin3o"]
+
+[node name="Guns" type="Node2D"]
+script = ExtResource("1_uin3o")
+
+[node name="visual" type="Node2D" parent="."]
+
+[node name="Pointer" type="Node2D" parent="visual"]
+position = Vector2(0, -5)
+script = ExtResource("1_lhq3s")
+to_point = true
+flips_at_half = true
+angle_offset = 0.0
+metadata/_custom_type_script = "uid://c06bwdrxfw41f"
+
+[node name="l5" type="Label" parent="visual/Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -31.0
+offset_right = 74.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l4" type="Label" parent="visual/Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = -18.0
+offset_right = 71.0
+offset_bottom = 11.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l2" type="Label" parent="visual/Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 22.0
+offset_right = 62.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l8" type="Label" parent="visual/Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 26.0
+offset_right = 58.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l10" type="Label" parent="visual/Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -14.0
+offset_right = 22.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "/"
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l11" type="Label" parent="visual/Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -20.0
+offset_right = 22.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "/"
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="point" type="Node2D" parent="visual/Pointer"]
+position = Vector2(15, 0)
+
+[node name="l3" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -6.0
+offset_right = 23.0
+offset_bottom = 23.000002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "'"
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l9" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 27.0
+offset_right = 44.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "'"
+label_settings = ExtResource("2_tf4ti")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shooter" type="Node" parent="." node_paths=PackedStringArray("p", "point")]
+script = ExtResource("2_0i6mo")
+projectile = ExtResource("5_uin3o")
+p = NodePath("../visual/Pointer")
+point = NodePath("../visual/Pointer/point")

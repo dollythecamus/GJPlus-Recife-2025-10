@@ -10,8 +10,8 @@ func _ready() -> void:
 
 signal died
 
-func _process(_delta: float) -> void:
-	AI.run()
+func _process(delta: float) -> void:
+	AI.run(delta)
 
 func _exit_tree() -> void:
 	died.emit()
