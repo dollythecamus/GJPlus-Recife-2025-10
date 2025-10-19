@@ -2,6 +2,7 @@ extends Node
 
 @onready var target = get_parent().target
 @onready var mover = get_parent().mover
+@onready var root = get_parent().get_node("Build").root
 
 static var others = []
 
@@ -44,9 +45,15 @@ func balance_others_distances():
 		if i == self:
 			continue
 		
-		var distance = i.global_position - self.global_position
+		var distance = i.root.global_position - root.global_position
+		var d = distance.length() / others_distance
 		
+		if d < 1:
+			resulting -= distance * .11 * (1/d)
+		if d > 1:
+			resulting += distance * .11 / d
 	
+	mover.direction += resulting.normalized() * .5
 
 func _exit_tree() -> void:
 	others.erase(self)

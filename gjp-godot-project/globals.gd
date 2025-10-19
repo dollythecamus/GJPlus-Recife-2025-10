@@ -17,7 +17,7 @@ var weapons = {
 
 const progression = [
 	"weapon:melee",
-	"enemy:ZeroI:2",
+	"enemy:ZeroI:3",
 	"enemy:ZeroII:1",
 	"story:year 34x2 AL",
 	"power:healthpack",
