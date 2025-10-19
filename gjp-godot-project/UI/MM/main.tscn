@@ -1,83 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://cx5cm77wde43g"]
+[gd_scene load_steps=16 format=3 uid="uid://cx5cm77wde43g"]
 
-[ext_resource type="FontFile" uid="uid://blaayqpxabrpg" path="res://UI/texgyreadventor-regular.otf" id="1_44ouc"]
 [ext_resource type="LabelSettings" uid="uid://cx6gnx7fyselo" path="res://UI/title.tres" id="1_dxapu"]
 [ext_resource type="Script" uid="uid://w5uh3wkxayhs" path="res://UI/MM/main.gd" id="1_yflm0"]
+[ext_resource type="Theme" uid="uid://b08fldffvy1vs" path="res://UI/MM/main.tres" id="2_0mmqq"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://ASCII/player_ascii.tres" id="2_44ouc"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://ASCII/FreeMono.ttf" id="3_yflm0"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="4_0mmqq"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="5_mplmn"]
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="6_hovv6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mmqq"]
-bg_color = Color(0.2901961, 0.11764706, 0.39215687, 1)
-draw_center = false
-skew = Vector2(0.15, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.5191057, 0.2810353, 0.62364745, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 16
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44ouc"]
-bg_color = Color(0.2901961, 0.11764706, 0.39215687, 1)
-skew = Vector2(0.15, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.16078432, 0.08235294, 0.24705882, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 16
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
-shadow_color = Color(0, 0, 0, 0.29803923)
-shadow_size = 2
-shadow_offset = Vector2(-6, -4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yflm0"]
-bg_color = Color(0.31382728, 0.18019766, 0.37102738, 1)
-skew = Vector2(0.15, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.16078432, 0.08235294, 0.24705882, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 16
-shadow_color = Color(0, 0, 0, 0.29803923)
-shadow_size = 2
-shadow_offset = Vector2(-2, -1)
-
-[sub_resource type="Theme" id="Theme_yflm0"]
-default_font = ExtResource("1_44ouc")
-default_font_size = 28
-Button/colors/font_color = Color(0.12156863, 0.8509804, 0.8745098, 1)
-Button/colors/font_hover_color = Color(0.25882354, 0.7372549, 0.9490196, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0.69803923, 0.6862745, 1, 1)
-Button/font_sizes/font_size = 28
-Button/styles/focus = SubResource("StyleBoxFlat_0mmqq")
-Button/styles/hover = SubResource("StyleBoxFlat_44ouc")
-Button/styles/normal = SubResource("StyleBoxFlat_44ouc")
-Button/styles/pressed = SubResource("StyleBoxFlat_yflm0")
+[ext_resource type="Texture2D" uid="uid://bv4p2w4s8qqct" path="res://UI/joystick.jpg" id="9_0mmqq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1kuo"]
 line_spacing = -20.0
@@ -97,6 +28,43 @@ outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
 
+[sub_resource type="LabelSettings" id="LabelSettings_yflm0"]
+line_spacing = -6.0
+font = ExtResource("3_yflm0")
+font_size = 48
+font_color = Color(0.1254902, 0.92156863, 0.93333334, 1)
+outline_size = 1
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0mmqq"]
+line_spacing = -6.0
+font = ExtResource("3_yflm0")
+font_size = 24
+font_color = Color(0.1254902, 0.92156863, 0.93333334, 1)
+outline_size = 1
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hovv6"]
+bg_color = Color(0.64236563, 0.64236563, 0.64236546, 1)
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mplmn"]
+bg_color = Color(0.64236563, 0.64236563, 0.64236546, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -106,20 +74,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yflm0")
 
-[node name="Title" type="Label" parent="."]
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Main"]
 layout_mode = 0
 offset_left = 59.0
 offset_top = 36.0
 offset_right = 340.0
 offset_bottom = 239.0
-theme = SubResource("Theme_yflm0")
+theme = ExtResource("2_0mmqq")
 text = "SOMBRE
 ASTRA"
 label_settings = ExtResource("1_dxapu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="Title"]
+[node name="Play" type="Button" parent="Main/Title"]
 layout_mode = 0
 offset_left = 71.0
 offset_top = 236.0
@@ -128,23 +104,32 @@ offset_bottom = 286.0
 focus_next = NodePath("../Quit")
 text = "Play"
 
-[node name="Quit" type="Button" parent="Title"]
+[node name="Quit" type="Button" parent="Main/Title"]
 layout_mode = 0
-offset_left = 112.0
+offset_left = 67.0
 offset_top = 304.0
-offset_right = 165.0
+offset_right = 120.0
 offset_bottom = 354.0
 focus_previous = NodePath("../Play")
 text = "X"
 
-[node name="Ilustrations" type="Node2D" parent="."]
+[node name="tutorial" type="Button" parent="Main/Title"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 304.0
+offset_right = 202.0
+offset_bottom = 354.0
+focus_previous = NodePath("../Play")
+text = "?"
 
-[node name="PC" type="Node2D" parent="Ilustrations"]
+[node name="Ilustrations" type="Node2D" parent="Main"]
+
+[node name="PC" type="Node2D" parent="Main/Ilustrations"]
 position = Vector2(499, 325)
 rotation = 0.2617994
 scale = Vector2(5.527906, 5.521091)
 
-[node name="ASCII" type="Label" parent="Ilustrations/PC"]
+[node name="ASCII" type="Label" parent="Main/Ilustrations/PC"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -165,7 +150,7 @@ label_settings = ExtResource("2_44ouc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII2" type="Label" parent="Ilustrations/PC"]
+[node name="ASCII2" type="Label" parent="Main/Ilustrations/PC"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -186,10 +171,10 @@ label_settings = SubResource("LabelSettings_t1kuo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="flash" type="Node2D" parent="Ilustrations/PC"]
+[node name="flash" type="Node2D" parent="Main/Ilustrations/PC"]
 visible = false
 
-[node name="ASCII" type="Label" parent="Ilustrations/PC/flash"]
+[node name="ASCII" type="Label" parent="Main/Ilustrations/PC/flash"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -212,12 +197,12 @@ label_settings = SubResource("LabelSettings_x1en1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="sword" type="Node2D" parent="Ilustrations/PC"]
+[node name="sword" type="Node2D" parent="Main/Ilustrations/PC"]
 position = Vector2(-6.94509, 9.738773)
 rotation = -3.6510165
 scale = Vector2(1, -1)
 
-[node name="ASCII2" type="Label" parent="Ilustrations/PC/sword"]
+[node name="ASCII2" type="Label" parent="Main/Ilustrations/PC/sword"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -237,7 +222,7 @@ label_settings = ExtResource("4_0mmqq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII4" type="Label" parent="Ilustrations/PC/sword"]
+[node name="ASCII4" type="Label" parent="Main/Ilustrations/PC/sword"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -256,7 +241,7 @@ label_settings = ExtResource("4_0mmqq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII3" type="Label" parent="Ilustrations/PC/sword"]
+[node name="ASCII3" type="Label" parent="Main/Ilustrations/PC/sword"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -276,7 +261,7 @@ label_settings = ExtResource("4_0mmqq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII5" type="Label" parent="Ilustrations/PC/sword"]
+[node name="ASCII5" type="Label" parent="Main/Ilustrations/PC/sword"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -297,30 +282,30 @@ label_settings = ExtResource("4_0mmqq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="bot" type="Node2D" parent="Ilustrations"]
+[node name="bot" type="Node2D" parent="Main/Ilustrations"]
 position = Vector2(392.00003, 67.00001)
 rotation = -0.4410966
 scale = Vector2(4.057121, 4.057121)
 
-[node name="root" type="Node2D" parent="Ilustrations/bot"]
+[node name="root" type="Node2D" parent="Main/Ilustrations/bot"]
 position = Vector2(17.323126, 5.4529123)
 rotation = 0.19156286
 
-[node name="leg2" type="Node2D" parent="Ilustrations/bot/root"]
+[node name="leg2" type="Node2D" parent="Main/Ilustrations/bot/root"]
 position = Vector2(18.000061, 12.000022)
 rotation = 1.8943701
 scale = Vector2(1.3756939, 1.3756939)
 
-[node name="leg1" type="Node2D" parent="Ilustrations/bot/root/leg2"]
+[node name="leg1" type="Node2D" parent="Main/Ilustrations/bot/root/leg2"]
 position = Vector2(13.00005, -14.9999695)
 rotation = -0.5566186
 scale = Vector2(0.999999, 0.999999)
 
-[node name="leg2" type="Node2D" parent="Ilustrations/bot/root/leg2/leg1"]
+[node name="leg2" type="Node2D" parent="Main/Ilustrations/bot/root/leg2/leg1"]
 position = Vector2(13, 15.000002)
 scale = Vector2(1.8747288, 1.8747288)
 
-[node name="l2" type="Label" parent="Ilustrations/bot/root/leg2/leg1/leg2"]
+[node name="l2" type="Label" parent="Main/Ilustrations/bot/root/leg2/leg1/leg2"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -342,7 +327,7 @@ label_settings = ExtResource("5_mplmn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="l1" type="Label" parent="Ilustrations/bot/root/leg2/leg1"]
+[node name="l1" type="Label" parent="Main/Ilustrations/bot/root/leg2/leg1"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -364,7 +349,7 @@ label_settings = ExtResource("5_mplmn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="l0" type="Label" parent="Ilustrations/bot/root/leg2"]
+[node name="l0" type="Label" parent="Main/Ilustrations/bot/root/leg2"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -387,22 +372,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="leg3" type="Node2D" parent="Ilustrations/bot/root"]
+[node name="leg3" type="Node2D" parent="Main/Ilustrations/bot/root"]
 position = Vector2(-17.000046, 13.00002)
 rotation = 0.38309938
 scale = Vector2(0.9999992, 0.9999992)
 
-[node name="leg1" type="Node2D" parent="Ilustrations/bot/root/leg3"]
+[node name="leg1" type="Node2D" parent="Main/Ilustrations/bot/root/leg3"]
 position = Vector2(-12.000015, -16.000011)
 rotation = 0.5825057
 scale = Vector2(1.0000002, 1.0000002)
 
-[node name="leg2" type="Node2D" parent="Ilustrations/bot/root/leg3/leg1"]
+[node name="leg2" type="Node2D" parent="Main/Ilustrations/bot/root/leg3/leg1"]
 position = Vector2(-13.000004, 14.999998)
 rotation = -0.3906201
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="l2" type="Label" parent="Ilustrations/bot/root/leg3/leg1/leg2"]
+[node name="l2" type="Label" parent="Main/Ilustrations/bot/root/leg3/leg1/leg2"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -424,7 +409,7 @@ label_settings = ExtResource("5_mplmn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="l1" type="Label" parent="Ilustrations/bot/root/leg3/leg1"]
+[node name="l1" type="Label" parent="Main/Ilustrations/bot/root/leg3/leg1"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -447,7 +432,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="l0" type="Label" parent="Ilustrations/bot/root/leg3"]
+[node name="l0" type="Label" parent="Main/Ilustrations/bot/root/leg3"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -470,7 +455,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ASCII" type="Label" parent="Ilustrations/bot/root"]
+[node name="ASCII" type="Label" parent="Main/Ilustrations/bot/root"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -492,10 +477,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="flash" type="Node2D" parent="Ilustrations/bot/root"]
+[node name="flash" type="Node2D" parent="Main/Ilustrations/bot/root"]
 visible = false
 
-[node name="ASCII" type="Label" parent="Ilustrations/bot/root/flash"]
+[node name="ASCII" type="Label" parent="Main/Ilustrations/bot/root/flash"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -518,3 +503,232 @@ label_settings = ExtResource("6_hovv6")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Tutorial" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0mmqq")
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15602738, 0.101691194, 0.22574204, 1)
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -214.0
+offset_right = 25.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "controls :)"
+label_settings = SubResource("LabelSettings_yflm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -82.0
+offset_right = 105.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "grab objects (E) ->"
+label_settings = SubResource("LabelSettings_0mmqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -337.0
+offset_top = -150.0
+offset_right = -21.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "for gamepad/
+keyboard&mouse "
+label_settings = SubResource("LabelSettings_0mmqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = 152.0
+offset_right = 10.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "move"
+label_settings = SubResource("LabelSettings_0mmqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WASD"
+label_settings = SubResource("LabelSettings_0mmqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 324.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mouse"
+label_settings = SubResource("LabelSettings_0mmqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 152.0
+offset_right = 322.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "aim"
+label_settings = SubResource("LabelSettings_0mmqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -229.0
+offset_right = 322.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "shoot/attack
+(trigger)
+(left mouse button)"
+label_settings = SubResource("LabelSettings_0mmqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Tutorial"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 126.0
+offset_right = 544.0
+offset_bottom = 239.0
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hovv6")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mplmn")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hovv6")
+
+[node name="MarginContainer4" type="MarginContainer" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="Tutorial/GridContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hovv6")
+
+[node name="Joystick" type="Sprite2D" parent="Tutorial"]
+position = Vector2(167, 349)
+scale = Vector2(0.43320733, 0.43320733)
+texture = ExtResource("9_0mmqq")
+
+[node name="Joystick2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(487.00003, 349)
+scale = Vector2(-0.433, 0.433)
+texture = ExtResource("9_0mmqq")
+
+[node name="Quit" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 366.0
+offset_right = 76.0
+offset_bottom = 416.0
+focus_previous = NodePath("../Play")
+text = "X"

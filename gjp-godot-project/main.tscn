@@ -193,6 +193,62 @@ label_settings = SubResource("LabelSettings_mbk3n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="controlHint1" type="Node2D" parent="main"]
+visible = false
+position = Vector2(317, 214)
+script = ExtResource("6_dg77c")
+to_point = true
+flips_at_half = true
+angle_offset = 0.0
+
+[node name="ASCII2" type="Label" parent="main/controlHint1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 164.0
+offset_top = -31.0
+offset_right = 214.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "!"
+label_settings = SubResource("LabelSettings_mbk3n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="controlHint2" type="Node2D" parent="main"]
+visible = false
+position = Vector2(317, 214)
+script = ExtResource("6_dg77c")
+to_point = true
+flips_at_half = true
+angle_offset = 0.0
+
+[node name="ASCII2" type="Label" parent="main/controlHint2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 164.0
+offset_top = -31.0
+offset_right = 214.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "!"
+label_settings = SubResource("LabelSettings_mbk3n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
