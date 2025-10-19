@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://g1jidhsjrkag"]
+
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="2_wqlkq"]
+[ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="3_i040i"]
+[ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://scripts/pickable.gd" id="4_041lk"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="5_f87xa"]
+[ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Weapons/shooter.gd" id="6_wqlkq"]
+[ext_resource type="PackedScene" uid="uid://b8ahs3owuq1lg" path="res://Weapons/Projectiles/bullet1.tscn" id="7_i040i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
+radius = 19.026299
+
+[node name="Pistol" type="Node2D"]
+
+[node name="Pointer" type="Node2D" parent="."]
+script = ExtResource("2_wqlkq")
+flips_at_half = true
+
+[node name="ASCII4" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.000004
+offset_top = -4.000001
+offset_right = 93.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.4289114
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "^"
+label_settings = ExtResource("3_i040i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.207348
+offset_top = -17.55827
+offset_right = 40.792652
+offset_bottom = 11.4417305
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = ","
+label_settings = ExtResource("3_i040i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 44.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("3_i040i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -18.0
+offset_right = 49.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "-"
+label_settings = ExtResource("3_i040i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -19.0
+offset_right = 54.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "-"
+label_settings = ExtResource("3_i040i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="point" type="Node2D" parent="Pointer"]
+position = Vector2(35, 0)
+
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
+collision_layer = 2
+script = ExtResource("4_041lk")
+move = NodePath("../Mover")
+point = NodePath("../Pointer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]
+shape = SubResource("CircleShape2D_7fmhn")
+
+[node name="Mover" type="Node" parent="."]
+script = ExtResource("5_f87xa")
+speed = 400.0
+acceleration = 900.0
+friction = 0.9
+
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "point")]
+script = ExtResource("6_wqlkq")
+projectile = ExtResource("7_i040i")
+p = NodePath("../Pointer")
+point = NodePath("../Pointer/point")

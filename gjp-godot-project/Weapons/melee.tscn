@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=3 uid="uid://djvxh5kwqm6x"]
+
+[ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="1_5u7jf"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="1_n2gs1"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_5ek7h"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="4_l1odu"]
+[ext_resource type="Script" uid="uid://2kff3scadu5f" path="res://Weapons/attack.gd" id="5_cw8v0"]
+[ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://scripts/pickable.gd" id="6_8nosm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n2gs1"]
+radius = 4.0
+height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wqnr7"]
+
+[node name="Melee" type="Node2D"]
+
+[node name="Pointer" type="Node2D" parent="."]
+script = ExtResource("3_5ek7h")
+flips_at_half = true
+
+[node name="visual" type="Node2D" parent="Pointer"]
+position = Vector2(14.000002, 0)
+rotation = 1.5766
+
+[node name="ASCII2" type="Label" parent="Pointer/visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -37.0
+offset_right = 26.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("1_5u7jf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="Pointer/visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -52.0
+offset_right = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("1_5u7jf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="Pointer/visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -54.0
+offset_right = 28.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "]"
+label_settings = ExtResource("1_5u7jf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="Pointer/visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -20.0
+offset_right = 75.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "'"
+label_settings = ExtResource("1_5u7jf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hurt" type="Area2D" parent="Pointer"]
+position = Vector2(44, 1)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("1_n2gs1")
+damage = 2
+knockback = 150
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="Col" type="CollisionShape2D" parent="Pointer/Hurt"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_n2gs1")
+
+[node name="Mover" type="Node" parent="."]
+script = ExtResource("4_l1odu")
+speed = 450.0
+acceleration = 1200.0
+friction = 0.9
+metadata/_custom_type_script = "uid://brtc2oowy8obq"
+
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("pointer", "mover")]
+script = ExtResource("5_cw8v0")
+pointer = NodePath("../Pointer")
+mover = NodePath("../Mover")
+reach = 900
+
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
+collision_layer = 2
+monitoring = false
+script = ExtResource("6_8nosm")
+move = NodePath("../Mover")
+point = NodePath("../Pointer")
+metadata/_custom_type_script = "uid://dvttpxrkbop7h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]
+shape = SubResource("CircleShape2D_wqnr7")

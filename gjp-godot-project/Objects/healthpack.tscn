@@ -1,0 +1,168 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4jpd37sy667b"]
+
+[ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://scripts/pickable.gd" id="1_thclg"]
+[ext_resource type="Script" uid="uid://cysytuq0fod35" path="res://Objects/healthpack.gd" id="1_xbqn6"]
+[ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="2_esrj5"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_hv2jg"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_x8ik8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv2jg"]
+size = Vector2(28, 32)
+
+[node name="Healthpack" type="Node2D"]
+script = ExtResource("1_xbqn6")
+
+[node name="Pointer" type="Node2D" parent="."]
+script = ExtResource("3_x8ik8")
+rotate_parent = true
+metadata/_custom_type_script = "uid://c06bwdrxfw41f"
+
+[node name="visual" type="Node2D" parent="."]
+
+[node name="ASCII2" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "_"
+label_settings = ExtResource("2_esrj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII4" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 25.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "+"
+label_settings = ExtResource("2_esrj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII6" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "||"
+label_settings = ExtResource("2_esrj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII3" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -54.0
+offset_right = 25.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "_"
+label_settings = ExtResource("2_esrj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII5" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -43.0
+offset_right = 25.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "-"
+label_settings = ExtResource("2_esrj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII7" type="Label" parent="visual"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -41.0
+offset_right = 25.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("2_esrj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_thclg")
+move = NodePath("../Mover")
+point = NodePath("../Pointer")
+metadata/_custom_type_script = "uid://dvttpxrkbop7h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_hv2jg")
+
+[node name="Mover" type="Node" parent="."]
+script = ExtResource("2_hv2jg")
+speed = 300.0
+acceleration = 400.0
+friction = 0.95
+metadata/_custom_type_script = "uid://brtc2oowy8obq"
+
+[connection signal="PICKED" from="Pickable" to="." method="_on_pickable_picked"]

@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cid1ilggt3puh"]
+
+[ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://ASCII/FreeMono.ttf" id="1_r51cb"]
+
+[resource]
+font = ExtResource("1_r51cb")
+font_size = 24
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0

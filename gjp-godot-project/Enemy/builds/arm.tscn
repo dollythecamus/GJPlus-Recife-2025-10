@@ -1,0 +1,256 @@
+[gd_scene load_steps=10 format=3 uid="uid://byq4nuf6mctml"]
+
+[ext_resource type="Script" uid="uid://jxgjoof2suin" path="res://Enemy/AI/Arm.gd" id="1_bln4r"]
+[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="1_ij6br"]
+[ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://scripts/pickup.gd" id="2_31f2g"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_utogo"]
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ij6br"]
+target_nodepath = NodePath("../ArmT0")
+tip_nodepath = NodePath("arm0/arm1/arm2")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("arm0")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("arm0/arm1")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_bln4r"]
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DCCDIK_ij6br")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_utogo"]
+radius = 17.029387
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_31f2g"]
+radius = 7.000005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0uujy"]
+radius = 95.02105
+
+[node name="Arm" type="Node2D" node_paths=PackedStringArray("weapon_hook", "pickup")]
+script = ExtResource("1_bln4r")
+weapon_hook = NodePath("Skeleton/arm0/arm1/arm2/Hook")
+pickup = NodePath("Skeleton/arm0/arm1/arm2/Hook/Pickup")
+
+[node name="Skeleton" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_bln4r")
+
+[node name="arm0" type="Bone2D" parent="Skeleton"]
+rest = Transform2D(1, 0, 0, 1, 0, -31)
+editor_settings/show_bone_gizmo = false
+
+[node name="arm1" type="Bone2D" parent="Skeleton/arm0"]
+position = Vector2(37, -18)
+rest = Transform2D(1, 0, 0, 1, 37, -18)
+editor_settings/show_bone_gizmo = false
+
+[node name="arm2" type="Bone2D" parent="Skeleton/arm0/arm1"]
+position = Vector2(-19, -37)
+rest = Transform2D(1, 0, 0, 1, -19, -39)
+editor_settings/show_bone_gizmo = false
+
+[node name="rt" type="RemoteTransform2D" parent="Skeleton/arm0/arm1/arm2"]
+remote_path = NodePath("../../../../arms/arm10/arm2/arm3")
+
+[node name="Hook" type="Node2D" parent="Skeleton/arm0/arm1/arm2"]
+position = Vector2(5, -2)
+
+[node name="Pickup" type="Area2D" parent="Skeleton/arm0/arm1/arm2/Hook"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("2_31f2g")
+
+[node name="Col" type="CollisionShape2D" parent="Skeleton/arm0/arm1/arm2/Hook/Pickup"]
+shape = SubResource("CircleShape2D_utogo")
+
+[node name="Hurt" type="Area2D" parent="Skeleton/arm0/arm1/arm2"]
+position = Vector2(3.0000002, -0.9999988)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_utogo")
+knockback = 200
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="Col" type="CollisionShape2D" parent="Skeleton/arm0/arm1/arm2/Hurt"]
+position = Vector2(5.5006804e-08, 1.9065562e-06)
+shape = SubResource("CircleShape2D_31f2g")
+
+[node name="rt" type="RemoteTransform2D" parent="Skeleton/arm0/arm1"]
+remote_path = NodePath("../../../arms/arm10/arm2")
+
+[node name="rt" type="RemoteTransform2D" parent="Skeleton/arm0"]
+remote_path = NodePath("../../arms/arm10")
+
+[node name="arms" type="Node2D" parent="Skeleton"]
+
+[node name="arm10" type="Node2D" parent="Skeleton/arms"]
+
+[node name="arm2" type="Node2D" parent="Skeleton/arms/arm10"]
+position = Vector2(37, -18)
+
+[node name="arm3" type="Node2D" parent="Skeleton/arms/arm10/arm2"]
+position = Vector2(-19, -37)
+
+[node name="l2" type="Label" parent="Skeleton/arms/arm10/arm2/arm3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.3579
+offset_top = -6.9425507
+offset_right = 26.6421
+offset_bottom = 22.05745
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.454421
+pivot_offset = Vector2(24.770363, 6.1633472)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("1_ij6br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l3" type="Label" parent="Skeleton/arms/arm10/arm2/arm3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.191238
+offset_top = -4.949566
+offset_right = 27.808762
+offset_bottom = 24.050436
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 9.19198
+pivot_offset = Vector2(23.6037, 4.1703568)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "'"
+label_settings = ExtResource("1_ij6br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l3" type="Label" parent="Skeleton/arms/arm10/arm2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.57492
+offset_top = -6.405851
+offset_right = 26.42508
+offset_bottom = 22.59415
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.6278565
+pivot_offset = Vector2(23.57492, 5.4058495)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("1_ij6br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l4" type="Label" parent="Skeleton/arms/arm10/arm2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.449024
+offset_top = 13.499826
+offset_right = 25.550976
+offset_bottom = 42.49983
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.6278565
+pivot_offset = Vector2(24.449028, -14.499828)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("1_ij6br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l3" type="Label" parent="Skeleton/arms/arm10"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.57492
+offset_top = -6.405847
+offset_right = 26.42508
+offset_bottom = 22.594154
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.2769804
+pivot_offset = Vector2(23.57492, 5.4058475)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("1_ij6br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l4" type="Label" parent="Skeleton/arms/arm10"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.449028
+offset_top = 13.499819
+offset_right = 25.550972
+offset_bottom = 42.49982
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.2769804
+pivot_offset = Vector2(24.449028, -14.499825)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("1_ij6br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArmRest" type="Node2D" parent="."]
+position = Vector2(-30, -17.000004)
+rotation = -1.5214517
+
+[node name="ArmT0" type="Node2D" parent="."]
+position = Vector2(48, -48.000004)
+rotation = -0.26255706
+
+[node name="detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Col" type="CollisionShape2D" parent="detector"]
+shape = SubResource("CircleShape2D_0uujy")
+
+[connection signal="area_entered" from="detector" to="." method="_on_detector_area_entered"]
+[connection signal="area_exited" from="detector" to="." method="_on_detector_area_exited"]
