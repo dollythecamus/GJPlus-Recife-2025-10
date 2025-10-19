@@ -17,14 +17,24 @@ var weapons = {
 }
 
 const progression = [
-	"weapon:blastgun",
 	"weapon:melee",
-	"enemy:ZeroVI:1",
+	"enemy:ZeroI:1",
 	"story:year 34x2 AL",
+	"enemy:ZeroII:1",
 	"power:healthpack",
 	"weapon:pistol",
+	"enemy:ZeroII:3",
+	"enemy:ZeroIII:1",
+	"weapon:blastgun",
+	"power:healthpack",
 	"enemy:ZeroIV:1",
-	"enemy:ZeroV:1"
+	"story:generation 65536",
+	"enemy:ZeroIV:2",
+	"enemy:ZeroV:1",
+	"power:healthpack",
+	"enemy:ZeroVI:1",
+	"power:healthpack",
+	"enemy:ZeroVII:1",
 ]
 
 const ENEMY = "enemy"

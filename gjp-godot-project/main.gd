@@ -11,9 +11,13 @@ var hoard = -1
 @export var story_label : Label
 @export var popup : Control
 
+@onready var c_hint1 = $main/controlHint1
+@onready var c_hint2 = $main/controlHint2
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("back"):
-		popup.popup()
+		pass
+		#popup.popup()
 
 func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout

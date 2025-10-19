@@ -2,7 +2,7 @@
 
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="1_5u7jf"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="1_n2gs1"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_5ek7h"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="3_5ek7h"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="4_l1odu"]
 [ext_resource type="Script" uid="uid://2kff3scadu5f" path="res://Weapons/attack.gd" id="5_cw8v0"]
 [ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://scripts/pickable.gd" id="6_8nosm"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_o2xll"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_pmg5d"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_sdcpi"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="3_v8n71"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="3_v8n71"]
 [ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="4_mv0vr"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="5_iix6c"]
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="6_nfqnk"]

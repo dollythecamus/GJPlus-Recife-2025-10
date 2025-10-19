@@ -4,6 +4,7 @@ extends Node2D
 @export var target : Node2D
 @onready var AI = $AI
 @onready var build = $Build
+@onready var health = $Health
 
 func _ready() -> void:
 	$Skeleton2D/root/Pointer.target = target

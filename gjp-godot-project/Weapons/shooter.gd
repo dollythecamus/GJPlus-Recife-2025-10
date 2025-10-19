@@ -9,8 +9,16 @@ extends Node
 func attack(is_player = false):
 	var new = projectile.instantiate()
 	var m = new.get_node("Mover")
-	m.direction = p.vec.normalized() if not p.vec.is_zero_approx() else Vector2.from_angle(p.rotation)
+	m.direction = p.vec.normalized() if not p.vec.is_zero_approx() else Vector2.from_angle(p.global_rotation)
+	m.direction += bullet_spread()
 	m.mag(1000)
 	new.global_position = point.global_position + m.direction
 	new.is_player = is_player
 	get_tree().current_scene.add_child(new)
+
+func bullet_spread():
+	const a = .1
+	return Vector2(
+		((randf() - 0.5) * 2),
+		((randf() - 0.5) * 2)
+	) * a

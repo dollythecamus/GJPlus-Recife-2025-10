@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cbvolekq0sapx" path="res://Weapons/Projectiles/bullet_1.gd" id="1_lwhgm"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="2_u577d"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="3_qog3h"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="4_82s0b"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="4_82s0b"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_beeso"]
 a = Vector2(-39, 0)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b1m8s1s8kes6l" path="res://Player/playerControls.gd" id="1_4ntmi"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://ASCII/player_ascii.tres" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="3_btcbx"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="4_gwnis"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="4_gwnis"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://ASCII/FreeMono.ttf" id="5_fhl08"]
 [ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://scripts/pickup.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://scripts/health.gd" id="7_vtle1"]

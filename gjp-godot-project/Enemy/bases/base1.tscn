@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_5uqmw"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_c3y0i"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="3_oe0k2"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="4_wkrge"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="4_wkrge"]
 [ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="5_4w5a1"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="6_dv5h5"]
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="7_r228y"]
@@ -420,15 +420,15 @@ script = ExtResource("8_4kjaj")
 settled_place_node = NodePath("../Skeleton2D/root/t2L")
 preference = -1.0
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("9_rvvtk")
-
 [node name="AI" type="Node" parent="."]
 script = ExtResource("10_5rgmk")
 
 [node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("11_gttpy")
 root = NodePath("../Skeleton2D/root")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_rvvtk")
 
 [connection signal="state_change" from="AI" to="t2R" method="_on_state_change"]
 [connection signal="state_change" from="AI" to="t2L" method="_on_state_change"]

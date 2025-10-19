@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://slth1v2nekfv"]
 
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="1_lhq3s"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="1_lhq3s"]
 [ext_resource type="Script" uid="uid://dhdulmd7dg0as" path="res://Enemy/AI/guns.gd" id="1_uin3o"]
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Weapons/shooter.gd" id="2_0i6mo"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="2_tf4ti"]
@@ -16,6 +16,7 @@ position = Vector2(0, -5)
 script = ExtResource("1_lhq3s")
 to_point = true
 flips_at_half = true
+random = 2
 angle_offset = 0.0
 metadata/_custom_type_script = "uid://c06bwdrxfw41f"
 

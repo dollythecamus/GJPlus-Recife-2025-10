@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://brbq02lq8d675" path="res://Weapons/Projectiles/bullet_2.gd" id="1_c70gd"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://ASCII/FreeMono.ttf" id="2_mp67q"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="4_xyrdt"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="5_wb10v"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="5_wb10v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c70gd"]
 line_spacing = -6.0

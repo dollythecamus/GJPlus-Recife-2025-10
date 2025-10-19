@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cx5cm77wde43g"]
+[gd_scene load_steps=17 format=3 uid="uid://cx5cm77wde43g"]
 
 [ext_resource type="LabelSettings" uid="uid://cx6gnx7fyselo" path="res://UI/title.tres" id="1_dxapu"]
 [ext_resource type="Script" uid="uid://w5uh3wkxayhs" path="res://UI/MM/main.gd" id="1_yflm0"]
@@ -9,6 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="5_mplmn"]
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="6_hovv6"]
 [ext_resource type="Texture2D" uid="uid://bv4p2w4s8qqct" path="res://UI/joystick.jpg" id="9_0mmqq"]
+[ext_resource type="AudioStream" uid="uid://4wud6vapjuk0" path="res://sound/Bassline.wav" id="10_mplmn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1kuo"]
 line_spacing = -20.0
@@ -732,3 +733,8 @@ offset_right = 76.0
 offset_bottom = 416.0
 focus_previous = NodePath("../Play")
 text = "X"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mplmn")
+volume_db = -15.0
+autoplay = true

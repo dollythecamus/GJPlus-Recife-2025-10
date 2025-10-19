@@ -9,7 +9,8 @@ const builds = {
 	"ZeroIII": "base2",
 	"ZeroIV": "base2+two_arm+two_meelee",
 	"ZeroV": "base2+arm+set(mover.speed=300,mover.friction=0.98)",
-	"ZeroVI": "base2+arm+gun"
+	"ZeroVI": "base2+arm+gun",
+	"ZeroVII": "base1+two_gun+set(mover.speed=150,health.health=15)"
 }
 
 # build an arm -> add an arm scene to the root bone
@@ -24,6 +25,9 @@ func build(instruction):
 	for i in s:
 		if i == "gun":
 			build_gun(Vector2(8, -6))
+		elif i == "two_gun":
+			build_gun(Vector2(8, -6))
+			build_gun(Vector2(-8, -6))
 		elif i == "arm":
 			build_arm(Vector2(0, -6))
 		elif i == "two_arm":

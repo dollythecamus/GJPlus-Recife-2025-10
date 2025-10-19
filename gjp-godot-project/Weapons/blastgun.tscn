@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bljg0qbrjfr5n"]
 
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://scripts/point.gd" id="1_igdab"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="1_igdab"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="2_n1ebl"]
 [ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://scripts/pickable.gd" id="3_nlyoc"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="4_v83hv"]
