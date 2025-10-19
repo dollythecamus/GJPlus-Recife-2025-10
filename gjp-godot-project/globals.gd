@@ -33,6 +33,7 @@ const progression = [
 	"enemy:ZeroV:1",
 	"power:healthpack",
 	"enemy:ZeroVI:1",
+	"enemy:ZeroVI:1",
 	"power:healthpack",
 	"enemy:ZeroVII:1",
 ]

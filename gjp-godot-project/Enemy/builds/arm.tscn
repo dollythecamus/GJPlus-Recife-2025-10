@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://byq4nuf6mctml"]
 
-[ext_resource type="Script" uid="uid://jxgjoof2suin" path="res://Enemy/AI/Arm.gd" id="1_bln4r"]
+[ext_resource type="Script" uid="uid://jxgjoof2suin" path="res://Enemy/builds/Arm.gd" id="1_bln4r"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="1_ij6br"]
 [ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://scripts/pickup.gd" id="2_31f2g"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_utogo"]
