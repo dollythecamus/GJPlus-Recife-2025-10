@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bljg0qbrjfr5n"]
+[gd_scene load_steps=9 format=3 uid="uid://bljg0qbrjfr5n"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="1_igdab"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="2_n1ebl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="4_v83hv"]
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="5_qetip"]
 [ext_resource type="PackedScene" uid="uid://7lgnorjhco0c" path="res://Objects/Weapons/Projectiles/blastBullet.tscn" id="6_igdab"]
+[ext_resource type="PackedScene" uid="uid://q51seqx2xlt" path="res://Objects/Weapons/rate.tscn" id="7_5ygeh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
 radius = 19.026299
@@ -206,8 +207,11 @@ speed = 400.0
 acceleration = 900.0
 friction = 0.9
 
-[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "point")]
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "rate", "point")]
 script = ExtResource("5_qetip")
 projectile = ExtResource("6_igdab")
 p = NodePath("../Pointer")
+rate = NodePath("../Rate")
 point = NodePath("../Pointer/point")
+
+[node name="Rate" parent="." instance=ExtResource("7_5ygeh")]

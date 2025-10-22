@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://g1jidhsjrkag"]
+[gd_scene load_steps=9 format=3 uid="uid://g1jidhsjrkag"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="2_wqlkq"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="3_i040i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="5_f87xa"]
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="6_wqlkq"]
 [ext_resource type="PackedScene" uid="uid://b8ahs3owuq1lg" path="res://Objects/Weapons/Projectiles/bullet1.tscn" id="7_i040i"]
+[ext_resource type="PackedScene" uid="uid://q51seqx2xlt" path="res://Objects/Weapons/rate.tscn" id="7_nfamr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
 radius = 19.026299
@@ -14,6 +15,7 @@ radius = 19.026299
 
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("2_wqlkq")
+aim = true
 flips_at_half = true
 
 [node name="ASCII4" type="Label" parent="Pointer"]
@@ -140,8 +142,12 @@ speed = 400.0
 acceleration = 900.0
 friction = 0.9
 
-[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "point")]
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "rate", "point")]
 script = ExtResource("6_wqlkq")
 projectile = ExtResource("7_i040i")
 p = NodePath("../Pointer")
+rate = NodePath("../Rate")
 point = NodePath("../Pointer/point")
+fire_rate = 0.2
+
+[node name="Rate" parent="." instance=ExtResource("7_nfamr")]

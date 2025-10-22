@@ -86,9 +86,9 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Main"]
 layout_mode = 0
 offset_left = 59.0
-offset_top = 36.0
+offset_top = 18.0
 offset_right = 340.0
-offset_bottom = 239.0
+offset_bottom = 221.0
 theme = ExtResource("2_0mmqq")
 text = "SOMBRE
 ASTRA"

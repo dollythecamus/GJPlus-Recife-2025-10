@@ -23,20 +23,21 @@ func _ready() -> void:
 func trigger_next():
 	cur = clamp(cur + 1, 0, Globals.progression.size()-1)
 	
-	var cmd = Globals.progression[cur]
-	var args = cmd.split(":")
-	if args[0] == Globals.ENEMY:
-		spawner.spawn_enemy(args[1], int(args[2]))
-		hoard = int(args[2])
-	elif args[0] == Globals.WEAPON:
-		spawner.spawn_weapon(args[1])
-		trigger_next()
-	elif args[0] == Globals.POWER:
-		spawner.spawn_object(args[1])
-		trigger_next()
-	elif args[0] == Globals.STORY:
-		story(args[1])
-		trigger_next()
+	for cmd in Globals.progression[cur].split(","):
+		var args = cmd.split(":")
+		if args[0] == Globals.ENEMY:
+			print("enemy: ", args[1], args[2])
+			spawner.spawn_enemy(args[1], int(args[2]))
+			hoard += int(args[2])
+		elif args[0] == Globals.WEAPON:
+			spawner.spawn_weapon(args[1])
+			trigger_next()
+		elif args[0] == Globals.POWER:
+			spawner.spawn_object(args[1])
+			trigger_next()
+		elif args[0] == Globals.STORY:
+			story(args[1])
+			trigger_next()
 
 func enemy_died():
 	hoard -= 1

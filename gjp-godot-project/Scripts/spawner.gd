@@ -8,7 +8,6 @@ extends Node2D
 const separator = 60
 
 func spawn_enemy(type, many: int = 1):
-	# connect "die" to trigger next
 	for i in many:
 		var b = Build.builds[type]
 		var base = b.split("+")[0]

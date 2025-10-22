@@ -12,7 +12,7 @@ var n
 @export var reach := 100
 @export var stab_duration = .6
 
-var attack_cycle = stab_duration * 2
+var attack_cycle = stab_duration * 1.5
 var c = 0
 
 var detection

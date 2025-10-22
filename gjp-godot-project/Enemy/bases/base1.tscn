@@ -140,10 +140,10 @@ rotate_parent = true
 to_point = true
 
 [node name="t2R" type="Node2D" parent="Skeleton2D/root"]
-position = Vector2(50, 21)
+position = Vector2(34, 9)
 
 [node name="t2L" type="Node2D" parent="Skeleton2D/root"]
-position = Vector2(-47, 15)
+position = Vector2(-37, 10)
 
 [node name="Hit" type="Area2D" parent="Skeleton2D/root" node_paths=PackedStringArray("flash", "health", "mover")]
 collision_layer = 16
@@ -164,16 +164,16 @@ shape = SubResource("CapsuleShape2D_m6jha")
 
 [node name="leg2" type="Node2D" parent="visual/root"]
 position = Vector2(18.000061, 12.000022)
-rotation = 0.5524755
-scale = Vector2(0.9999994, 0.9999994)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg2"]
-position = Vector2(13.00005, -14.9999695)
-rotation = -0.5566186
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(13.000002, -15.000013)
+rotation = 0.4240296
+scale = Vector2(0.9999995, 0.9999995)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg2/leg1"]
-position = Vector2(13, 15.000002)
+position = Vector2(12.999998, 15.000001)
 
 [node name="l2" type="Label" parent="visual/root/leg2/leg1/leg2"]
 texture_filter = 1
@@ -244,17 +244,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="leg3" type="Node2D" parent="visual/root"]
 position = Vector2(-17.000046, 13.00002)
-rotation = -0.28124472
-scale = Vector2(0.9999992, 0.9999992)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg3"]
-position = Vector2(-12.000015, -16.000011)
-rotation = 0.35219103
-scale = Vector2(1.0000002, 1.0000002)
+position = Vector2(-11.999994, -16.000004)
+rotation = -0.31041124
+scale = Vector2(0.9999999, 0.9999999)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg3/leg1"]
-position = Vector2(-13.000004, 14.999998)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-13, 15.000001)
 
 [node name="l2" type="Label" parent="visual/root/leg3/leg1/leg2"]
 texture_filter = 1
@@ -374,16 +373,16 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(50, 21)
+position = Vector2(37, 10)
 script = ExtResource("8_4kjaj")
 settled_place_node = NodePath("../Skeleton2D/root/t2R")
 preference = 1.0
 
 [node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(-47, 15)
+position = Vector2(-36, 7)
 script = ExtResource("8_4kjaj")
 settled_place_node = NodePath("../Skeleton2D/root/t2L")
-preference = -1.0
+preference = 1.0
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource("10_5rgmk")
@@ -395,5 +394,4 @@ root = NodePath("../Skeleton2D/root")
 [node name="Health" type="Node" parent="."]
 script = ExtResource("9_rvvtk")
 
-[connection signal="state_change" from="AI" to="t2R" method="_on_state_change"]
-[connection signal="state_change" from="AI" to="t2L" method="_on_state_change"]
+[connection signal="state_change" from="AI" to="." method="_on_ai_state_change"]

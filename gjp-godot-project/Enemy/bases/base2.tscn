@@ -20,9 +20,10 @@ radius = 7.000005
 radius = 14.0
 height = 48.0
 
-[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover")]
+[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover", "pointer")]
 script = ExtResource("1_o2xll")
 mover = NodePath("Skeleton2D/root/Mover")
+pointer = NodePath("Skeleton2D/root/Pointer")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 modification_stack = ExtResource("2_cpwo2")
@@ -74,7 +75,7 @@ remote_path = NodePath("../../../../visual/root/leg0")
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-15, -6)
 rotation = -0.1403512
-scale = Vector2(0.9999988, 0.9999988)
+scale = Vector2(0.9999987, 0.9999987)
 rest = Transform2D(1, 0, 0, 1, -15, -6)
 editor_settings/show_bone_gizmo = false
 
@@ -202,10 +203,11 @@ acceleration = 1000.0
 friction = 0.93
 metadata/_custom_type_script = "uid://brtc2oowy8obq"
 
-[node name="Pointer" type="Node2D" parent="Skeleton2D/root"]
+[node name="Pointer" type="Node2D" parent="Skeleton2D/root" node_paths=PackedStringArray("mover_inertia")]
 script = ExtResource("3_v8n71")
 rotate_parent = true
 to_point = true
+mover_inertia = NodePath("../Mover")
 
 [node name="t1R" type="Node2D" parent="Skeleton2D/root"]
 position = Vector2(44, -1)
@@ -318,15 +320,15 @@ vertical_alignment = 1
 [node name="leg1" type="Node2D" parent="visual/root"]
 position = Vector2(-15, -6)
 rotation = -0.1403512
-scale = Vector2(0.9999988, 0.9999988)
+scale = Vector2(0.9999987, 0.9999987)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg1"]
-position = Vector2(-14, -17.000004)
-rotation = 0.10545886
+position = Vector2(-13.999998, -17)
+rotation = 0.10545887
 scale = Vector2(1.0000001, 1.0000001)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg1/leg1"]
-position = Vector2(-12.999996, 16)
+position = Vector2(-12.999996, 15.999998)
 scale = Vector2(0.9999999, 0.9999999)
 
 [node name="l2" type="Label" parent="visual/root/leg1/leg1/leg2"]
@@ -630,32 +632,29 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="t1R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(44, -1)
+position = Vector2(45, -15)
 script = ExtResource("7_y6b7q")
 settled_place_node = NodePath("../Skeleton2D/root/t1R")
-preference = 1.0
 
 [node name="t1L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(-44, -4)
+position = Vector2(-45, -15)
 script = ExtResource("7_y6b7q")
 settled_place_node = NodePath("../Skeleton2D/root/t1L")
 preference = -1.0
 
 [node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(50, 21)
+position = Vector2(35, 19)
 script = ExtResource("7_y6b7q")
 settled_place_node = NodePath("../Skeleton2D/root/t2R")
-preference = 1.0
 
 [node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(-47, 15)
+position = Vector2(-35, 19)
 script = ExtResource("7_y6b7q")
 settled_place_node = NodePath("../Skeleton2D/root/t2L")
-preference = -1.0
+preference = 1.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_8m5eh")
-health = 20
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource("9_1up2p")

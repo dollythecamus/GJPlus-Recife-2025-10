@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://coj7d070c25ue"]
+[gd_scene load_steps=6 format=3 uid="uid://coj7d070c25ue"]
 
 [ext_resource type="Script" uid="uid://benal3xfughne" path="res://prototyping.gd" id="1_cxwu1"]
 [ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="1_v7tyh"]
+[ext_resource type="PackedScene" uid="uid://bc8xhsymu8msk" path="res://Enemy/bases/base2.tscn" id="2_1yviv"]
 [ext_resource type="PackedScene" uid="uid://bljg0qbrjfr5n" path="res://Objects/Weapons/blastgun.tscn" id="3_cxwu1"]
+[ext_resource type="PackedScene" uid="uid://g1jidhsjrkag" path="res://Objects/Weapons/pistol.tscn" id="5_imp1g"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_cxwu1")
 
 [node name="Player" parent="." instance=ExtResource("1_v7tyh")]
-position = Vector2(306, 218)
+position = Vector2(382, 246)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="blastgun" parent="." instance=ExtResource("3_cxwu1")]
+position = Vector2(309, 170)
 
-[editable path="blastgun"]
+[node name="Pistol" parent="." instance=ExtResource("5_imp1g")]
+position = Vector2(228, 231)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_1yviv")]
+position = Vector2(488.99997, 87.000015)
+target = NodePath("../Player")

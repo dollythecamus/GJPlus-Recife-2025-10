@@ -19,6 +19,7 @@ radius = 95.02105
 script = ExtResource("1_bln4r")
 weapon_hook = NodePath("Skeleton/arm0/arm1/arm2/Hook")
 pickup = NodePath("Skeleton/arm0/arm1/arm2/Hook/Pickup")
+stab_duration = 0.3
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 modification_stack = ExtResource("2_0uujy")

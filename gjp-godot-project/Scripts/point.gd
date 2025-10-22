@@ -64,7 +64,7 @@ func point_to_aim():
 		point_to(n, vec.angle())
 
 func point_to_target():
-	point_to(n, (target.global_position - n.global_position).angle() + angle_offset)
+	point_to(n, (target.global_position - n.global_position).angle())
 
 func point_to_mouse():
 	vec = get_global_mouse_position() - global_position
@@ -73,7 +73,10 @@ func point_to_mouse():
 		point_to(n, vec.angle())
 
 func point_to(node, angle):
-	node.global_rotation = angle
+	node.global_rotation = angle + angle_offset
+
+func move_angle(angle):
+	angle_offset = move_toward(angle_offset, angle_offset + angle, PI/32)
 
 func spin(delta):
 	clock += delta * rpm
