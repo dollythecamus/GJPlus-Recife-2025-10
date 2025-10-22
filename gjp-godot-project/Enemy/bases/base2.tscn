@@ -1,84 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://bc8xhsymu8msk"]
+[gd_scene load_steps=15 format=3 uid="uid://bc8xhsymu8msk"]
 
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_o2xll"]
-[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_pmg5d"]
-[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_sdcpi"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="3_v8n71"]
-[ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://scripts/hit.gd" id="4_mv0vr"]
-[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="5_iix6c"]
-[ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://ASCII/flash.tres" id="6_nfqnk"]
+[ext_resource type="SkeletonModificationStack2D" uid="uid://bovesluih83yo" path="res://Enemy/Skeleton/base2.tres" id="2_cpwo2"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="2_pmg5d"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="2_sdcpi"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="3_v8n71"]
+[ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://Scripts/hit.gd" id="4_mv0vr"]
+[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://Visuals/ASCII/ascii.tres" id="5_iix6c"]
+[ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://Visuals/ASCII/flash.tres" id="6_nfqnk"]
 [ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="7_y6b7q"]
-[ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://scripts/health.gd" id="8_8m5eh"]
+[ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="8_8m5eh"]
 [ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="9_1up2p"]
 [ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="10_b1qns"]
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_2pb1h"]
-target_nodepath = NodePath("../t1R")
-tip_nodepath = NodePath("root/leg0/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 1
-joint_data/0/bone2d_node = NodePath("root/leg0")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 2
-joint_data/1/bone2d_node = NodePath("root/leg0/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_eqilm"]
-target_nodepath = NodePath("../t1L")
-tip_nodepath = NodePath("root/leg1/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 4
-joint_data/0/bone2d_node = NodePath("root/leg1")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 5
-joint_data/1/bone2d_node = NodePath("root/leg1/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ncf7h"]
-target_nodepath = NodePath("../t2R")
-tip_nodepath = NodePath("root/leg2/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 7
-joint_data/0/bone2d_node = NodePath("root/leg2")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 8
-joint_data/1/bone2d_node = NodePath("root/leg2/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_m6jha"]
-target_nodepath = NodePath("../t2L")
-tip_nodepath = NodePath("root/leg3/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 10
-joint_data/0/bone2d_node = NodePath("root/leg3")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 11
-joint_data/1/bone2d_node = NodePath("root/leg3/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_2pb1h"]
-enabled = true
-modification_count = 4
-modifications/0 = SubResource("SkeletonModification2DCCDIK_2pb1h")
-modifications/1 = SubResource("SkeletonModification2DCCDIK_eqilm")
-modifications/2 = SubResource("SkeletonModification2DCCDIK_ncf7h")
-modifications/3 = SubResource("SkeletonModification2DCCDIK_m6jha")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpwo2"]
 radius = 7.000005
@@ -92,7 +25,7 @@ script = ExtResource("1_o2xll")
 mover = NodePath("Skeleton2D/root/Mover")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
-modification_stack = SubResource("SkeletonModificationStack2D_2pb1h")
+modification_stack = ExtResource("2_cpwo2")
 
 [node name="root" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
@@ -104,14 +37,12 @@ rotation = 0.258274
 scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(1, 0, 0, 1, 17, -7)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root/leg0"]
 position = Vector2(11.999998, -16.000004)
 rotation = -0.23505867
 rest = Transform2D(1, 0, 0, 1, 12, -16)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg2" type="Bone2D" parent="Skeleton2D/root/leg0/leg1"]
 position = Vector2(11, 17)
@@ -142,18 +73,16 @@ remote_path = NodePath("../../../../visual/root/leg0")
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-15, -6)
-rotation = -0.14035119
-scale = Vector2(0.99999917, 0.99999917)
+rotation = -0.1403512
+scale = Vector2(0.9999988, 0.9999988)
 rest = Transform2D(1, 0, 0, 1, -15, -6)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root/leg1"]
 position = Vector2(-13.999999, -17)
 rotation = 0.10545887
 rest = Transform2D(1, 0, 0, 1, -14, -17)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg2" type="Bone2D" parent="Skeleton2D/root/leg1/leg1"]
 position = Vector2(-13, 16)
@@ -188,14 +117,12 @@ rotation = 0.38364512
 scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(1, 0, 0, 1, 18, 12)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root/leg2"]
 position = Vector2(13.000004, -15.000002)
 rotation = -0.34075448
 rest = Transform2D(1, 0, 0, 1, 13, -15)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg2" type="Bone2D" parent="Skeleton2D/root/leg2/leg1"]
 position = Vector2(13, 15)
@@ -230,7 +157,6 @@ rotation = -0.19069591
 scale = Vector2(0.9999992, 0.9999992)
 rest = Transform2D(1, 0, 0, 1, -17, 13)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root/leg3"]
 position = Vector2(-12.000006, -16)
@@ -238,7 +164,6 @@ rotation = 0.2538192
 scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(1, 0, 0, 1, -12, -16)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg2" type="Bone2D" parent="Skeleton2D/root/leg3/leg1"]
 position = Vector2(-13, 15)
@@ -313,16 +238,16 @@ shape = SubResource("CapsuleShape2D_m6jha")
 
 [node name="leg0" type="Node2D" parent="visual/root"]
 position = Vector2(17, -7)
-rotation = 0.32624662
-scale = Vector2(0.9999994, 0.9999994)
+rotation = 0.258274
+scale = Vector2(0.99999964, 0.99999964)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg0"]
-position = Vector2(11.999994, -16.000011)
-rotation = -0.29740325
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(11.999998, -16.000004)
+rotation = -0.23505865
 
 [node name="leg2" type="Node2D" parent="visual/root/leg0/leg1"]
-position = Vector2(11, 17.000004)
+position = Vector2(11.000004, 17.000002)
+scale = Vector2(1.0000001, 1.0000001)
 
 [node name="l2" type="Label" parent="visual/root/leg0/leg1/leg2"]
 texture_filter = 1
@@ -392,15 +317,17 @@ vertical_alignment = 1
 
 [node name="leg1" type="Node2D" parent="visual/root"]
 position = Vector2(-15, -6)
-rotation = -0.16495094
-scale = Vector2(0.9999985, 0.9999985)
+rotation = -0.1403512
+scale = Vector2(0.9999988, 0.9999988)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg1"]
-position = Vector2(-13.9999895, -17.000008)
-rotation = 0.12791309
+position = Vector2(-14, -17.000004)
+rotation = 0.10545886
+scale = Vector2(1.0000001, 1.0000001)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg1/leg1"]
-position = Vector2(-13.000004, 16)
+position = Vector2(-12.999996, 16)
+scale = Vector2(0.9999999, 0.9999999)
 
 [node name="l2" type="Label" parent="visual/root/leg1/leg1/leg2"]
 texture_filter = 1
@@ -470,16 +397,16 @@ vertical_alignment = 1
 
 [node name="leg2" type="Node2D" parent="visual/root"]
 position = Vector2(18.000061, 12.000022)
-rotation = 0.5524755
-scale = Vector2(0.9999994, 0.9999994)
+rotation = 0.38364512
+scale = Vector2(0.9999996, 0.9999996)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg2"]
-position = Vector2(13.00005, -14.9999695)
-rotation = -0.5566186
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(13.000004, -15.000002)
+rotation = -0.34075445
 
 [node name="leg2" type="Node2D" parent="visual/root/leg2/leg1"]
-position = Vector2(13, 15.000002)
+position = Vector2(12.999996, 15)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="l2" type="Label" parent="visual/root/leg2/leg1/leg2"]
 texture_filter = 1
@@ -552,17 +479,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="leg3" type="Node2D" parent="visual/root"]
 position = Vector2(-17.000046, 13.00002)
-rotation = -0.28124472
+rotation = -0.19069591
 scale = Vector2(0.9999992, 0.9999992)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg3"]
-position = Vector2(-12.000015, -16.000011)
-rotation = 0.35219103
-scale = Vector2(1.0000002, 1.0000002)
+position = Vector2(-12.000006, -15.999999)
+rotation = 0.2538192
+scale = Vector2(0.9999998, 0.9999998)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg3/leg1"]
-position = Vector2(-13.000004, 14.999998)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-12.999996, 14.999999)
 
 [node name="l2" type="Label" parent="visual/root/leg3/leg1/leg2"]
 texture_filter = 1
@@ -737,3 +663,5 @@ script = ExtResource("9_1up2p")
 [node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("10_b1qns")
 root = NodePath("../Skeleton2D/root")
+
+[connection signal="state_change" from="AI" to="." method="_on_ai_state_change"]

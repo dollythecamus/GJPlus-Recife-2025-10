@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://7lgnorjhco0c"]
+
+[ext_resource type="Script" uid="uid://brbq02lq8d675" path="res://Objects/Weapons/Projectiles/bullet_2.gd" id="1_c70gd"]
+[ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="2_mp67q"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="4_xyrdt"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="5_wb10v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c70gd"]
+line_spacing = -6.0
+font = ExtResource("2_mp67q")
+font_size = 56
+font_color = Color(0.13725491, 0.89411765, 0.8784314, 1)
+outline_size = 1
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_beeso"]
+a = Vector2(-39, 0)
+b = Vector2(13, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mp67q"]
+
+[node name="Bullet2" type="Area2D"]
+collision_layer = 24
+collision_mask = 24
+script = ExtResource("1_c70gd")
+damage = 5
+knockback = 100
+
+[node name="ASCII2" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = 25.0
+offset_right = 33.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "'"
+label_settings = SubResource("LabelSettings_c70gd")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Mover" type="Node" parent="."]
+script = ExtResource("4_xyrdt")
+speed = 6000.0
+acceleration = 100.0
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_beeso")
+
+[node name="Col2" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_mp67q")
+
+[node name="Pointer" type="Node2D" parent="." node_paths=PackedStringArray("mover_inertia")]
+script = ExtResource("5_wb10v")
+rotate_parent = true
+to_point = true
+mover_inertia = NodePath("../Mover")
+metadata/_custom_type_script = "uid://c06bwdrxfw41f"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

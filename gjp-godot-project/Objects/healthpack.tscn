@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://d4jpd37sy667b"]
 
-[ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://scripts/pickable.gd" id="1_thclg"]
+[ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://Scripts/pickable.gd" id="1_thclg"]
 [ext_resource type="Script" uid="uid://cysytuq0fod35" path="res://Objects/healthpack.gd" id="1_xbqn6"]
-[ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Weapons/weapons.tres" id="2_esrj5"]
-[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://scripts/move.gd" id="2_hv2jg"]
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="3_x8ik8"]
+[ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="2_esrj5"]
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="2_hv2jg"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="3_x8ik8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv2jg"]
 size = Vector2(28, 32)

@@ -46,11 +46,9 @@ func _process(delta: float) -> void:
 			var attacking = pickup.picked.get_node("Attack")
 			if attacking != null:
 				attacking.attack(true)
-			#var attack = pickup.picked.get_node("Attack")
-			#if attack != null:
-			#	pass # TODO
 
 signal HIT
+
 func _on_hit() -> void:
 	HIT.emit()
 

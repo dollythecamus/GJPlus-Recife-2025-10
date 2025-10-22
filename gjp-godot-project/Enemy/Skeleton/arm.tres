@@ -1,0 +1,22 @@
+[gd_resource type="SkeletonModificationStack2D" load_steps=2 format=3 uid="uid://dpi5l2tlssgd6"]
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ij6br"]
+target_nodepath = NodePath("../ArmT0")
+tip_nodepath = NodePath("arm0/arm1/arm2")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("arm0")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("arm0/arm1")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = false
+
+[resource]
+resource_local_to_scene = true
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DCCDIK_ij6br")

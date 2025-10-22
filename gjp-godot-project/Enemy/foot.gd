@@ -1,25 +1,25 @@
 extends Node2D
+class_name FootIKTarget
 
 @export var settled_place_node : Node2D
 @export_range(-1, 1, 1) var preference : float
+
+@onready var settled_place : = settled_place_node.global_position
+@onready var n = get_parent()
 
 static var all_feet = {}
 
 enum STATES {WALK, IDLE, RUN}
 var state = STATES.WALK
 
-const settle_threshold = 10
+const settle_threshold = 5
 
-const step_threshold = 45
-const step_distance = 95
-const step_duration = .105
+const step_threshold = 35
+var step_duration = .25
 
 var settled = true
 var is_stepping = false
 
-@onready var settled_place : = settled_place_node.global_position
-
-@onready var n = get_parent()
 
 func _ready() -> void:
 	if all_feet.has(n):
@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 func solve_walk():
 	var distance = settled_place - self.global_position
 	
-	if settled and ! is_stepping and none_stepping():
+	if settled and ! is_stepping and any_2_stepping():
 		if distance.length() > step_threshold:
 			_step()
 
@@ -75,17 +75,18 @@ func _step():
 	var p = self.global_position
 	var direction = (settled_place - self.global_position)
 	
-	var step = direction * 1.6
+	var step = direction * 1.65
+	var side = direction.rotated((PI/2) * preference) / 3
 	
-	t.tween_property(self, "global_position", p + step + Vector2(0, -90), step_duration)
+	t.tween_property(self, "global_position", p + step + side, step_duration/2)
 	t.chain().tween_property(self, "global_position", p + step, step_duration)
 	
 	await t.finished
 	is_stepping = false
 	settled = true
 
-func none_stepping():
-	return not all_feet[n].any(_is_stepping)
+func any_2_stepping():
+	return not all_feet[n].all(_is_stepping)
 
 func _is_stepping(other):
 	return other.is_stepping
@@ -98,3 +99,6 @@ func pos(x):
 
 func _on_state_change(v: Variant) -> void:
 	state = v
+
+func remove(x):
+	all_feet.erase(x)

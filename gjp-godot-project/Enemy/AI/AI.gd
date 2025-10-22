@@ -17,7 +17,7 @@ var state = STATES.WALK:
 
 signal state_change(v)
 
-var fire_cycle = 3
+var fire_cycle = .7
 var fc = 0
 
 func _init() -> void:

@@ -1,4 +1,5 @@
 extends Node
+class_name Arm
 
 var n 
 
@@ -64,8 +65,8 @@ func grab(target):
 func _on_detector_area_entered(area: Area2D) -> void:
 	#print("bot found item.")
 	detection = area
-	#has_detected = true
-	#grab(area)
+	has_detected = true
+	grab(area)
 
 func _on_detector_area_exited(_area: Area2D) -> void:
 	has_detected = false

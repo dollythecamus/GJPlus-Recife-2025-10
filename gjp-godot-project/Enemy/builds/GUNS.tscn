@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://slth1v2nekfv"]
 
-[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://point.gd" id="1_lhq3s"]
-[ext_resource type="Script" uid="uid://dhdulmd7dg0as" path="res://Enemy/AI/guns.gd" id="1_uin3o"]
-[ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Weapons/shooter.gd" id="2_0i6mo"]
-[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="2_tf4ti"]
-[ext_resource type="PackedScene" uid="uid://dd8gkhx2o8btb" path="res://Weapons/Projectiles/bullet2.tscn" id="5_uin3o"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="1_lhq3s"]
+[ext_resource type="Script" uid="uid://dhdulmd7dg0as" path="res://Enemy/builds/guns.gd" id="1_uin3o"]
+[ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="2_0i6mo"]
+[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://Visuals/ASCII/ascii.tres" id="2_tf4ti"]
+[ext_resource type="PackedScene" uid="uid://dd8gkhx2o8btb" path="res://Objects/Weapons/Projectiles/bullet2.tscn" id="5_uin3o"]
 
 [node name="Guns" type="Node2D"]
 script = ExtResource("1_uin3o")

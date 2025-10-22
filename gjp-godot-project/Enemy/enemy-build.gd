@@ -3,6 +3,8 @@ class_name Build
 
 @export var root : Bone2D
 
+@export var build_ready = ""
+
 const builds = {
 	"ZeroI": "base1",
 	"ZeroII": "base1+arm",
@@ -16,6 +18,14 @@ const builds = {
 # build an arm -> add an arm scene to the root bone
 
 @onready var n = get_parent() 
+
+func _ready() -> void:
+	await n.ready
+	if build_ready != "":
+		build_model(build_ready)
+
+func build_model(model):
+	build(builds[model])
 
 func build(instruction):
 	var s = instruction.split("+")

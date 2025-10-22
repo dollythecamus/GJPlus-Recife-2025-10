@@ -1,0 +1,69 @@
+[gd_resource type="SkeletonModificationStack2D" load_steps=5 format=3 uid="uid://bovesluih83yo"]
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_2pb1h"]
+target_nodepath = NodePath("../t1R")
+tip_nodepath = NodePath("root/leg0/leg1/leg2")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("root/leg0")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("root/leg0/leg1")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_eqilm"]
+target_nodepath = NodePath("../t1L")
+tip_nodepath = NodePath("root/leg1/leg1/leg2")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 4
+joint_data/0/bone2d_node = NodePath("root/leg1")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 5
+joint_data/1/bone2d_node = NodePath("root/leg1/leg1")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ncf7h"]
+target_nodepath = NodePath("../t2R")
+tip_nodepath = NodePath("root/leg2/leg1/leg2")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 7
+joint_data/0/bone2d_node = NodePath("root/leg2")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 8
+joint_data/1/bone2d_node = NodePath("root/leg2/leg1")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_m6jha"]
+target_nodepath = NodePath("../t2L")
+tip_nodepath = NodePath("root/leg3/leg1/leg2")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 10
+joint_data/0/bone2d_node = NodePath("root/leg3")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 11
+joint_data/1/bone2d_node = NodePath("root/leg3/leg1")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = false
+
+[resource]
+resource_local_to_scene = true
+modification_count = 4
+modifications/0 = SubResource("SkeletonModification2DCCDIK_2pb1h")
+modifications/1 = SubResource("SkeletonModification2DCCDIK_eqilm")
+modifications/2 = SubResource("SkeletonModification2DCCDIK_ncf7h")
+modifications/3 = SubResource("SkeletonModification2DCCDIK_m6jha")

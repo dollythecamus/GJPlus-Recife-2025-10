@@ -1,28 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://byq4nuf6mctml"]
+[gd_scene load_steps=9 format=3 uid="uid://byq4nuf6mctml"]
 
 [ext_resource type="Script" uid="uid://jxgjoof2suin" path="res://Enemy/builds/Arm.gd" id="1_bln4r"]
-[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://ascii.tres" id="1_ij6br"]
-[ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://scripts/pickup.gd" id="2_31f2g"]
-[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://scripts/hurt.gd" id="2_utogo"]
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ij6br"]
-target_nodepath = NodePath("../ArmT0")
-tip_nodepath = NodePath("arm0/arm1/arm2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 0
-joint_data/0/bone2d_node = NodePath("arm0")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 1
-joint_data/1/bone2d_node = NodePath("arm0/arm1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_bln4r"]
-modification_count = 1
-modifications/0 = SubResource("SkeletonModification2DCCDIK_ij6br")
+[ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://Visuals/ASCII/ascii.tres" id="1_ij6br"]
+[ext_resource type="SkeletonModificationStack2D" uid="uid://dpi5l2tlssgd6" path="res://Enemy/Skeleton/arm.tres" id="2_0uujy"]
+[ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://Scripts/pickup.gd" id="2_31f2g"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="2_utogo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_utogo"]
 radius = 17.029387
@@ -39,16 +21,18 @@ weapon_hook = NodePath("Skeleton/arm0/arm1/arm2/Hook")
 pickup = NodePath("Skeleton/arm0/arm1/arm2/Hook/Pickup")
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
-modification_stack = SubResource("SkeletonModificationStack2D_bln4r")
+modification_stack = ExtResource("2_0uujy")
 
 [node name="arm0" type="Bone2D" parent="Skeleton"]
 rest = Transform2D(1, 0, 0, 1, 0, -31)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="arm1" type="Bone2D" parent="Skeleton/arm0"]
 position = Vector2(37, -18)
 rest = Transform2D(1, 0, 0, 1, 37, -18)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="arm2" type="Bone2D" parent="Skeleton/arm0/arm1"]
 position = Vector2(-19, -37)
@@ -91,12 +75,15 @@ remote_path = NodePath("../../arms/arm10")
 [node name="arms" type="Node2D" parent="Skeleton"]
 
 [node name="arm10" type="Node2D" parent="Skeleton/arms"]
+rotation = 1.0432166
+scale = Vector2(0.99999976, 0.99999976)
 
 [node name="arm2" type="Node2D" parent="Skeleton/arms/arm10"]
 position = Vector2(37, -18)
+rotation = -1.0480853
 
 [node name="arm3" type="Node2D" parent="Skeleton/arms/arm10/arm2"]
-position = Vector2(-19, -37)
+position = Vector2(-18.999996, -37)
 
 [node name="l2" type="Label" parent="Skeleton/arms/arm10/arm2/arm3"]
 texture_filter = 1
@@ -237,12 +224,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ArmRest" type="Node2D" parent="."]
-position = Vector2(-30, -17.000004)
+position = Vector2(15, -14)
 rotation = -1.5214517
 
 [node name="ArmT0" type="Node2D" parent="."]
-position = Vector2(48, -48.000004)
-rotation = -0.26255706
+position = Vector2(15.000004, -14)
 
 [node name="detector" type="Area2D" parent="."]
 collision_layer = 0

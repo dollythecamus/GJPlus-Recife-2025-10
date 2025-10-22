@@ -1,0 +1,332 @@
+[gd_scene load_steps=16 format=3 uid="uid://bo7ywcd7gytsp"]
+
+[ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
+[ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
+[ext_resource type="Script" uid="uid://dnwtw5wvliagv" path="res://Scenario/morse.gd" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="3_kek77"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="6_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bxifnxsi516fj" path="res://Visuals/effects/mm.png" id="7_4c57u"]
+[ext_resource type="Script" uid="uid://bajr46twh0qcq" path="res://Visuals/effects/particles.gd" id="7_efxa6"]
+[ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://Scripts/spawner.gd" id="7_ycdy4"]
+[ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://Visuals/ASCII/heart.tres" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://Visuals/UI/health_UI.gd" id="8_kek77"]
+[ext_resource type="Shader" uid="uid://dyf33chp2byqa" path="res://Visuals/effects/crt.gdshader" id="10_4c57u"]
+[ext_resource type="AudioStream" uid="uid://dh5fotrxsrjxf" path="res://Sound/crunchyyv2.mp3" id="13_ycdy4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ixuk"]
+font = ExtResource("1_272bh")
+font_size = 28
+font_color = Color(0.5529412, 0.49803922, 0.08235294, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_mbk3n"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 48
+font_color = Color(0.9019608, 0.047058824, 0.03137255, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
+shader = ExtResource("10_4c57u")
+shader_parameter/resolution = Vector2(640, 440)
+shader_parameter/scan_line_amount = 0.270000012825
+shader_parameter/warp_amount = 1.50000007125
+shader_parameter/noise_amount = 0.0150000007125
+shader_parameter/interference_amount = 0.1910000090725
+shader_parameter/grille_amount = 0.1200000057
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4400000209
+shader_parameter/aberation_amount = 0.490000023275
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="Node" type="Node" node_paths=PackedStringArray("root", "player", "spawner", "story_label", "popup")]
+script = ExtResource("1_4c57u")
+root = NodePath("main")
+player = NodePath("main/Player")
+spawner = NodePath("main/pivot/spawner")
+story_label = NodePath("main/cenario/ASCII2")
+popup = NodePath("Control3")
+
+[node name="main" type="Node2D" parent="."]
+
+[node name="cenario" type="Node2D" parent="main"]
+position = Vector2(317, 214)
+
+[node name="ASCII2" type="Label" parent="main/cenario"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -133.0
+offset_right = 219.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "hello world"
+label_settings = SubResource("LabelSettings_1ixuk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("2_5vw27")
+metadata/_edit_lock_ = true
+
+[node name="ASCII3" type="Label" parent="main/cenario"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -431.0
+offset_top = -317.0
+offset_right = 7.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = ". ~"
+label_settings = SubResource("LabelSettings_1ixuk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="ASCII4" type="Label" parent="main/cenario"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 347.0
+offset_top = -323.0
+offset_right = 785.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.2215754
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = ". ~"
+label_settings = SubResource("LabelSettings_1ixuk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="ASCII5" type="Label" parent="main/cenario"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.999954
+offset_top = 20.0
+offset_right = 311.00006
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.21002361
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = ". ~"
+label_settings = SubResource("LabelSettings_1ixuk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="main" instance=ExtResource("3_kek77")]
+position = Vector2(211, 106)
+metadata/_edit_group_ = true
+
+[node name="pivot" type="Node2D" parent="main"]
+position = Vector2(317, 214)
+script = ExtResource("6_dg77c")
+to_point = true
+rpm = 1
+
+[node name="spawner" type="Node2D" parent="main/pivot" node_paths=PackedStringArray("player", "root", "hint")]
+position = Vector2(624, 0)
+script = ExtResource("7_ycdy4")
+player = NodePath("../../Player")
+root = NodePath("../..")
+hint = NodePath("../../hint")
+
+[node name="hint" type="Node2D" parent="main"]
+visible = false
+position = Vector2(317, 214)
+script = ExtResource("6_dg77c")
+to_point = true
+flips_at_half = true
+angle_offset = 0.0
+
+[node name="ASCII2" type="Label" parent="main/hint"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 164.0
+offset_top = -31.0
+offset_right = 214.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "!"
+label_settings = SubResource("LabelSettings_mbk3n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="particles" type="Node2D" parent="main"]
+visible = false
+script = ExtResource("7_efxa6")
+
+[node name="E1" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="E2" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="E3" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="ED" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="P1" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="P2" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="P3" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="PL" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="PD" type="GPUParticles2D" parent="main/particles"]
+visible = false
+texture = ExtResource("7_4c57u")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="health" type="HBoxContainer" parent="Control" node_paths=PackedStringArray("player_health")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = -382.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("8_kek77")
+player_health = NodePath("../../main/Player/Health")
+
+[node name="heart" type="Control" parent="Control/health"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/health/heart"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 12.5
+offset_right = 23.0
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.0460035
+text = "<3"
+label_settings = ExtResource("8_5vw27")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="ColorRect" parent="Control2"]
+material = SubResource("ShaderMaterial_efxa6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ycdy4")
+autoplay = true
+
+[connection signal="HIT" from="main/Player" to="Control/health" method="_on_player_hit"]
+[connection signal="update_health" from="main/Player" to="Control/health" method="update"]
+
+[editable path="main/Player"]

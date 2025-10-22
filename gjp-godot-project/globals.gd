@@ -1,5 +1,4 @@
 extends Node
-class_name GLOBAL
 
 var builds = {
 	"arm": preload("res://Enemy/builds/arm.tscn"),
@@ -11,9 +10,9 @@ var objects = {
 }
 
 var weapons = {
-	"pistol": preload("res://Weapons/pistol.tscn"),
-	"melee": preload("res://Weapons/melee.tscn"),
-	"blastgun": preload("res://Weapons/blastgun.tscn")
+	"pistol": preload("res://Objects/Weapons/pistol.tscn"),
+	"melee": preload("res://Objects/Weapons/melee.tscn"),
+	"blastgun": preload("res://Objects/Weapons/blastgun.tscn")
 }
 
 const progression = [
