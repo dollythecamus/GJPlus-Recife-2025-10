@@ -29,8 +29,14 @@ func _process(delta: float) -> void:
 	if has_detected and not picked_item:
 		return
 	
+	if n.target == null:
+		return
+	
 	if c >= attack_cycle:
-		stab()
+		if picked:
+			picked.get_node("Attack").attack()
+		else:
+			stab()
 		c = 0
 
 func stab():
@@ -46,11 +52,11 @@ func stab():
 
 func grab(target):
 	var p = iktarget.global_position
-	var direction = n.target.global_position - weapon_hook.global_position
+	var direction = target.global_position - weapon_hook.global_position
 	var d = direction.normalized() * reach
 	
 	var t = get_tree().create_tween()
-	t.tween_property(iktarget, "global_position", p + d, stab_duration/3)
+	t.tween_property(iktarget, "global_position", p + d, stab_duration*2.0)
 	
 	await t.finished
 	
@@ -59,14 +65,19 @@ func grab(target):
 		if a[0] is Pickable:
 			if not a[0].picked:
 				a[0].pick(weapon_hook)
+				a[0].owns(n)
 				picked = a[0].get_parent()
 				picked_item = true
 
 func _on_detector_area_entered(area: Area2D) -> void:
 	#print("bot found item.")
-	detection = area
-	has_detected = true
-	grab(area)
+	if not picked_item:
+	# some randomness of whether or not the bot wants to pick up the thing or not
+		if randf() < .5:
+			return
+		detection = area
+		has_detected = true
+		grab(area)
 
 func _on_detector_area_exited(_area: Area2D) -> void:
 	has_detected = false

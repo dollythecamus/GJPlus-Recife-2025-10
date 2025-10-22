@@ -2,20 +2,26 @@ extends Node2D
 class_name Rate
 
 @export var clock_display : DISPLAY
+@export var color : Color = Color.DARK_CYAN
+@export var radius = 10
 
-enum DISPLAY {dashed}
+enum DISPLAY {circle, line}
 
 signal done
 var waiting
 
 var c = 0
-var duration = 0
+var duration = TAU
+
+func _ready() -> void:
+	set_process(false)
 
 func start(rate):
+	c = 0
+	duration = rate
 	waiting = true
 	show()
 	set_process(true)
-	duration = rate
 	await get_tree().create_timer(rate).timeout
 	done.emit()
 	waiting = false
@@ -24,11 +30,32 @@ func start(rate):
 
 func _process(delta: float) -> void:
 	c += delta
-	# queue_redraw()
+	queue_redraw()
 
 func _draw() -> void:
-	var dashes = int(duration * 6)
-	
-	for i in dashes:
-		draw_dashed_line(Vector2.ZERO, Vector2.UP, Color.WHITE)
-	
+	match clock_display:
+		DISPLAY.circle:
+			draw_clock_circle()
+		DISPLAY.line:
+			draw_clock_line()
+
+func draw_clock_circle():
+	var res = 32
+	var inc = TAU / res
+	var p1 = Vector2.RIGHT * radius
+	for i in res:
+		var j = inc * i
+		var _i = (j / TAU) < (c / duration)
+		if _i:
+			var next = Vector2.from_angle(j) * radius
+			var p2 = next - p1
+			draw_line(p1, p1 + p2, color, 4.0)
+			p1 += p2
+		else:
+			break
+
+func draw_clock_line():
+	var p1 = -position
+	var p2 = Vector2.ZERO
+	var weight = c/duration
+	draw_line(p1, lerp(p1, p2, weight), color, 5.0)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SOMBRE ASTRA"
-run/main_scene="uid://cx5cm77wde43g"
+run/main_scene="uid://coj7d070c25ue"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

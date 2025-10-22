@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c34ykm2xq0oxw"]
+[gd_scene load_steps=15 format=3 uid="uid://c34ykm2xq0oxw"]
 
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_5uqmw"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="2_c3y0i"]
@@ -10,11 +10,8 @@
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://Visuals/ASCII/flash.tres" id="7_r228y"]
 [ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="8_4kjaj"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="9_rvvtk"]
-[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="10_5rgmk"]
+[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/builds/AI.gd" id="10_5rgmk"]
 [ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="11_gttpy"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_11gi7"]
-height = 44.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ht4ig"]
 radius = 7.000005
@@ -23,9 +20,10 @@ radius = 7.000005
 radius = 14.0
 height = 48.0
 
-[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover")]
+[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover", "pointer")]
 script = ExtResource("1_5uqmw")
 mover = NodePath("Skeleton2D/root/Mover")
+pointer = NodePath("Skeleton2D/root/Pointer")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 modification_stack = ExtResource("2_ht4ig")
@@ -33,13 +31,6 @@ modification_stack = ExtResource("2_ht4ig")
 [node name="root" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
-
-[node name="RB" type="RigidBody2D" parent="Skeleton2D/root"]
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/RB"]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_11gi7")
 
 [node name="leg2" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(18.000061, 12.000022)

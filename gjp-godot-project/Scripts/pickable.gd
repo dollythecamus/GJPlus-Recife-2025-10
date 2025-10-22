@@ -3,7 +3,7 @@ class_name Pickable
 
 @export var move : Mover
 @export var point : Pointer
-@export var hurt : Pickable
+@export var hurt : Hurt
 
 @onready var n := get_parent()
 var target
@@ -25,11 +25,16 @@ func pick(node):
 	picked = true
 	point.to_point = picked
 	PICKED.emit(node)
-	if hurt != null:
-		if target is PlayerControls:
-			pass # TODO
 
-
+func owns(_n):
+	if _n is PlayerControls:
+		if hurt != null:
+			hurt.collision_mask = 16 # to hurt bots only
+		point.aim = true
+	elif _n is EnemyAI:
+		if hurt != null:
+			hurt.collision_mask = 8 # to hurt players only
+		point.target = _n.target
 
 func _process(_delta: float) -> void:
 	move_to_target()

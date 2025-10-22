@@ -24,6 +24,7 @@ func die():
 
 func reborn():
 	# vfx!!! 
+	update_health.emit()
 	move.enable()
 	$visual.show()
 	$Health.health = 3

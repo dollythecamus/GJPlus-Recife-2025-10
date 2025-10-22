@@ -18,7 +18,7 @@ var state = STATES.WALK:
 signal state_change(v)
 
 var fire_cycle = .7
-var fc = 0
+var fc = randf()/fire_cycle
 
 func _init() -> void:
 	others.append(self)
@@ -28,11 +28,7 @@ func run(delta):
 	
 	get_close_avoid()
 	balance_others_distances()
-	var gun = root.get_node_or_null("Guns")
-	if gun != null:
-		if fc >= fire_cycle:
-			gun.fire()
-			fc = 0
+	get_guns().all(func(x): x.run(delta))
 
 func get_close_avoid():
 	if target == null:
@@ -64,6 +60,13 @@ func balance_others_distances():
 			resulting += distance * .11 / d
 	
 	mover.direction += resulting.normalized() * .5
+
+func get_guns():
+	var r = []
+	for i in root.get_children():
+		if i is BotGun:
+			r.append(i)
+	return r
 
 func _exit_tree() -> void:
 	others.erase(self)

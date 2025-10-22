@@ -18,6 +18,7 @@ height = 36.0
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("3_5ek7h")
 flips_at_half = true
+angle_offset = 0.0
 
 [node name="visual" type="Node2D" parent="Pointer"]
 position = Vector2(14.000002, 0)
@@ -136,12 +137,14 @@ pointer = NodePath("../Pointer")
 mover = NodePath("../Mover")
 reach = 900
 
-[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point", "hurt")]
 collision_layer = 2
+collision_mask = 0
 monitoring = false
 script = ExtResource("6_8nosm")
 move = NodePath("../Mover")
 point = NodePath("../Pointer")
+hurt = NodePath("../Pointer/Hurt")
 metadata/_custom_type_script = "uid://dvttpxrkbop7h"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]

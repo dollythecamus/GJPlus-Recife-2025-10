@@ -49,6 +49,7 @@ script = ExtResource("4_efull")
 rotate_parent = true
 to_point = true
 mover_inertia = NodePath("../Mover")
+angle_offset = 0.0
 metadata/_custom_type_script = "uid://c06bwdrxfw41f"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

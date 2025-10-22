@@ -17,6 +17,7 @@ radius = 19.026299
 script = ExtResource("1_igdab")
 aim = true
 flips_at_half = true
+angle_offset = 0.0
 
 [node name="ASCII4" type="Label" parent="Pointer"]
 texture_filter = 1
@@ -192,6 +193,11 @@ vertical_alignment = 1
 [node name="point" type="Node2D" parent="Pointer"]
 position = Vector2(49, 0)
 
+[node name="Rate" parent="Pointer" instance=ExtResource("7_5ygeh")]
+visible = false
+position = Vector2(43, 0)
+color = Color(0.74509805, 0.08235294, 0.8784314, 1)
+
 [node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
 collision_layer = 2
 script = ExtResource("3_nlyoc")
@@ -211,7 +217,6 @@ friction = 0.9
 script = ExtResource("5_qetip")
 projectile = ExtResource("6_igdab")
 p = NodePath("../Pointer")
-rate = NodePath("../Rate")
+rate = NodePath("../Pointer/Rate")
 point = NodePath("../Pointer/point")
-
-[node name="Rate" parent="." instance=ExtResource("7_5ygeh")]
+fire_rate = 1.0

@@ -10,7 +10,7 @@
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://Visuals/ASCII/flash.tres" id="6_nfqnk"]
 [ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="7_y6b7q"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="8_8m5eh"]
-[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="9_1up2p"]
+[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/builds/AI.gd" id="9_1up2p"]
 [ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="10_b1qns"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpwo2"]
@@ -75,7 +75,7 @@ remote_path = NodePath("../../../../visual/root/leg0")
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-15, -6)
 rotation = -0.1403512
-scale = Vector2(0.9999987, 0.9999987)
+scale = Vector2(0.9999986, 0.9999986)
 rest = Transform2D(1, 0, 0, 1, -15, -6)
 editor_settings/show_bone_gizmo = false
 
@@ -320,15 +320,15 @@ vertical_alignment = 1
 [node name="leg1" type="Node2D" parent="visual/root"]
 position = Vector2(-15, -6)
 rotation = -0.1403512
-scale = Vector2(0.9999987, 0.9999987)
+scale = Vector2(0.9999986, 0.9999986)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg1"]
-position = Vector2(-13.999998, -17)
-rotation = 0.10545887
+position = Vector2(-14, -17.000004)
+rotation = 0.10545886
 scale = Vector2(1.0000001, 1.0000001)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg1/leg1"]
-position = Vector2(-12.999996, 15.999998)
+position = Vector2(-12.999998, 16.000002)
 scale = Vector2(0.9999999, 0.9999999)
 
 [node name="l2" type="Label" parent="visual/root/leg1/leg1/leg2"]
@@ -655,6 +655,7 @@ preference = 1.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_8m5eh")
+health = 100
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource("9_1up2p")

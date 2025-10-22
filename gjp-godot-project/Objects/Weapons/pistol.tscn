@@ -15,8 +15,8 @@ radius = 19.026299
 
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("2_wqlkq")
-aim = true
 flips_at_half = true
+angle_offset = 0.0
 
 [node name="ASCII4" type="Label" parent="Pointer"]
 texture_filter = 1
@@ -127,6 +127,14 @@ vertical_alignment = 1
 [node name="point" type="Node2D" parent="Pointer"]
 position = Vector2(35, 0)
 
+[node name="Node2D" type="Node2D" parent="Pointer"]
+position = Vector2(15, -4)
+
+[node name="Rate" parent="Pointer/Node2D" instance=ExtResource("7_nfamr")]
+position = Vector2(21, 0)
+clock_display = 1
+radius = 6
+
 [node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
 collision_layer = 2
 script = ExtResource("4_041lk")
@@ -146,8 +154,6 @@ friction = 0.9
 script = ExtResource("6_wqlkq")
 projectile = ExtResource("7_i040i")
 p = NodePath("../Pointer")
-rate = NodePath("../Rate")
+rate = NodePath("../Pointer/Node2D/Rate")
 point = NodePath("../Pointer/point")
 fire_rate = 0.2
-
-[node name="Rate" parent="." instance=ExtResource("7_nfamr")]

@@ -4,3 +4,4 @@
 
 [node name="Rate" type="Node2D"]
 script = ExtResource("1_sm16p")
+color = Color(0.8898623, 0.100901015, 0.493577, 1)
