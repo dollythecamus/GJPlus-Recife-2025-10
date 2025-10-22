@@ -1,4 +1,5 @@
 extends Node
+class_name Shooter
 
 @export var projectile : PackedScene
 @export var p : Pointer
@@ -23,6 +24,8 @@ func attack(is_player = false):
 	new.global_position = point.global_position + m.direction
 	new.is_player = is_player
 	get_tree().current_scene.add_child(new)
+	
+	$AudioStreamPlayer.play()
 	
 
 func bullet_spread():

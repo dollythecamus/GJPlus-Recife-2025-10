@@ -11,11 +11,6 @@ var hoard = -1
 @export var story_label : Label
 @export var popup : Control
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("back"):
-		pass
-		#popup.popup()
-
 func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	trigger_next()
@@ -26,7 +21,6 @@ func trigger_next():
 	for cmd in Globals.progression[cur].split(","):
 		var args = cmd.split(":")
 		if args[0] == Globals.ENEMY:
-			print("enemy: ", args[1], args[2])
 			spawner.spawn_enemy(args[1], int(args[2]))
 			hoard += int(args[2])
 		elif args[0] == Globals.WEAPON:
@@ -38,6 +32,8 @@ func trigger_next():
 		elif args[0] == Globals.STORY:
 			story(args[1])
 			trigger_next()
+
+		await get_tree().create_timer(.5).timeout
 
 func enemy_died():
 	hoard -= 1

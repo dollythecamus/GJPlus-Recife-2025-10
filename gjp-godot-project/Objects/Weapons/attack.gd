@@ -10,4 +10,6 @@ extends Node
 func attack(_x = false):
 	var dir = Vector2.from_angle(pointer.rotation)
 	mover.velocity += dir * reach
+	
+	$AudioStreamPlayer.play()
 	# the hit should be enough

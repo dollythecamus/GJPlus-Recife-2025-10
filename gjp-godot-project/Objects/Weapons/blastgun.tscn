@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bljg0qbrjfr5n"]
+[gd_scene load_steps=10 format=3 uid="uid://bljg0qbrjfr5n"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="1_igdab"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="2_n1ebl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="5_qetip"]
 [ext_resource type="PackedScene" uid="uid://7lgnorjhco0c" path="res://Objects/Weapons/Projectiles/blastBullet.tscn" id="6_igdab"]
 [ext_resource type="PackedScene" uid="uid://q51seqx2xlt" path="res://Objects/Weapons/rate.tscn" id="7_5ygeh"]
+[ext_resource type="AudioStream" uid="uid://b2dx4vrslyhu7" path="res://Sound/sfx/Audio 7.mp3" id="8_lec0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
 radius = 19.026299
@@ -220,3 +221,6 @@ p = NodePath("../Pointer")
 rate = NodePath("../Pointer/Rate")
 point = NodePath("../Pointer/point")
 fire_rate = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Attack"]
+stream = ExtResource("8_lec0r")

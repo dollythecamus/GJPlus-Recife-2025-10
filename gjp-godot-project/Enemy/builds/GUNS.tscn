@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://slth1v2nekfv"]
+[gd_scene load_steps=7 format=3 uid="uid://slth1v2nekfv"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="1_lhq3s"]
 [ext_resource type="Script" uid="uid://dhdulmd7dg0as" path="res://Enemy/builds/guns.gd" id="1_uin3o"]
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="2_0i6mo"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://Visuals/ASCII/ascii.tres" id="2_tf4ti"]
 [ext_resource type="PackedScene" uid="uid://dd8gkhx2o8btb" path="res://Objects/Weapons/Projectiles/bullet2.tscn" id="5_uin3o"]
+[ext_resource type="AudioStream" uid="uid://cshiltn1hmd44" path="res://Sound/sfx/Audio 4.mp3" id="6_hfrl3"]
 
 [node name="Guns" type="Node2D"]
 script = ExtResource("1_uin3o")
@@ -201,3 +202,6 @@ script = ExtResource("2_0i6mo")
 projectile = ExtResource("5_uin3o")
 p = NodePath("../visual/Pointer")
 point = NodePath("../visual/Pointer/point")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Shooter"]
+stream = ExtResource("6_hfrl3")

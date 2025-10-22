@@ -9,7 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://Visuals/ASCII/ascii.tres" id="5_mplmn"]
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://Visuals/ASCII/flash.tres" id="6_hovv6"]
 [ext_resource type="Texture2D" uid="uid://bv4p2w4s8qqct" path="res://Visuals/UI/joystick.jpg" id="9_0mmqq"]
-[ext_resource type="AudioStream" uid="uid://4wud6vapjuk0" path="res://Sound/Bassline.wav" id="10_mplmn"]
+[ext_resource type="AudioStream" uid="uid://4wud6vapjuk0" path="res://Sound/music/Bassline.wav" id="10_mplmn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1kuo"]
 line_spacing = -20.0

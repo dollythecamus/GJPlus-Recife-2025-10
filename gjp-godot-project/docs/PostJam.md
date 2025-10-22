@@ -1,6 +1,10 @@
-#docs
+#Invention 
+
+` what came out of [[GJ+ Solo Invention]] `
 
 # SOMBRE ASTRA
+
+2025-10-22
 
 ## Post Jam Update:
 - [ ] Code
@@ -8,29 +12,56 @@
 	- [x] file structure
 	- [ ] code documentation
 - [ ] Progression
-	- [ ] multiple builds of enemy per wave
-		- 1 ranged, one close, for example
+	- [x] multiple builds of enemy per wave
+		- 1 ranged, 1 close, for example
+	- [ ] + bunch of challenges
+	- [ ] +1 weapon
 - [ ] Improved Enemies
-	- [ ] enemies fires more
-	- [ ] cool ranged AI
+	- [-] swinging animation as stepping
+	- [x] enemies fires more
+	- [x] cool ranged AI
 	- [x] skeletons weird (one checkbox, solved)
 		- [x] fix foot glitch
 		- [x] weird arms
 		- [x] when many, stuff is weird
 		- [x] when many, one dies, glitch
-	- [ ] pickup weapons
+	- [x] pickup weapons
+		- [x] not hit self
+		- [x] shoot
+		- [x] aim
 	- [ ] states
+		- [x] walk, idle
+		- [ ] away
+		- [ ] modes
+			- [x] ranged
+			- [x] melee
 - [ ] Balance
-	- [ ] OP blastgun
-		- [ ] rate of fire
-	- [ ] move speeds
+	- [x] weapons and enemies now spawn in opposite directions, so the player has a chance to grab it before the bots
+	- [x] OP blastgun
+		- [x] low knockback
+	- [x] rate of fire
+		- [x] pretty
+		- [ ] pretty, idea 2, cooldown is always visible and pretty
+	- [ ] Movement
+		- [x] move speeds
+		- [ ] Rolls
 	- [x] melee knockback 
-- [ ] Music
-	- [ ] balance the music better
+- [x] Music
+	- [x] balance the music better
 - [ ] Sound
-	- [ ] add them
+	- [x] add them
+	- [x] fire
+	- [x] pick
+	- [x] hurt
+	- [ ] spawn
+	- [ ] die
+	- [ ] reborn
 - [ ] VFX
 	- [ ] enemy die
 	- [ ] enemy hurt particles
 	- [ ] player die
+	- [ ] player reborn
 - [ ] in game hints
+- [ ] lil pause menu
+- [x] menu tweaks
+- [x] scene transition

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://27ex2tehfssw"]
+[gd_scene load_steps=15 format=3 uid="uid://27ex2tehfssw"]
 
 [ext_resource type="Script" uid="uid://b1m8s1s8kes6l" path="res://Player/playerControls.gd" id="1_4ntmi"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://Visuals/ASCII/player_ascii.tres" id="2_gwnis"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="5_fhl08"]
 [ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://Scripts/pickup.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="7_vtle1"]
+[ext_resource type="AudioStream" uid="uid://bypyh60cp7pso" path="res://Sound/sfx/Audio 1.mp3" id="8_00tjw"]
 [ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://Scripts/hit.gd" id="8_od3ui"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtle1"]
@@ -94,6 +95,7 @@ is_player = true
 shape = SubResource("CircleShape2D_gwnis")
 
 [node name="Hit" type="Area2D" parent="." node_paths=PackedStringArray("flash", "health", "mover")]
+visible = false
 collision_layer = 8
 collision_mask = 0
 monitoring = false
@@ -105,6 +107,9 @@ metadata/_custom_type_script = "uid://bnrviih0008y5"
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Hit"]
 shape = SubResource("CapsuleShape2D_od3ui")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Hit"]
+stream = ExtResource("8_00tjw")
 
 [node name="visual" type="Node2D" parent="."]
 

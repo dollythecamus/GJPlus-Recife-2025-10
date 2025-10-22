@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c34ykm2xq0oxw"]
+[gd_scene load_steps=14 format=3 uid="uid://c34ykm2xq0oxw"]
 
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_5uqmw"]
-[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="2_c3y0i"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://n5pxek3khv3i" path="res://Enemy/Skeleton/base1.tres" id="2_ht4ig"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="3_oe0k2"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="4_wkrge"]
@@ -10,11 +9,9 @@
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://Visuals/ASCII/flash.tres" id="7_r228y"]
 [ext_resource type="Script" uid="uid://ugdeoc5jcdkr" path="res://Enemy/foot.gd" id="8_4kjaj"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="9_rvvtk"]
-[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/builds/AI.gd" id="10_5rgmk"]
+[ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="10_5rgmk"]
 [ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="11_gttpy"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ht4ig"]
-radius = 7.000005
+[ext_resource type="AudioStream" uid="uid://bypyh60cp7pso" path="res://Sound/sfx/Audio 1.mp3" id="11_v4srv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6jha"]
 radius = 14.0
@@ -24,6 +21,29 @@ height = 48.0
 script = ExtResource("1_5uqmw")
 mover = NodePath("Skeleton2D/root/Mover")
 pointer = NodePath("Skeleton2D/root/Pointer")
+
+[node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(37, 10)
+script = ExtResource("8_4kjaj")
+settled_place_node = NodePath("../Skeleton2D/root/t2R")
+preference = 1.0
+
+[node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(-36, 7)
+script = ExtResource("8_4kjaj")
+settled_place_node = NodePath("../Skeleton2D/root/t2L")
+preference = 1.0
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("10_5rgmk")
+
+[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("11_gttpy")
+root = NodePath("../Skeleton2D/root")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_rvvtk")
+health = 6
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 modification_stack = ExtResource("2_ht4ig")
@@ -55,18 +75,6 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg2/leg1/leg2")
 
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
-position = Vector2(-1.0124142, 2.9958389)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("2_c3y0i")
-knockback = 200
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg2/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_ht4ig")
-
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg2/leg1")
 
@@ -96,18 +104,6 @@ editor_settings/show_bone_gizmo = false
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg3/leg1/leg2")
-
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
-position = Vector2(-0.7848253, 3.0633419)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("2_c3y0i")
-knockback = 200
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg3/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_ht4ig")
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg3/leg1")
@@ -148,6 +144,9 @@ mover = NodePath("../Mover")
 [node name="Col" type="CollisionShape2D" parent="Skeleton2D/root/Hit"]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m6jha")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Skeleton2D/root/Hit"]
+stream = ExtResource("11_v4srv")
 
 [node name="visual" type="Node2D" parent="."]
 
@@ -362,27 +361,5 @@ label_settings = ExtResource("7_r228y")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(37, 10)
-script = ExtResource("8_4kjaj")
-settled_place_node = NodePath("../Skeleton2D/root/t2R")
-preference = 1.0
-
-[node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(-36, 7)
-script = ExtResource("8_4kjaj")
-settled_place_node = NodePath("../Skeleton2D/root/t2L")
-preference = 1.0
-
-[node name="AI" type="Node" parent="."]
-script = ExtResource("10_5rgmk")
-
-[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("11_gttpy")
-root = NodePath("../Skeleton2D/root")
-
-[node name="Health" type="Node" parent="."]
-script = ExtResource("9_rvvtk")
 
 [connection signal="state_change" from="AI" to="." method="_on_ai_state_change"]

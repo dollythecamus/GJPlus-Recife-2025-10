@@ -11,14 +11,15 @@ var picked = false
 
 signal PICKED(n)
 
-const enemy_is_owner = 0b0
-const player_is_owner = 0b1
-
+const enemy_is_owner = 8
+const player_is_owner = 16
 
 func release():
 	target = null
 	picked = false
 	point.to_point = picked
+	if hurt != null:
+		hurt.collision_mask = 0 # hurt nobode
 
 func pick(node):
 	target = node
@@ -29,11 +30,12 @@ func pick(node):
 func owns(_n):
 	if _n is PlayerControls:
 		if hurt != null:
-			hurt.collision_mask = 16 # to hurt bots only
+			hurt.collision_mask = player_is_owner # to hurt bots only
 		point.aim = true
+		point.target = null
 	elif _n is EnemyAI:
 		if hurt != null:
-			hurt.collision_mask = 8 # to hurt players only
+			hurt.collision_mask = enemy_is_owner # to hurt players only
 		point.target = _n.target
 
 func _process(_delta: float) -> void:

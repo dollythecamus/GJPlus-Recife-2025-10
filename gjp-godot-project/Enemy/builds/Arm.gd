@@ -15,6 +15,9 @@ var n
 var attack_cycle = stab_duration * 1.5
 var c = 0
 
+var release_cycle = 9.0
+var rc = randf()/release_cycle
+
 var detection
 var picked
 var has_detected = false
@@ -25,6 +28,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	c += delta
+	rc += delta
 	
 	if has_detected and not picked_item:
 		return
@@ -32,9 +36,26 @@ func _process(delta: float) -> void:
 	if n.target == null:
 		return
 	
+	if picked:
+		if rc >= release_cycle:
+			picked.get_node("Pickable").release()
+			picked = null
+			rc = 0
+		
+		iktarget.position = iktargetrest.position
+	
 	if c >= attack_cycle:
 		if picked:
-			picked.get_node("Attack").attack()
+			var a = picked.get_node_or_null("Attack") 
+			if a == null:
+				picked.get_node("Pickable").release()
+				picked = null
+			else:
+				a.attack()
+				if a is Shooter:
+					n.AI.do_ranged_mode()
+				else:
+					n.AI.do_melee_mode()
 		else:
 			stab()
 		c = 0

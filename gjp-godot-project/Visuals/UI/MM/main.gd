@@ -7,12 +7,14 @@ func _ready() -> void:
 	$Tutorial/Quit.connect("pressed", back)
 
 func goto_main():
+	Screen.transition()
+	await Screen.change
 	get_tree().change_scene_to_file("res://Scenario/main.tscn")
 
 func goto_tutorial():
 	$Main.hide()
 	$Tutorial.show()
-	$Tutorial/Quit.grab_focus.call_deferred()
+	$MTutorial/Quit.grab_focus.call_deferred()
 
 func back():
 	$Main/Title/tutorial.grab_focus.call_deferred()

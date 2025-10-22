@@ -6,7 +6,8 @@ var builds = {
 }
 
 var objects = {
-	"healthpack": preload("res://Objects/healthpack.tscn")
+	"healthpack": preload("res://Objects/healthpack.tscn"),
+	"upgrade": preload("res://Objects/upgrade.tscn")
 }
 
 var weapons = {
@@ -17,7 +18,8 @@ var weapons = {
 
 const progression = [
 	"weapon:melee",
-	"enemy:ZeroI:1,enemy:ZeroV:1",
+	"power:upgrade",
+	"enemy:ZeroI:1",
 	"story:the monsters kill me",
 	"enemy:ZeroII:1",
 	"power:healthpack",
@@ -33,7 +35,7 @@ const progression = [
 	"enemy:ZeroV:1",
 	"power:healthpack",
 	"enemy:ZeroVI:1",
-	"story:beyond is horrifying",
+	"story:terrorized by the Beyond",
 	"enemy:ZeroVI:1",
 	"power:healthpack",
 	"enemy:ZeroVII:1",
@@ -43,3 +45,9 @@ const ENEMY = "enemy"
 const WEAPON = "weapon"
 const POWER = "power"
 const STORY = "story"
+
+func add_script(node, script):
+	var new = Node.new()
+	new.set_script(load("res://Scripts/" + script))
+	node.add_child(new)
+	return new

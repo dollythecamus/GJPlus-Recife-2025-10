@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://g1jidhsjrkag"]
+[gd_scene load_steps=10 format=3 uid="uid://g1jidhsjrkag"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="2_wqlkq"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="3_i040i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="6_wqlkq"]
 [ext_resource type="PackedScene" uid="uid://b8ahs3owuq1lg" path="res://Objects/Weapons/Projectiles/bullet1.tscn" id="7_i040i"]
 [ext_resource type="PackedScene" uid="uid://q51seqx2xlt" path="res://Objects/Weapons/rate.tscn" id="7_nfamr"]
+[ext_resource type="AudioStream" uid="uid://cxlfx6rw3egby" path="res://Sound/sfx/Audio 5.mp3" id="8_3nlhr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
 radius = 19.026299
@@ -15,6 +16,7 @@ radius = 19.026299
 
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("2_wqlkq")
+aim = true
 flips_at_half = true
 angle_offset = 0.0
 
@@ -157,3 +159,6 @@ p = NodePath("../Pointer")
 rate = NodePath("../Pointer/Node2D/Rate")
 point = NodePath("../Pointer/point")
 fire_rate = 0.2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Attack"]
+stream = ExtResource("8_3nlhr")

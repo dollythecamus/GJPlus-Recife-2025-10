@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=14 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
@@ -10,8 +10,7 @@
 [ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://Scripts/spawner.gd" id="7_ycdy4"]
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://Visuals/ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://Visuals/UI/health_UI.gd" id="8_kek77"]
-[ext_resource type="Shader" uid="uid://dyf33chp2byqa" path="res://Visuals/effects/crt.gdshader" id="10_4c57u"]
-[ext_resource type="AudioStream" uid="uid://dh5fotrxsrjxf" path="res://Sound/crunchyyv2.mp3" id="13_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://b014ge75ajta4" path="res://Sound/music/crunchyyv3.mp3" id="12_omng6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ixuk"]
 font = ExtResource("1_272bh")
@@ -30,30 +29,12 @@ outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
-shader = ExtResource("10_4c57u")
-shader_parameter/resolution = Vector2(640, 440)
-shader_parameter/scan_line_amount = 0.270000012825
-shader_parameter/warp_amount = 1.50000007125
-shader_parameter/noise_amount = 0.0150000007125
-shader_parameter/interference_amount = 0.1910000090725
-shader_parameter/grille_amount = 0.1200000057
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.6
-shader_parameter/vignette_intensity = 0.4400000209
-shader_parameter/aberation_amount = 0.490000023275
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 1.0
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -2.0
-
-[node name="Node" type="Node" node_paths=PackedStringArray("root", "player", "spawner", "story_label", "popup")]
+[node name="Node" type="Node" node_paths=PackedStringArray("root", "player", "spawner", "story_label")]
 script = ExtResource("1_4c57u")
 root = NodePath("main")
 player = NodePath("main/Player")
 spawner = NodePath("main/pivot/spawner")
 story_label = NodePath("main/cenario/ASCII2")
-popup = NodePath("Control3")
 
 [node name="main" type="Node2D" parent="."]
 
@@ -161,12 +142,16 @@ script = ExtResource("6_dg77c")
 to_point = true
 rpm = 1
 
-[node name="spawner" type="Node2D" parent="main/pivot" node_paths=PackedStringArray("player", "root", "hint")]
+[node name="spawner" type="Node2D" parent="main/pivot" node_paths=PackedStringArray("player", "root", "opposite", "hint")]
 position = Vector2(624, 0)
 script = ExtResource("7_ycdy4")
 player = NodePath("../../Player")
 root = NodePath("../..")
+opposite = NodePath("../opposite")
 hint = NodePath("../../hint")
+
+[node name="opposite" type="Node2D" parent="main/pivot"]
+position = Vector2(-566, -6)
 
 [node name="hint" type="Node2D" parent="main"]
 visible = false
@@ -293,40 +278,10 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="Control2" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_lock_ = true
-
-[node name="TextureRect" type="ColorRect" parent="Control2"]
-material = SubResource("ShaderMaterial_efxa6")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Control3" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_ycdy4")
+stream = ExtResource("12_omng6")
+volume_db = -6.0
 autoplay = true
 
 [connection signal="HIT" from="main/Player" to="Control/health" method="_on_player_hit"]
 [connection signal="update_health" from="main/Player" to="Control/health" method="update"]
-
-[editable path="main/Player"]

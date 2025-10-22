@@ -22,3 +22,4 @@ func hit(dmg, knock, dir):
 	if mover != null:
 		mover.velocity += dir * dmg * knock
 	HIT.emit()
+	$AudioStreamPlayer.play()

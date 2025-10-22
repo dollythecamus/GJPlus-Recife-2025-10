@@ -6,9 +6,7 @@ class_name PlayerControls
 @export var pickup : Pickup
 
 var c = 0
-
 var dead = false
-
 signal update_health
 
 func die():
@@ -24,12 +22,12 @@ func die():
 
 func reborn():
 	# vfx!!! 
-	update_health.emit()
 	move.enable()
 	$visual.show()
 	$Health.health = 3
 	global_position = Vector2(randf_range(-10, 600), randf_range(-10, 600))
 	dead = false
+	update_health.emit()
 
 func _process(delta: float) -> void:
 	move.direction  = Input.get_vector("move_left","move_right","move_up","move_down")
@@ -56,3 +54,11 @@ func _on_hit() -> void:
 func add_health(i):
 	$Health.health += i
 	update_health.emit()
+
+func upgrade(string):
+	if string == "Roll":
+		roll = Globals.add_script(self, "roll.gd")
+		roll.visual = $visual
+		roll.hit = $Hit
+		roll.pointer = $Pointer
+		roll.pickup = $Pickup
