@@ -1,24 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://nx87c6v10n3d"]
+[gd_scene load_steps=6 format=3 uid="uid://nx87c6v10n3d"]
 
 [ext_resource type="Script" uid="uid://cq74q2kx6jesq" path="res://Visuals/effects/screen.gd" id="1_5ggpf"]
-[ext_resource type="Shader" uid="uid://dyf33chp2byqa" path="res://crt.gdshader" id="1_cjsfw"]
+[ext_resource type="Material" uid="uid://inaowq8yb5dh" path="res://Visuals/effects/screen.tres" id="2_5ggpf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
-shader = ExtResource("1_cjsfw")
-shader_parameter/resolution = Vector2(640, 440)
-shader_parameter/scan_line_amount = 0.2000000095
-shader_parameter/warp_amount = 0.1
-shader_parameter/noise_amount = 0.03
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.70000003325
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/aberation_amount = 0.5
-shader_parameter/roll_line_amount = 0.6000000285
-shader_parameter/roll_speed = 1.0
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -2.0
+[sub_resource type="Animation" id="Animation_4w7vl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/resolution")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 440)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:material:shader_parameter/noise_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.03]
+}
 
 [sub_resource type="Animation" id="Animation_5ggpf"]
 resource_name = "transition"
@@ -40,34 +50,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:material:shader_parameter/warp_amount")
+tracks/1/path = NodePath("TextureRect:material:shader_parameter/noise_amount")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3.50000016625, 3.0000001425]
+"values": [0.03, 0.30000001192093]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TextureRect:material:shader_parameter/noise_amount")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.03, 0.30000001192093]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -77,45 +75,6 @@ tracks/3/keys = {
 "args": [],
 "method": &"to_change"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_4w7vl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:material:shader_parameter/resolution")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(640, 440)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:material:shader_parameter/warp_amount")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TextureRect:material:shader_parameter/noise_amount")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.03]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4w7vl"]
@@ -136,7 +95,7 @@ script = ExtResource("1_5ggpf")
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_efxa6")
+material = ExtResource("2_5ggpf")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

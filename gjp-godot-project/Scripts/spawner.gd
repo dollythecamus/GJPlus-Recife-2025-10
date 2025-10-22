@@ -53,7 +53,16 @@ func throw_object_towards_player(obj):
 	var d = (center.global_position - obj.global_position)
 	m.direction = d.normalized()
 	m.distance = d.length()
-	await get_tree().create_timer(0.7).timeout
+	check_distance_loop(pp, m, p, obj)
+
+func check_distance_loop(pp, m, p, obj):
+	var d = (center.global_position - obj.global_position)
+	
+	if d.length() > 100:
+		await get_tree().create_timer(0.1).timeout
+		check_distance_loop(pp, m, p, obj)
+		return
+	
 	pp.set_process(true)
 	m.direction = Vector2.ZERO
 	m.distance = 1.0

@@ -38,8 +38,7 @@ func _process(delta: float) -> void:
 	
 	if picked:
 		if rc >= release_cycle:
-			picked.get_node("Pickable").release()
-			picked = null
+			release()
 			rc = 0
 		
 		iktarget.position = iktargetrest.position
@@ -48,8 +47,7 @@ func _process(delta: float) -> void:
 		if picked:
 			var a = picked.get_node_or_null("Attack") 
 			if a == null:
-				picked.get_node("Pickable").release()
-				picked = null
+				release()
 			else:
 				a.attack()
 				if a is Shooter:
@@ -59,6 +57,14 @@ func _process(delta: float) -> void:
 		else:
 			stab()
 		c = 0
+
+func _exit_tree() -> void:
+	release()
+
+func release():
+	if picked:
+		picked.get_node("Pickable").release()
+		picked = null
 
 func stab():
 	var p = iktarget.global_position
@@ -89,6 +95,7 @@ func grab(target):
 				a[0].owns(n)
 				picked = a[0].get_parent()
 				picked_item = true
+				rc = 0
 
 func _on_detector_area_entered(area: Area2D) -> void:
 	#print("bot found item.")

@@ -18,8 +18,7 @@ func release():
 	target = null
 	picked = false
 	point.to_point = picked
-	if hurt != null:
-		hurt.collision_mask = 0 # hurt nobode
+	owns(null)
 
 func pick(node):
 	target = node
@@ -37,6 +36,10 @@ func owns(_n):
 		if hurt != null:
 			hurt.collision_mask = enemy_is_owner # to hurt players only
 		point.target = _n.target
+	elif _n == null:
+		if hurt != null:
+			hurt.collision_mask = 0 # to hurt players only
+		point.target = null
 
 func _process(_delta: float) -> void:
 	move_to_target()
