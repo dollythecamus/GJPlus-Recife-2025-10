@@ -14,7 +14,7 @@ var move
 var roll_visual = preload("res://Player/roll.tscn").instantiate()
 
 var duration = .4
-var length = 1000
+var length = 1500
 
 var rate = Rate.new()
 
@@ -30,8 +30,8 @@ func roll():
 	visual.hide()
 	roll_visual.show()
 	
-	rate.start(duration)
-	move.mag(1000)
+	rate.start(duration * 1.1)
+	move.mag(length)
 	
 	await rate.done
 	

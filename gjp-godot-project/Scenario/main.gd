@@ -48,7 +48,7 @@ func trigger_next():
 			spawner.spawn_weapon(args[1])
 			trigger_next()
 		elif args[0] == Globals.POWER:
-			spawner.spawn_object(args[1])
+			spawner.spawn_object(args[1], func(n):n.set(args[1], args[2]))
 			trigger_next()
 		elif args[0] == Globals.STORY:
 			story(args[1])

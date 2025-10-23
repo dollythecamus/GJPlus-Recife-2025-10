@@ -6,7 +6,7 @@ var builds = {
 }
 
 var objects = {
-	"healthpack": preload("res://Objects/healthpack.tscn"),
+	"health": preload("res://Objects/healthpack.tscn"),
 	"upgrade": preload("res://Objects/upgrade.tscn")
 }
 
@@ -17,33 +17,34 @@ var weapons = {
 }
 
 const progression = [
+	"power:upgrade:Defense",
 	"weapon:melee",
 	"enemy:ZeroI:1",
 	"story:the monsters kill me",
 	"enemy:ZeroII:1",
-	"power:healthpack",
+	"power:health:2",
 	"enemy:ZeroII:2",
 	"story:saw what is beyond life",
 	"enemy:ZeroIII:1",
 	"enemy:ZeroII:2",
 	"weapon:pistol",
-	"power:healthpack",
+	"power:health:2",
 	"enemy:ZeroIV:1",
 	"story:where and when am I?",
-	"power:upgrade",
+	"power:upgrade:Roll",
 	"enemy:ZeroIV:2",
 	"enemy:ZeroV:1",
-	"power:healthpack",
+	"power:health:2",
 	"enemy:ZeroVI:1",
 	"weapon:blastgun",
 	"story:terrorized by the Beyond",
 	"enemy:ZeroVI:1",
-	"power:healthpack",
+	"power:health:2",
 	"enemy:ZeroVII:1",
 	"weapon:blastgun",
 	"enemy:ZeroIV:1",
 	"enemy:ZeroVII:1,enemy:ZeroIV:1",
-	"power:healthpack",
+	"power:health:2",
 	"enemy:ZeroV:2",
 ]
 
@@ -62,8 +63,14 @@ func start():
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-func add_script(node, script):
+func add_script(node, script, callable):
 	var new = Node.new()
 	new.set_script(load("res://Scripts/" + script))
 	node.add_child.call_deferred(new)
+	callable.call(new)
 	return new
+
+func first_child_of_type(node, type):
+	for i in node.get_children():
+		if i.is_class(type):
+			return i

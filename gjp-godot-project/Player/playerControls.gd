@@ -52,6 +52,11 @@ func _process(delta: float) -> void:
 		var r = upgrades.find_custom(func(x): return x is Roll)
 		if Input.is_action_just_pressed("roll") and not move.direction.is_zero_approx():
 			upgrades[r].roll()
+	
+	if upgrades.any(func(x): return x is Defense):
+		var r = upgrades.find_custom(func(x): return x is Defense)
+		if Input.is_action_just_pressed("defend"):
+			upgrades[r].defend()
 
 signal HIT
 
@@ -64,10 +69,15 @@ func add_health(i):
 
 func upgrade(string):
 	if string == "Roll":
-		roll = Globals.add_script(self, "roll.gd")
+		roll = Globals.add_script(self, "roll.gd", func(_n): return)
 		roll.visual = $visual
 		roll.hit = $Hit
 		roll.pointer = $Pointer
 		roll.pickup = $Pickup
+		roll.move = $Mover
+		upgrades.append(roll)
+	elif string == "Defense":
+		roll = Globals.add_script(self, "defense.gd", func(_n): return)
+		roll.p_hit = $Hit
 		roll.move = $Mover
 		upgrades.append(roll)

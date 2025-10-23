@@ -1,0 +1,199 @@
+[gd_scene load_steps=10 format=3 uid="uid://byhp5scf6yjyc"]
+
+[ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_r2qr3"]
+[ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://Scripts/hit.gd" id="2_ogmly"]
+[ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="3_n0wu0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogmly"]
+line_spacing = -20.0
+font = ExtResource("1_r2qr3")
+font_size = 54
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4d5u6"]
+line_spacing = -20.0
+font = ExtResource("1_r2qr3")
+font_size = 36
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0wu0"]
+line_spacing = -20.0
+font = ExtResource("1_r2qr3")
+font_size = 38
+font_color = Color(0.1764706, 0.8980392, 0.92941177, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2qr3"]
+line_spacing = -20.0
+font = ExtResource("1_r2qr3")
+font_size = 28
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0wu0"]
+radius = 22.203604
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cb6y"]
+line_spacing = -20.0
+font = ExtResource("1_r2qr3")
+font_size = 44
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[node name="Defense" type="Node2D"]
+
+[node name="ASCII" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "O"
+label_settings = SubResource("LabelSettings_ogmly")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = SubResource("LabelSettings_4d5u6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 32.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_n0wu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_n0wu0")
+health = 15
+
+[node name="Hit" type="Area2D" parent="." node_paths=PackedStringArray("flash")]
+script = ExtResource("2_ogmly")
+flash = NodePath("../Flash")
+metadata/_custom_type_script = "uid://bnrviih0008y5"
+
+[node name="Col" type="CollisionShape2D" parent="Hit"]
+shape = SubResource("CircleShape2D_n0wu0")
+
+[node name="Flash" type="Node2D" parent="."]
+visible = false
+
+[node name="ASCII4" type="Label" parent="Flash"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -40.0
+offset_right = 31.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_8cb6y")
+horizontal_alignment = 1
+vertical_alignment = 1

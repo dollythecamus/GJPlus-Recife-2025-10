@@ -8,15 +8,13 @@ signal health_changed(v)
 @export var is_player = false
 
 var damage_boost = false
+var damage_boost_time = .7
 
 @export var health = 10:
 	set(v):
 		if health < v:
 			health = v
-			c = 0
-			damage_boost = true
 			health_changed.emit(v)
-			return
 		
 		if damage_boost:
 			return
@@ -36,6 +34,6 @@ var damage_boost = false
 var c = 0
 func _process(delta):
 	c += delta
-	if damage_boost and c >= .7:
+	if damage_boost and c >= damage_boost_time:
 		damage_boost = false
 		c = 0

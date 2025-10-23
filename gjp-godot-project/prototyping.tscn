@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://benal3xfughne" path="res://prototyping.gd" id="1_cxwu1"]
 [ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="1_v7tyh"]
 [ext_resource type="PackedScene" uid="uid://cv4xqjfglbvhk" path="res://Objects/upgrade.tscn" id="4_44wxn"]
-[ext_resource type="PackedScene" uid="uid://g1jidhsjrkag" path="res://Objects/Weapons/pistol.tscn" id="5_imp1g"]
+[ext_resource type="PackedScene" uid="uid://d4jpd37sy667b" path="res://Objects/healthpack.tscn" id="5_imp1g"]
 [ext_resource type="PackedScene" uid="uid://bc8xhsymu8msk" path="res://Enemy/bases/base2.tscn" id="5_pgtm1"]
 [ext_resource type="PackedScene" uid="uid://djvxh5kwqm6x" path="res://Objects/Weapons/melee.tscn" id="6_pgtm1"]
 
@@ -146,14 +146,15 @@ modifications/3 = SubResource("SkeletonModification2DCCDIK_6w5po")
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_cxwu1")
 
-[node name="Pistol" parent="." instance=ExtResource("5_imp1g")]
-position = Vector2(363, 251)
-
 [node name="Player" parent="." instance=ExtResource("1_v7tyh")]
 position = Vector2(252, 215)
 
 [node name="Upgrade" parent="." instance=ExtResource("4_44wxn")]
 position = Vector2(340, 149)
+
+[node name="Upgrade2" parent="." instance=ExtResource("4_44wxn")]
+position = Vector2(304, 102)
+upgrade = "Defense"
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_pgtm1")]
 position = Vector2(-113, 171)
@@ -166,7 +167,7 @@ build_ready = "ZeroV"
 modification_stack = SubResource("SkeletonModificationStack2D_b1uta")
 
 [node name="leg1" parent="Enemy/Skeleton2D/root" index="1"]
-scale = Vector2(0.9999983, 0.9999983)
+scale = Vector2(0.99999803, 0.99999803)
 
 [node name="leg1" parent="Enemy/visual/root/leg0" index="0"]
 position = Vector2(12, -16)
@@ -175,10 +176,14 @@ position = Vector2(12, -16)
 position = Vector2(11, 16.999985)
 
 [node name="leg1" parent="Enemy/visual/root" index="1"]
-scale = Vector2(0.9999983, 0.9999983)
+scale = Vector2(0.99999803, 0.99999803)
+
+[node name="leg1" parent="Enemy/visual/root/leg1" index="0"]
+position = Vector2(-14, -17.000015)
 
 [node name="leg2" parent="Enemy/visual/root/leg1/leg1" index="0"]
-position = Vector2(-13.000015, 16)
+position = Vector2(-13, 16.000015)
+scale = Vector2(1, 1)
 
 [node name="leg2" parent="Enemy/visual/root" index="2"]
 position = Vector2(18.000061, 12.000015)
@@ -209,7 +214,7 @@ build_ready = "ZeroV"
 modification_stack = SubResource("SkeletonModificationStack2D_olbv0")
 
 [node name="leg1" parent="Enemy2/Skeleton2D/root" index="1"]
-scale = Vector2(0.9999982, 0.9999982)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="leg1" parent="Enemy2/visual/root/leg0" index="0"]
 position = Vector2(12.000008, -16)
@@ -218,13 +223,13 @@ position = Vector2(12.000008, -16)
 position = Vector2(10.999994, 17.00003)
 
 [node name="leg1" parent="Enemy2/visual/root" index="1"]
-scale = Vector2(0.9999982, 0.9999982)
+scale = Vector2(0.999998, 0.999998)
 
 [node name="leg1" parent="Enemy2/visual/root/leg1" index="0"]
 position = Vector2(-14, -16.99997)
 
 [node name="leg2" parent="Enemy2/visual/root/leg1/leg1" index="0"]
-position = Vector2(-13, 15.999908)
+position = Vector2(-13, 15.999939)
 
 [node name="leg2" parent="Enemy2/visual/root" index="2"]
 position = Vector2(18.000061, 12.0000305)
@@ -244,17 +249,20 @@ position = Vector2(-12.000008, -16)
 [node name="leg2" parent="Enemy2/visual/root/leg3/leg1" index="0"]
 position = Vector2(-13, 15)
 
+[node name="Healthpack" parent="." instance=ExtResource("5_imp1g")]
+position = Vector2(125, 114)
+
 [node name="Sword" parent="." instance=ExtResource("6_pgtm1")]
-position = Vector2(46, 198)
+position = Vector2(60, 226)
 
 [node name="Sword2" parent="." instance=ExtResource("6_pgtm1")]
-position = Vector2(81, 310)
+position = Vector2(80, 270)
 
 [node name="Sword3" parent="." instance=ExtResource("6_pgtm1")]
-position = Vector2(20, 236)
+position = Vector2(103, 340)
 
 [node name="Sword4" parent="." instance=ExtResource("6_pgtm1")]
-position = Vector2(42, 280)
+position = Vector2(89, 310)
 
 [editable path="Enemy"]
 [editable path="Enemy2"]

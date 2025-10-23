@@ -18,7 +18,7 @@ func attack(is_player = false):
 	
 	var new = projectile.instantiate()
 	var m = new.get_node("Mover")
-	m.direction = p.vec.normalized() if not p.vec.is_zero_approx() else Vector2.from_angle(p.global_rotation)
+	m.direction = Vector2.from_angle(point.global_rotation)
 	m.direction += bullet_spread()
 	m.mag(1000)
 	new.global_position = point.global_position + m.direction
@@ -26,7 +26,6 @@ func attack(is_player = false):
 	get_tree().current_scene.add_child(new)
 	
 	$AudioStreamPlayer.play()
-	
 
 func bullet_spread():
 	const a = .1

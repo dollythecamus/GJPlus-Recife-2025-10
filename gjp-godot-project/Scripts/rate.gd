@@ -12,6 +12,7 @@ var waiting
 
 var c = 0
 var duration = TAU
+var interupted = false
 
 func _ready() -> void:
 	set_process(false)
@@ -23,7 +24,14 @@ func start(rate):
 	show()
 	set_process(true)
 	await get_tree().create_timer(rate).timeout
+	if interupted:
+		return
 	done.emit()
+	waiting = false
+	hide()
+	set_process(false)
+
+func interrupt():
 	waiting = false
 	hide()
 	set_process(false)

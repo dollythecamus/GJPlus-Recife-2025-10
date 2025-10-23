@@ -27,11 +27,12 @@ func spawn_enemy(type, many: int = 1):
 	await get_tree().create_timer(1.5).timeout
 	hint.hide()
 
-func spawn_object(type):
+func spawn_object(type, callable):
 	var new = Globals.objects[type].instantiate()
 	new.global_position = opposite.global_position
 	root.call_deferred("add_child", new)
 	await new.ready
+	callable.call(new)
 	throw_object_towards_player(new)
 
 func spawn_weapon(type):
