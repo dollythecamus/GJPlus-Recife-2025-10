@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=19 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://Scripts/spawner.gd" id="7_ycdy4"]
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://Visuals/ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://Visuals/UI/health_UI.gd" id="8_kek77"]
+[ext_resource type="FontFile" uid="uid://d16a6qnqcwagp" path="res://Visuals/UI/texgyreadventor-bolditalic.otf" id="11_omng6"]
+[ext_resource type="Theme" uid="uid://bbs6bm2q5snnf" path="res://Visuals/UI/MM/popups.tres" id="11_wfabv"]
 [ext_resource type="AudioStream" uid="uid://b014ge75ajta4" path="res://Sound/music/crunchyyv3.mp3" id="12_omng6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ixuk"]
@@ -29,14 +31,49 @@ outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
 
-[node name="Node" type="Node" node_paths=PackedStringArray("root", "player", "spawner", "story_label")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omng6"]
+bg_color = Color(0.17842048, 0.12815902, 0.21888784, 0.87058824)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.36603472, 0.2265225, 0.39775372, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfabv"]
+line_spacing = -40.0
+font = ExtResource("11_omng6")
+font_size = 28
+font_color = Color(0, 0.8392157, 0.8509804, 1)
+outline_size = 6
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 8
+shadow_color = Color(1, 0, 1, 0.047058824)
+shadow_offset = Vector2(-6, -10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3c5q2"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 32
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[node name="Node" type="Node" node_paths=PackedStringArray("root", "player", "spawner", "story_label", "popup")]
+process_mode = 3
 script = ExtResource("1_4c57u")
 root = NodePath("main")
 player = NodePath("main/Player")
 spawner = NodePath("main/pivot/spawner")
 story_label = NodePath("main/cenario/ASCII2")
+popup = NodePath("UI/Paused")
 
 [node name="main" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="cenario" type="Node2D" parent="main"]
 position = Vector2(317, 214)
@@ -221,7 +258,8 @@ texture = ExtResource("7_4c57u")
 visible = false
 texture = ExtResource("7_4c57u")
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,7 +269,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="health" type="HBoxContainer" parent="Control" node_paths=PackedStringArray("player_health")]
+[node name="health" type="HBoxContainer" parent="UI" node_paths=PackedStringArray("player_health")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -245,11 +283,11 @@ alignment = 1
 script = ExtResource("8_kek77")
 player_health = NodePath("../../main/Player/Health")
 
-[node name="heart" type="Control" parent="Control/health"]
+[node name="heart" type="Control" parent="UI/health"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/health/heart"]
+[node name="Label" type="Label" parent="UI/health/heart"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -268,7 +306,7 @@ label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="HBoxContainer" parent="Control"]
+[node name="level" type="HBoxContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -278,10 +316,105 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
+[node name="Paused" type="Panel" parent="UI"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -47.0
+offset_right = 72.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_wfabv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_omng6")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Paused"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -265.02127
+offset_top = -173.0
+offset_right = 265.02127
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.75686276, 0.5372549, 1, 0.2)
+
+[node name="Label" type="Label" parent="UI/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -45.0
+offset_right = 58.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "paused"
+label_settings = SubResource("LabelSettings_wfabv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="H" type="HBoxContainer" parent="UI/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = 7.0
+offset_right = 28.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 9
+alignment = 1
+
+[node name="continue" type="Button" parent="UI/Paused/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../back")
+
+[node name="Label" type="Label" parent="UI/Paused/H/continue"]
+layout_mode = 0
+offset_left = 3.5
+offset_top = -5.0
+offset_right = 43.5
+offset_bottom = 37.0
+text = ">"
+label_settings = SubResource("LabelSettings_3c5q2")
+
+[node name="back" type="Button" parent="UI/Paused/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../continue")
+
+[node name="Label" type="Label" parent="UI/Paused/H/back"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = -6.0
+offset_right = 41.5
+offset_bottom = 36.0
+text = "x"
+label_settings = SubResource("LabelSettings_3c5q2")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("12_omng6")
 volume_db = -6.0
 autoplay = true
 
-[connection signal="HIT" from="main/Player" to="Control/health" method="_on_player_hit"]
-[connection signal="update_health" from="main/Player" to="Control/health" method="update"]
+[connection signal="HIT" from="main/Player" to="UI/health" method="_on_player_hit"]
+[connection signal="update_health" from="main/Player" to="UI/health" method="update"]

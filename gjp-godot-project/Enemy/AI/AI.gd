@@ -4,7 +4,6 @@ extends Node
 @onready var mover = get_parent().mover
 @onready var root = get_parent().get_node("Build").root
 
-static var others = []
 
 var seek_distance = 80.0
 var seek_distance_close = 2.0
@@ -25,7 +24,7 @@ var fire_cycle = .7
 var fc = randf()/fire_cycle
 
 func _init() -> void:
-	others.append(self)
+	Globals.other_AIs.append(self)
 
 func run(delta):
 	fc += delta
@@ -54,7 +53,7 @@ func balance_others_distances():
 	
 	var resulting = Vector2.ZERO
 	
-	for i in others:
+	for i in Globals.other_AIs:
 		if i == self:
 			continue
 		
@@ -79,7 +78,7 @@ func get_guns():
 
 func do_ranged_mode():
 	seek_distance = 300
-	seek_distance_close = 3
+	seek_distance_close = 1.35
 	others_distance = 150
 	mode = MODES.RANGED
 
@@ -89,4 +88,4 @@ func do_melee_mode():
 	mode = MODES.MELEE
 
 func _exit_tree() -> void:
-	others.erase(self)
+	Globals.other_AIs.erase(self)

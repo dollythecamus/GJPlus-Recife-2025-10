@@ -46,6 +46,16 @@ const WEAPON = "weapon"
 const POWER = "power"
 const STORY = "story"
 
+var other_AIs = []
+var all_feet = {}
+
+func start():
+	other_AIs = []
+	all_feet = {}
+
+func _enter_tree() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func add_script(node, script):
 	var new = Node.new()
 	new.set_script(load("res://Scripts/" + script))

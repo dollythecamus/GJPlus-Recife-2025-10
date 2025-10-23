@@ -205,3 +205,4 @@ point = NodePath("../visual/Pointer/point")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Shooter"]
 stream = ExtResource("6_hfrl3")
+volume_db = -7.0

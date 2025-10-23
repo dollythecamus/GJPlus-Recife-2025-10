@@ -3,7 +3,7 @@ extends Node
 # Spawner script also triggers story points
 
 var cur = -1
-var hoard = -1
+var hoard = 0
 
 @export var root : Node2D
 @export var player : Node2D
@@ -12,8 +12,29 @@ var hoard = -1
 @export var popup : Control
 
 func _ready() -> void:
+	Globals.start()
+	
 	await get_tree().create_timer(1.0).timeout
 	trigger_next()
+	
+	popup.get_node("H/continue").connect("pressed", toggle_popup)
+	popup.get_node("H/back").connect("pressed", back_to_menu)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_menu"):
+		toggle_popup()
+
+func toggle_popup():
+	popup.get_node("H/continue").grab_focus.call_deferred()
+	@warning_ignore("standalone_ternary")
+	popup.show() if not popup.visible else popup.hide()
+	get_tree().paused = not get_tree().paused
+
+func back_to_menu():
+	Screen.transition()
+	await Screen.change
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Visuals/UI/MM/main.tscn")
 
 func trigger_next():
 	cur = clamp(cur + 1, 0, Globals.progression.size()-1)

@@ -7,8 +7,6 @@ class_name FootIKTarget
 @onready var settled_place : = settled_place_node.global_position
 @onready var n = get_parent()
 
-static var all_feet = {}
-
 enum STATES {WALK, IDLE, RUN}
 var state = STATES.WALK
 
@@ -22,10 +20,10 @@ var is_stepping = false
 
 
 func _ready() -> void:
-	if all_feet.has(n):
-		all_feet[n].append(self)
+	if Globals.all_feet.has(n):
+		Globals.all_feet[n].append(self)
 	else:
-		all_feet[n] = []
+		Globals.all_feet[n] = []
 
 func _process(_delta: float) -> void:
 	settled_place = settled_place_node.global_position
@@ -62,7 +60,7 @@ func settle():
 	settled = true
 
 func _step():
-	all_feet[n].shuffle()
+	Globals.all_feet[n].shuffle()
 	
 	settled = false
 	is_stepping = true
@@ -83,7 +81,7 @@ func _step():
 	settled = true
 
 func any_2_stepping():
-	var many = all_feet[n].filter(_is_stepping).size()
+	var many = Globals.all_feet[n].filter(_is_stepping).size()
 	if many > 2:
 		return false
 	return true
@@ -92,7 +90,7 @@ func any_2_stepping():
 # didn't work now
 func collective():
 	var c = 0
-	for i in all_feet[n]:
+	for i in Globals.all_feet[n]:
 		if i.is_stepping:
 			c += i.preference
 	return c
@@ -101,4 +99,4 @@ func _is_stepping(other):
 	return other.is_stepping
 
 func remove(x):
-	all_feet.erase(x)
+	Globals.all_feet.erase(x)

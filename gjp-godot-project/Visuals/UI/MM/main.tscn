@@ -2,8 +2,8 @@
 
 [ext_resource type="LabelSettings" uid="uid://cx6gnx7fyselo" path="res://Visuals/UI/title.tres" id="1_dxapu"]
 [ext_resource type="Script" uid="uid://w5uh3wkxayhs" path="res://Visuals/UI/MM/main.gd" id="1_yflm0"]
-[ext_resource type="Theme" uid="uid://b08fldffvy1vs" path="res://Visuals/UI/MM/main.tres" id="2_0mmqq"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://Visuals/ASCII/player_ascii.tres" id="2_44ouc"]
+[ext_resource type="Theme" uid="uid://bbs6bm2q5snnf" path="res://Visuals/UI/MM/popups.tres" id="2_k1f1u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="3_yflm0"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="4_0mmqq"]
 [ext_resource type="LabelSettings" uid="uid://cskslsf3oojsu" path="res://Visuals/ASCII/ascii.tres" id="5_mplmn"]
@@ -86,10 +86,10 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Main"]
 layout_mode = 0
 offset_left = 59.0
-offset_top = 18.0
+offset_top = 24.0
 offset_right = 340.0
-offset_bottom = 221.0
-theme = ExtResource("2_0mmqq")
+offset_bottom = 227.0
+theme = ExtResource("2_k1f1u")
 text = "SOMBRE
 ASTRA"
 label_settings = ExtResource("1_dxapu")
@@ -513,7 +513,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_0mmqq")
+theme = ExtResource("2_k1f1u")
 
 [node name="ColorRect" type="ColorRect" parent="Tutorial"]
 layout_mode = 1

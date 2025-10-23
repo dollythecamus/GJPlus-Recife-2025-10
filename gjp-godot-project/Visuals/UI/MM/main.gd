@@ -3,6 +3,7 @@ extends Control
 func _ready() -> void:
 	$Main/Title/Play.grab_focus.call_deferred()
 	$Main/Title/Play.connect("pressed", goto_main)
+	$Main/Title/Quit.connect("pressed", func(): get_tree().quit() )
 	$Main/Title/tutorial.connect("pressed", goto_tutorial)
 	$Tutorial/Quit.connect("pressed", back)
 

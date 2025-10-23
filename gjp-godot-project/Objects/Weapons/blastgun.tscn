@@ -224,3 +224,4 @@ fire_rate = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Attack"]
 stream = ExtResource("8_lec0r")
+volume_db = -4.0
