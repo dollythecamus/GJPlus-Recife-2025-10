@@ -5,6 +5,8 @@ extends Node2D
 const separator = 60 
 
 func _ready() -> void:
+	return
+	
 	spawn_enemy("ZeroII", 2)
 	await get_tree().create_timer(2.0).timeout
 	spawn_enemy("ZeroVI", 1)

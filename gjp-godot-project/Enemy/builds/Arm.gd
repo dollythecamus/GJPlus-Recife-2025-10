@@ -36,15 +36,13 @@ func _process(delta: float) -> void:
 	if n.target == null:
 		return
 	
-	if picked:
+	if picked != null:
 		if rc >= release_cycle:
 			release()
 			rc = 0
-		
-		iktarget.position = iktargetrest.position
 	
 	if c >= attack_cycle:
-		if picked:
+		if picked != null:
 			var a = picked.get_node_or_null("Attack") 
 			if a == null:
 				release()
@@ -52,8 +50,10 @@ func _process(delta: float) -> void:
 				a.attack()
 				if a is Shooter:
 					n.AI.do_ranged_mode()
+					iktarget.position = iktargetrest.position
 				else:
 					n.AI.do_melee_mode()
+					stab()
 		else:
 			stab()
 		c = 0
@@ -65,6 +65,7 @@ func release():
 	if picked:
 		picked.get_node("Pickable").release()
 		picked = null
+		n.AI.mode = BotAI.MODES.MELEE
 
 func stab():
 	var p = iktarget.global_position

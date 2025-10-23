@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://q51seqx2xlt"]
-
-[ext_resource type="Script" uid="uid://cweog4vcvfmuc" path="res://Objects/Weapons/rate.gd" id="1_sm16p"]
-
-[node name="Rate" type="Node2D"]
-script = ExtResource("1_sm16p")
-color = Color(0.8898623, 0.100901015, 0.493577, 1)

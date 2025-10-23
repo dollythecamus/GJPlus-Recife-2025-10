@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://g1jidhsjrkag"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="2_wqlkq"]
+[ext_resource type="Script" uid="uid://cweog4vcvfmuc" path="res://Scripts/rate.gd" id="3_3nlhr"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="3_i040i"]
 [ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://Scripts/pickable.gd" id="4_041lk"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="5_f87xa"]
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="6_wqlkq"]
 [ext_resource type="PackedScene" uid="uid://b8ahs3owuq1lg" path="res://Objects/Weapons/Projectiles/bullet1.tscn" id="7_i040i"]
-[ext_resource type="PackedScene" uid="uid://q51seqx2xlt" path="res://Objects/Weapons/rate.tscn" id="7_nfamr"]
 [ext_resource type="AudioStream" uid="uid://cxlfx6rw3egby" path="res://Sound/sfx/Audio 5.mp3" id="8_3nlhr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
@@ -132,9 +132,11 @@ position = Vector2(35, 0)
 [node name="Node2D" type="Node2D" parent="Pointer"]
 position = Vector2(15, -4)
 
-[node name="Rate" parent="Pointer/Node2D" instance=ExtResource("7_nfamr")]
+[node name="Rate" type="Node2D" parent="Pointer/Node2D"]
 position = Vector2(21, 0)
+script = ExtResource("3_3nlhr")
 clock_display = 1
+color = Color(0.8898623, 0.100901015, 0.493577, 1)
 radius = 6
 
 [node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]

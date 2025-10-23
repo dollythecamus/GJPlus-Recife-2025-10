@@ -11,6 +11,7 @@ size = Vector2(28, 32)
 
 [node name="Upgrade" type="Node2D"]
 script = ExtResource("1_r66w8")
+upgrade = "Roll"
 
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("2_krvvl")

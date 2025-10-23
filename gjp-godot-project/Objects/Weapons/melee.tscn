@@ -128,8 +128,8 @@ position = Vector2(57, 0)
 script = ExtResource("4_l1odu")
 inertia = NodePath("../Pointer/Inertia")
 speed = 500.0
-acceleration = 1100.0
-friction = 0.94
+acceleration = 1500.0
+friction = 0.82
 metadata/_custom_type_script = "uid://brtc2oowy8obq"
 
 [node name="Attack" type="Node" parent="." node_paths=PackedStringArray("pointer", "mover")]

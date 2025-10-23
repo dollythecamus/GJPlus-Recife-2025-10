@@ -1,4 +1,5 @@
 extends Node
+class_name BotAI
 
 @onready var target = get_parent().target
 @onready var mover = get_parent().mover
