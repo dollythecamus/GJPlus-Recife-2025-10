@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://koca7cgr8xi2"]
+
+[ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_nyvkq"]
+
+[resource]
+line_spacing = -6.0
+font = ExtResource("1_nyvkq")
+font_size = 36
+font_color = Color(0.96862745, 0.27450982, 0.8352941, 1)
+outline_size = 1
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
