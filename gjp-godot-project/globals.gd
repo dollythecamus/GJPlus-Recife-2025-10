@@ -59,5 +59,5 @@ func _enter_tree() -> void:
 func add_script(node, script):
 	var new = Node.new()
 	new.set_script(load("res://Scripts/" + script))
-	node.add_child(new)
+	node.add_child.call_deferred(new)
 	return new

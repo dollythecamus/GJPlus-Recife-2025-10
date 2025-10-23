@@ -5,6 +5,8 @@ class_name PlayerControls
 @export var roll : Node
 @export var pickup : Pickup
 
+var upgrades = []
+
 var c = 0
 var dead = false
 signal update_health
@@ -45,6 +47,11 @@ func _process(delta: float) -> void:
 			var attacking = pickup.picked.get_node("Attack")
 			if attacking != null:
 				attacking.attack(true)
+	
+	if upgrades.any(func(x): return x is Roll):
+		var r = upgrades.find_custom(func(x): return x is Roll)
+		if Input.is_action_just_pressed("roll") and not move.direction.is_zero_approx():
+			upgrades[r].roll()
 
 signal HIT
 
@@ -62,3 +69,5 @@ func upgrade(string):
 		roll.hit = $Hit
 		roll.pointer = $Pointer
 		roll.pickup = $Pickup
+		roll.move = $Mover
+		upgrades.append(roll)

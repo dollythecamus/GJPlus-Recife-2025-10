@@ -124,6 +124,8 @@ focus_previous = NodePath("../Play")
 text = "?"
 
 [node name="Ilustrations" type="Node2D" parent="Main"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="PC" type="Node2D" parent="Main/Ilustrations"]
 position = Vector2(499, 325)

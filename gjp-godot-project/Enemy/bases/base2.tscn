@@ -91,7 +91,7 @@ remote_path = NodePath("../../../../visual/root/leg0")
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-15, -6)
 rotation = -0.14035122
-scale = Vector2(0.99999845, 0.99999845)
+scale = Vector2(0.99999833, 0.99999833)
 rest = Transform2D(1, 0, 0, 1, -15, -6)
 editor_settings/show_bone_gizmo = false
 
@@ -300,14 +300,14 @@ vertical_alignment = 1
 [node name="leg1" type="Node2D" parent="visual/root"]
 position = Vector2(-15, -6)
 rotation = -0.14035122
-scale = Vector2(0.99999845, 0.99999845)
+scale = Vector2(0.99999833, 0.99999833)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg1"]
 position = Vector2(-14, -17)
 rotation = 0.10545888
 
 [node name="leg2" type="Node2D" parent="visual/root/leg1/leg1"]
-position = Vector2(-13, 15.999999)
+position = Vector2(-12.999998, 15.999998)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="l2" type="Label" parent="visual/root/leg1/leg1/leg2"]

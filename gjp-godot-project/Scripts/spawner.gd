@@ -56,6 +56,8 @@ func throw_object_towards_player(obj):
 	check_distance_loop(pp, m, p, obj)
 
 func check_distance_loop(pp, m, p, obj):
+	if obj == null:
+		return
 	var d = (center.global_position - obj.global_position)
 	
 	if d.length() > 100:

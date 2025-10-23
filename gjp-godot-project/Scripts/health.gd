@@ -30,6 +30,8 @@ var damage_boost = false
 		if health <= 0:
 			# add some kind of remnant
 			n.die()
+			if not is_player:
+				AIDeathSFX.play()
 
 var c = 0
 func _process(delta):

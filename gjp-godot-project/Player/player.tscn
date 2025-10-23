@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://27ex2tehfssw"]
+[gd_scene load_steps=16 format=3 uid="uid://27ex2tehfssw"]
 
 [ext_resource type="Script" uid="uid://b1m8s1s8kes6l" path="res://Player/playerControls.gd" id="1_4ntmi"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://Visuals/ASCII/player_ascii.tres" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="4_gwnis"]
+[ext_resource type="AudioStream" uid="uid://cfgbql4phfg7q" path="res://Sound/sfx/bwank.mp3" id="4_x3vf3"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="5_fhl08"]
 [ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://Scripts/pickup.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="7_vtle1"]
@@ -51,8 +52,8 @@ pickup = NodePath("Pickup")
 
 [node name="Mover" type="Node" parent="."]
 script = ExtResource("3_btcbx")
-speed = 300.0
-acceleration = 3000.0
+speed = 230.0
+acceleration = 2000.0
 friction = 0.96
 
 [node name="Health" type="Node" parent="."]
@@ -60,6 +61,9 @@ script = ExtResource("7_vtle1")
 is_player = true
 health = 3
 metadata/_custom_type_script = "uid://cyo8c06s31fwq"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Health"]
+stream = ExtResource("4_x3vf3")
 
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("4_gwnis")

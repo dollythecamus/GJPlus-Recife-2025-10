@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwtvs2xmhygl6"]
+
+[ext_resource type="AudioStream" uid="uid://b5fnuw88rdxx2" path="res://Sound/sfx/bonk.mp3" id="1_0qutv"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_0qutv")
+volume_db = -10.0
