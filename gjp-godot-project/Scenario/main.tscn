@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=35 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
@@ -99,6 +99,15 @@ shadow_size = 0
 line_spacing = -6.0
 font = ExtResource("1_272bh")
 font_size = 48
+font_color = Color(0.92156863, 0.12156863, 0.18431373, 1)
+outline_size = 1
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4riy"]
+line_spacing = -6.0
+font = ExtResource("1_272bh")
+font_size = 44
 font_color = Color(0.92156863, 0.12156863, 0.18431373, 1)
 outline_size = 1
 outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
@@ -1007,7 +1016,6 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame1" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII/frame1"]
 offset_right = 40.0
@@ -1032,6 +1040,7 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame2" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII/frame2"]
 offset_right = 40.0
@@ -1344,6 +1353,7 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame6" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII/frame6"]
 offset_right = 40.0
@@ -1368,7 +1378,6 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame7" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII/frame7"]
 offset_right = 40.0
@@ -1403,10 +1412,150 @@ offset_bottom = -3.0
 alignment = 1
 
 [node name="Grab" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard"]
-visible = false
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="H" type="HBoxContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Grab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="C" type="CenterContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="C" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C"]
+layout_mode = 2
+
+[node name="AnimatedASCII" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C"]
+script = ExtResource("9_jo754")
+metadata/_custom_type_script = "uid://c1qdqmw14tovm"
+
+[node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII"]
+visible = false
+
+[node name="key" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame0"]
+position = Vector2(-8, -8)
+
+[node name="letter" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame0/key"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "E"
+label_settings = ExtResource("10_f5tc6")
+
+[node name="Label3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame0/key"]
+offset_left = -6.0
+offset_top = -40.0
+offset_right = 34.0
+offset_bottom = 9.0
+text = "-"
+label_settings = SubResource("LabelSettings_4k03t")
+
+[node name="Label6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame0/key"]
+offset_left = -8.0
+offset_top = -23.0
+offset_right = 32.0
+offset_bottom = 32.0
+text = "-"
+label_settings = SubResource("LabelSettings_3yaik")
+
+[node name="Label4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame0/key"]
+offset_left = 23.0
+offset_top = -14.0
+offset_right = 63.0
+offset_bottom = 35.0
+rotation = 1.8052359
+text = "-"
+label_settings = SubResource("LabelSettings_4k03t")
+
+[node name="Label5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame0/key"]
+offset_left = 43.0
+offset_top = -24.0
+offset_right = 83.0
+offset_bottom = 25.0
+rotation = 1.3939282
+text = "-"
+label_settings = SubResource("LabelSettings_0rq0a")
+
+[node name="frame1" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII"]
+visible = false
+scale = Vector2(0.7584025, 0.7584025)
+
+[node name="key" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame1"]
+position = Vector2(-8, -8)
+
+[node name="letter" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame1/key"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "E"
+label_settings = ExtResource("10_f5tc6")
+
+[node name="Label3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame1/key"]
+offset_left = -6.0
+offset_top = -40.0
+offset_right = 34.0
+offset_bottom = 9.0
+text = "-"
+label_settings = SubResource("LabelSettings_4k03t")
+
+[node name="Label6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame1/key"]
+offset_left = -8.0
+offset_top = -23.0
+offset_right = 32.0
+offset_bottom = 32.0
+text = "-"
+label_settings = SubResource("LabelSettings_3yaik")
+
+[node name="Label4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame1/key"]
+offset_left = 23.0
+offset_top = -14.0
+offset_right = 63.0
+offset_bottom = 35.0
+rotation = 1.8052359
+text = "-"
+label_settings = SubResource("LabelSettings_4k03t")
+
+[node name="Label5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame1/key"]
+offset_left = 43.0
+offset_top = -24.0
+offset_right = 83.0
+offset_bottom = 25.0
+rotation = 1.3939282
+text = "-"
+label_settings = SubResource("LabelSettings_0rq0a")
+
+[node name="C2" type="CenterContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="C" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2"]
+layout_mode = 2
+
+[node name="AnimatedASCII" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C"]
+script = ExtResource("9_jo754")
+metadata/_custom_type_script = "uid://c1qdqmw14tovm"
+
+[node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+
+[node name="letter" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="letter2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 15.0
+text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
 
 [node name="Roll" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard"]
 visible = false
@@ -1503,10 +1652,11 @@ layout_mode = 2
 script = ExtResource("9_jo754")
 looping = true
 auto_start = true
-fpf = 24
+fpf = 48
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/C/G/C4/C/Control/AnimatedASCII"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1524,7 +1674,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame1" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/C/G/C4/C/Control/AnimatedASCII"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1601,20 +1750,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H"]
+[node name="C2" type="CenterContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="C" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/CenterContainer"]
+[node name="C" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/C2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="visual" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/CenterContainer/C"]
+[node name="visual" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/C2/C"]
 script = ExtResource("6_dg77c")
 to_point = true
 rpm = 10
 
-[node name="ASCII" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/CenterContainer/C/visual"]
+[node name="ASCII" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/C2/C/visual"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1634,7 +1783,7 @@ label_settings = ExtResource("10_wfabv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/CenterContainer/C/visual"]
+[node name="ASCII2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/C2/C/visual"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1654,7 +1803,7 @@ label_settings = ExtResource("10_wfabv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/CenterContainer/C/visual"]
+[node name="ASCII3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Roll/H/C2/C/visual"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
