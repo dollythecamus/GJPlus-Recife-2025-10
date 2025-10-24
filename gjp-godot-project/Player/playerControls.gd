@@ -11,8 +11,11 @@ var dead = false
 
 signal update_health
 signal upgraded(which)
+signal hit
 
-enum Actions {SHOOT, GRAB, ROLL, DEFEND, MOVEAIM}
+signal act(what)
+
+enum Actions {GRAB, ROLL, DEFEND, MOVEAIM, ATTACK, max}
 
 func die():
 	if dead:
@@ -45,25 +48,30 @@ func _process(delta: float) -> void:
 	
 	if not move.direction.is_zero_approx():
 		$visual.rotation = sin(c * 10) * .2
+		act.emit(Actions.MOVEAIM)
 	
 	if Input.is_action_just_pressed("attack"):
 		if pickup.did_pick:
 			var attacking = pickup.node_picked.get_node("Attack")
 			if attacking != null:
 				attacking.attack()
+				act.emit(Actions.ATTACK)
 	
 	if Input.is_action_just_pressed("pick"):
-		pickup.pick_first(self)
+		var did = pickup.pick_first(self)
+		if did:
+			act.emit(Actions.GRAB)
 	
 	if upgrades.has("Roll"):
 		if Input.is_action_just_pressed("roll") and not move.direction.is_zero_approx():
 			upgrades.Roll.roll()
+			act.emit(Actions.ROLL)
 	
 	if upgrades.has("Defense"):
 		if Input.is_action_just_pressed("defend"):
 			upgrades.Defense.defend()
+			act.emit(Actions.DEFEND)
 
-signal hit
 
 func _on_hit() -> void:
 	hit.emit()

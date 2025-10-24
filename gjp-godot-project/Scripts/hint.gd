@@ -1,47 +1,74 @@
 extends Node
 
-var expected = 0
-var learned = 0
+var with_controller = false
+
+var expected := 0b00000000
+var learned  := 0b00000000
+
+var attack
+var grab
+var roll
+var defend
+var move_aim
+
+func _ready() -> void:
+	get_nodes()
+
+func get_nodes():
+	
+	var scheme = "keyboard"
+	if with_controller:
+		scheme = "controller"
+	
+	attack =   get_node(scheme + "/Attack")
+	grab =     get_node(scheme + "/Grab")
+	roll =     get_node(scheme + "/Roll")
+	defend =   get_node(scheme + "/Defend")
+	move_aim = get_node(scheme + "/MoveAim")
 
 func player_acted(what):
+	if is_bit_set(learned, what):
+		return
+	
+	learned += int(pow(2, what))
+	
+	await get_tree().create_timer(.5).timeout
+	
 	match what:
-		PlayerControls.Actions.SHOOT:
-			$H/Shoot.hide()
-			learned += 1
 		PlayerControls.Actions.GRAB:
-			$H/Grab.hide()
-			learned += 2
+			grab.hide()
 		PlayerControls.Actions.ROLL:
-			$H/Roll.hide()
-			learned += 4
+			roll.hide()
 		PlayerControls.Actions.DEFEND:
-			$H/Defend.hide()
-			learned += 8
+			defend.hide()
 		PlayerControls.Actions.MOVEAIM:
-			$H/"Move-Aim".hide()
-			learned += 16
+			move_aim.hide()
+			expect_player(PlayerControls.Actions.GRAB)
+		PlayerControls.Actions.ATTACK:
+			attack.hide()
 
 func expect_player(what):
-	# TODO: this kinda math so that the player is expected to do things they didn't learn but not things they leadnerd
 	
-	var diff = expected - learned
-	
-	if diff == 0:
+	if not is_bit_set(learned, what):
+		var act = int(pow(2, what))
+		expected += act
+	else:
 		return
 	
 	match what:
-		PlayerControls.Actions.SHOOT:
-			$H/Shoot.show()
-			expected += 1
 		PlayerControls.Actions.GRAB:
-			$H/Grab.show()
-			expected += 2
+			grab.show()
 		PlayerControls.Actions.ROLL:
-			$H/Roll.show()
-			expected += 4
+			roll.show()
 		PlayerControls.Actions.DEFEND:
-			$H/Defend.show()
-			expected += 8
+			defend.show()
 		PlayerControls.Actions.MOVEAIM:
-			$H/"Move-Aim".show()
-			expected += 16
+			move_aim.show()
+
+func is_bit_set(x, pos):
+	var m = 1 << pos
+	return (x & m) != 0
+
+
+func _on_player_act(what: Variant) -> void:
+	player_acted(what)

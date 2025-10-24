@@ -24,12 +24,12 @@ signal state_change(v)
 var fire_cycle = .7
 var fc = randf()/fire_cycle
 
-var guns
+var guns = []
 
 func _init() -> void:
 	Globals.other_AIs.append(self)
 
-func _ready() -> void:
+func _built():
 	guns = get_guns()
 
 func run(delta):

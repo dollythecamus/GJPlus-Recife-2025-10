@@ -20,6 +20,7 @@ func pick_first(owns):
 	if a.size() > 0:
 		if a[0] is Pickable:
 			pick(a[0], owns)
+			return true
 
 func pick(area, owns = n):
 	if not area.is_picked:

@@ -6,7 +6,7 @@ class_name Build
 @export var build_ready = ""
 
 const builds = {
-	"DEBUG_I": "base2+two_arm+set(mover.speed=50)",
+	"DEBUG_I": "base2+two_gun+set(mover.speed=50)",
 	"ZeroI": "base1",
 	"ZeroII": "base1+arm",
 	"ZeroIII": "base2",
@@ -53,6 +53,8 @@ func build(instruction):
 				var vs = w[0].split(".")
 				# magic at work, folks
 				n.get(vs[0]).set(vs[1], float(value))
+	
+	n.AI._built()
 
 func build_gun(offset):
 	var new = Globals.builds["gun"].instantiate()
