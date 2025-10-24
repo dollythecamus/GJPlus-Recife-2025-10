@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=39 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
@@ -111,6 +111,42 @@ font_size = 44
 font_color = Color(0.92156863, 0.12156863, 0.18431373, 1)
 outline_size = 1
 outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogmly"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 54
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4d5u6"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 36
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0wu0"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 38
+font_color = Color(0.1764706, 0.8980392, 0.92941177, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2qr3"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 28
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wo1es"]
@@ -650,17 +686,6 @@ offset_right = 133.0
 offset_bottom = -3.0
 alignment = 1
 
-[node name="Shoot" type="Label" parent="UI/Tutorial/aim/control_hints/controller"]
-visible = false
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
-label_settings = SubResource("LabelSettings_omng6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Grab" type="Label" parent="UI/Tutorial/aim/control_hints/controller"]
 visible = false
 texture_filter = 1
@@ -772,11 +797,10 @@ layout_mode = 2
 script = ExtResource("9_jo754")
 looping = true
 auto_start = true
-fpf = 24
+fpf = 48
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Label" parent="UI/Tutorial/aim/control_hints/controller/Roll/H/C/G/C4/C/Control/AnimatedASCII"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -794,6 +818,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame1" type="Label" parent="UI/Tutorial/aim/control_hints/controller/Roll/H/C/G/C4/C/Control/AnimatedASCII"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1016,6 +1041,7 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame1" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII/frame1"]
 offset_right = 40.0
@@ -1065,7 +1091,6 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame3" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C/C/AnimatedASCII/frame3"]
 offset_right = 40.0
@@ -1328,7 +1353,6 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame5" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII/frame5"]
 offset_right = 40.0
@@ -1378,6 +1402,7 @@ text = "-"
 label_settings = ExtResource("10_f5tc6")
 
 [node name="frame7" type="Node2D" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII/frame7"]
 offset_right = 40.0
@@ -1412,6 +1437,7 @@ offset_bottom = -3.0
 alignment = 1
 
 [node name="Grab" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard"]
+visible = false
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1432,7 +1458,11 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="AnimatedASCII" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C"]
+position = Vector2(-18, 0)
 script = ExtResource("9_jo754")
+looping = true
+auto_start = true
+fpf = 36
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C/C/AnimatedASCII"]
@@ -1538,23 +1568,668 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="AnimatedASCII" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C"]
+position = Vector2(-21, 0)
 script = ExtResource("9_jo754")
+looping = true
+auto_start = true
+fpf = 16
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
 
-[node name="letter" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
 offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 9.0
 text = "*"
 label_settings = SubResource("LabelSettings_c4riy")
 
-[node name="letter2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
 offset_top = -30.0
 offset_right = 40.0
 offset_bottom = 15.0
 text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 49.0
+rotation = 2.375414
+scale = Vector2(0.69594616, 1.0590736)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+offset_left = 22.0
+offset_top = -2.000001
+offset_right = 62.0
+offset_bottom = 43.0
+rotation = 2.9660487
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+offset_left = 28.0
+offset_right = 68.0
+offset_bottom = 45.0
+rotation = 3.156402
+scale = Vector2(1.128739, 1.128739)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+offset_left = 28.0
+offset_top = 4.999999
+offset_right = 68.0
+offset_bottom = 50.0
+rotation = 3.5020642
+scale = Vector2(1.034554, 1.034554)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii7" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+offset_left = 27.0
+offset_top = 11.999999
+offset_right = 67.0
+offset_bottom = 57.0
+rotation = 3.719637
+scale = Vector2(1.034554, 1.034554)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="obj" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0"]
+position = Vector2(64, 0)
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0/obj"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "#"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame0/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "O"
+label_settings = ExtResource("7_eakse")
+
+[node name="frame1" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(-10, -6)
+
+[node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1"]
+position = Vector2(29, -6)
+rotation = 0.5578773
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/Node2D"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 25.0
+text = "*"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/Node2D"]
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 15.0
+text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/Node2D"]
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 49.0
+rotation = 2.375414
+scale = Vector2(0.69594616, 1.0590736)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/Node2D"]
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 62.0
+offset_bottom = 43.0
+rotation = 2.9660487
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/Node2D"]
+offset_left = 28.0
+offset_right = 68.0
+offset_bottom = 45.0
+rotation = 3.156402
+scale = Vector2(1.128739, 1.128739)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/Node2D"]
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 50.0
+rotation = 3.5020642
+scale = Vector2(1.034554, 1.034554)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii7" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/Node2D"]
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 67.0
+offset_bottom = 57.0
+rotation = 3.719637
+scale = Vector2(1.034554, 1.034554)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="obj" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1"]
+position = Vector2(64, 0)
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/obj"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "#"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame1/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "O"
+label_settings = ExtResource("7_eakse")
+
+[node name="frame2" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(-10, -6)
+
+[node name="obj" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2"]
+position = Vector2(64, 0)
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/obj"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "#"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "O"
+label_settings = ExtResource("7_eakse")
+
+[node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2"]
+position = Vector2(48, -4)
+rotation = 0.5578773
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/Node2D"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 25.0
+text = "*"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/Node2D"]
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 15.0
+text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/Node2D"]
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 49.0
+rotation = 2.375414
+scale = Vector2(0.69594616, 1.0590736)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/Node2D"]
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 62.0
+offset_bottom = 43.0
+rotation = 2.9660487
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/Node2D"]
+offset_left = 28.0
+offset_right = 68.0
+offset_bottom = 45.0
+rotation = 3.156402
+scale = Vector2(1.128739, 1.128739)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/Node2D"]
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 50.0
+rotation = 3.5020642
+scale = Vector2(1.034554, 1.034554)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii7" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame2/Node2D"]
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 67.0
+offset_bottom = 57.0
+rotation = 3.719637
+scale = Vector2(1.034554, 1.034554)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="frame3" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(-10, -6)
+
+[node name="obj" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3"]
+position = Vector2(64, 0)
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/obj"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "#"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "O"
+label_settings = ExtResource("7_eakse")
+
+[node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3"]
+position = Vector2(52, -6)
+rotation = 0.5578773
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/Node2D"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 25.0
+text = "*"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/Node2D"]
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 15.0
+text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/Node2D"]
+offset_left = 19.505943
+offset_top = -2.7419195
+offset_right = 59.505943
+offset_bottom = 42.25808
+rotation = 1.8868796
+scale = Vector2(0.728617, 0.8010973)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/Node2D"]
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 62.0
+offset_bottom = 43.0
+rotation = 2.9660487
+scale = Vector2(0.99381, 0.7246322)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/Node2D"]
+offset_left = 28.0
+offset_right = 68.0
+offset_bottom = 45.0
+rotation = 3.156402
+scale = Vector2(1.1217521, 0.8179206)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/Node2D"]
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 50.0
+rotation = 3.5020642
+scale = Vector2(1.0281513, 0.74967086)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii7" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3/Node2D"]
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 67.0
+offset_bottom = 57.0
+rotation = 3.719637
+scale = Vector2(1.0281501, 0.74967116)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="frame4" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(-10, -6)
+
+[node name="obj" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4"]
+position = Vector2(48, 0)
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/obj"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "#"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "O"
+label_settings = ExtResource("7_eakse")
+
+[node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4"]
+position = Vector2(36, -6)
+rotation = 0.5578773
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/Node2D"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 25.0
+text = "*"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/Node2D"]
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 15.0
+text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/Node2D"]
+offset_left = 19.505943
+offset_top = -2.7419195
+offset_right = 59.505943
+offset_bottom = 42.25808
+rotation = 1.8868796
+scale = Vector2(0.728617, 0.8010973)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/Node2D"]
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 62.0
+offset_bottom = 43.0
+rotation = 2.9660487
+scale = Vector2(0.99381, 0.7246322)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/Node2D"]
+offset_left = 28.0
+offset_right = 68.0
+offset_bottom = 45.0
+rotation = 3.156402
+scale = Vector2(1.1217521, 0.8179206)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/Node2D"]
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 50.0
+rotation = 3.5020642
+scale = Vector2(1.0281513, 0.74967086)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii7" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame4/Node2D"]
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 67.0
+offset_bottom = 57.0
+rotation = 3.719637
+scale = Vector2(1.0281501, 0.74967116)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="frame5" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(-10, -6)
+
+[node name="obj" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5"]
+position = Vector2(26, 0)
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/obj"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "#"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "O"
+label_settings = ExtResource("7_eakse")
+
+[node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5"]
+position = Vector2(14, -6)
+rotation = 0.5578773
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/Node2D"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 25.0
+text = "*"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/Node2D"]
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 15.0
+text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/Node2D"]
+offset_left = 19.505943
+offset_top = -2.7419195
+offset_right = 59.505943
+offset_bottom = 42.25808
+rotation = 1.8868796
+scale = Vector2(0.728617, 0.8010973)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/Node2D"]
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 62.0
+offset_bottom = 43.0
+rotation = 2.9660487
+scale = Vector2(0.99381, 0.7246322)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/Node2D"]
+offset_left = 28.0
+offset_right = 68.0
+offset_bottom = 45.0
+rotation = 3.156402
+scale = Vector2(1.1217521, 0.8179206)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/Node2D"]
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 50.0
+rotation = 3.5020642
+scale = Vector2(1.0281513, 0.74967086)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii7" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame5/Node2D"]
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 67.0
+offset_bottom = 57.0
+rotation = 3.719637
+scale = Vector2(1.0281501, 0.74967116)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="frame6" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(-28, -10)
+
+[node name="obj" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6"]
+position = Vector2(26, 0)
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/obj"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 9.0
+text = "*"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "#"
+label_settings = ExtResource("7_eakse")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/obj"]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "O"
+label_settings = ExtResource("7_eakse")
+
+[node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6"]
+position = Vector2(14, -6)
+rotation = 0.5578773
+
+[node name="ascii" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/Node2D"]
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 25.0
+text = "*"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/Node2D"]
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 15.0
+text = "o"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/Node2D"]
+offset_left = 19.505943
+offset_top = -2.7419195
+offset_right = 59.505943
+offset_bottom = 42.25808
+rotation = 1.8868796
+scale = Vector2(0.728617, 0.8010973)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/Node2D"]
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 62.0
+offset_bottom = 43.0
+rotation = 2.9660487
+scale = Vector2(0.99381, 0.7246322)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/Node2D"]
+offset_left = 28.0
+offset_right = 68.0
+offset_bottom = 45.0
+rotation = 3.156402
+scale = Vector2(1.1217521, 0.8179206)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii6" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/Node2D"]
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 50.0
+rotation = 3.5020642
+scale = Vector2(1.0281513, 0.74967086)
+text = "'"
+label_settings = SubResource("LabelSettings_c4riy")
+
+[node name="ascii7" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame6/Node2D"]
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 67.0
+offset_bottom = 57.0
+rotation = 3.719637
+scale = Vector2(1.0281501, 0.74967116)
+text = "'"
 label_settings = SubResource("LabelSettings_c4riy")
 
 [node name="Roll" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard"]
@@ -1829,6 +2504,758 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="H" type="HBoxContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Defend"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="C" type="CenterContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H"]
+layout_mode = 2
+
+[node name="G" type="GridContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="C1" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="C2" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "O"
+label_settings = ExtResource("10_f5tc6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C3" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="C4" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "O"
+label_settings = ExtResource("10_f5tc6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C" type="CenterContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C4/C"]
+layout_mode = 2
+
+[node name="AnimatedASCII" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C4/C/Control"]
+script = ExtResource("9_jo754")
+looping = true
+auto_start = true
+fpf = 48
+metadata/_custom_type_script = "uid://c1qdqmw14tovm"
+
+[node name="frame0" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C4/C/Control/AnimatedASCII"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -14.5
+offset_right = 50.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+label_settings = ExtResource("10_f5tc6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="frame1" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C4/C/Control/AnimatedASCII"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -14.5
+offset_right = 21.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("10_f5tc6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C5" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="C6" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "O"
+label_settings = ExtResource("10_f5tc6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C7" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="C8" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G/C8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "O"
+label_settings = ExtResource("10_f5tc6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C9" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C/G"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="C2" type="CenterContainer" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="C" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimatedASCII" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C"]
+script = ExtResource("9_jo754")
+metadata/_custom_type_script = "uid://c1qdqmw14tovm"
+
+[node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII"]
+visible = false
+
+[node name="ASCII" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame0"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "O"
+label_settings = SubResource("LabelSettings_ogmly")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame0"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = SubResource("LabelSettings_4d5u6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame0"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 32.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_n0wu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame0"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame0"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="frame1" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(-6, -1)
+rotation = -0.34413877
+
+[node name="ASCII" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "O"
+label_settings = SubResource("LabelSettings_ogmly")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = SubResource("LabelSettings_4d5u6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 32.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_n0wu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="frame2" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII"]
+visible = false
+
+[node name="ASCII" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "O"
+label_settings = SubResource("LabelSettings_ogmly")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = SubResource("LabelSettings_4d5u6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 32.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_n0wu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="frame3" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII"]
+visible = false
+position = Vector2(8, -1.0000002)
+rotation = 0.38934237
+
+[node name="ASCII" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "O"
+label_settings = SubResource("LabelSettings_ogmly")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = SubResource("LabelSettings_4d5u6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 32.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_n0wu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="frame4" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII"]
+visible = false
+
+[node name="ASCII" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "O"
+label_settings = SubResource("LabelSettings_ogmly")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = SubResource("LabelSettings_4d5u6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 32.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_n0wu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Defend/H/C2/C/AnimatedASCII/frame4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MoveAim" type="Control" parent="UI/Tutorial/aim/control_hints/keyboard"]
 visible = false
 texture_filter = 1
@@ -1859,6 +3286,7 @@ fpf = 12
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII/frame0"]
 scale = Vector2(0.7, 0.7)
@@ -2770,7 +4198,6 @@ text = "-"
 label_settings = SubResource("LabelSettings_0rq0a")
 
 [node name="frame5" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII/frame5"]
 scale = Vector2(0.7, 0.7)
@@ -3332,6 +4759,7 @@ fpf = 12
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(0, -34)
 
 [node name="Label3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII/frame0"]
@@ -3485,7 +4913,6 @@ text = "*"
 label_settings = SubResource("LabelSettings_4nohq")
 
 [node name="frame5" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII"]
-visible = false
 position = Vector2(10, -52)
 
 [node name="Label3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII/frame5"]
@@ -3625,7 +5052,6 @@ text = "'"
 label_settings = SubResource("LabelSettings_khqs6")
 
 [node name="frame1" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Attack/H/C/C/AnimatedASCII"]
-visible = false
 position = Vector2(0, -34)
 
 [node name="Label3" type="Label" parent="UI/Tutorial/aim/control_hints/keyboard/Attack/H/C/C/AnimatedASCII/frame1"]
@@ -3684,7 +5110,6 @@ fpf = 32
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Attack/H/C2/C/AnimatedASCII"]
-visible = false
 
 [node name="Node2D" type="Node2D" parent="UI/Tutorial/aim/control_hints/keyboard/Attack/H/C2/C/AnimatedASCII/frame0"]
 position = Vector2(-9, -16)

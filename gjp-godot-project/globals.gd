@@ -27,10 +27,12 @@ const progression = [
 	"enemy:ZeroIII:1",
 	"enemy:ZeroII:2",
 	"weapon:pistol",
+	"hint:Attack",
 	"power:health:2",
 	"enemy:ZeroIV:1",
 	"story:where and when am I?",
 	"power:upgrade:Roll",
+	"hint:Roll",
 	"enemy:ZeroIV:2",
 	"enemy:ZeroV:1",
 	"power:health:2",
@@ -42,6 +44,8 @@ const progression = [
 	"power:health:2",
 	"enemy:ZeroVII:1",
 	"weapon:blastgun",
+	"power:upgrade:Defense",
+	"hint:Defense",
 	"enemy:ZeroIV:1",
 	"enemy:ZeroVII:1,enemy:ZeroIV:1",
 	"power:health:2",
@@ -52,6 +56,7 @@ const ENEMY = "enemy"
 const WEAPON = "weapon"
 const POWER = "power"
 const STORY = "story"
+const HINT = "hint"
 
 var other_AIs = []
 var all_feet = {}

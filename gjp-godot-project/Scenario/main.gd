@@ -61,7 +61,9 @@ func trigger_next():
 		elif args[0] == Globals.STORY:
 			story(args[1])
 			trigger_next()
-		
+		elif args[0] == Globals.HINT:
+			control_hint.trigger_hint(args[1])
+			trigger_next()
 		await get_tree().create_timer(.5).timeout
 
 func show_wave_hint():
