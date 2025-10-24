@@ -43,10 +43,13 @@ func _process(delta: float) -> void:
 		$visual.rotation = sin(c * 10) * .2
 	
 	if Input.is_action_just_pressed("attack"):
-		if pickup.picked != null:
-			var attacking = pickup.picked.get_node("Attack")
+		if pickup.did_pick:
+			var attacking = pickup.node_picked.get_node("Attack")
 			if attacking != null:
 				attacking.attack()
+	
+	if Input.is_action_just_pressed("pick"):
+		pickup.pick_first(self)
 	
 	if upgrades.has("Roll"):
 		if Input.is_action_just_pressed("roll") and not move.direction.is_zero_approx():

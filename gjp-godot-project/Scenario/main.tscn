@@ -1,13 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=21 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
 [ext_resource type="Script" uid="uid://dnwtw5wvliagv" path="res://Scenario/morse.gd" id="2_5vw27"]
 [ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="3_kek77"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="6_dg77c"]
+[ext_resource type="PackedScene" uid="uid://bljg0qbrjfr5n" path="res://Objects/Weapons/blastgun.tscn" id="7_omng6"]
 [ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://Scripts/spawner.gd" id="7_ycdy4"]
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://Visuals/ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://Visuals/UI/health_UI.gd" id="8_kek77"]
+[ext_resource type="PackedScene" uid="uid://bb8dqhjq6njea" path="res://Objects/Weapons/granade.tscn" id="8_wfabv"]
 [ext_resource type="FontFile" uid="uid://d16a6qnqcwagp" path="res://Visuals/UI/texgyreadventor-bolditalic.otf" id="11_omng6"]
 [ext_resource type="Theme" uid="uid://bbs6bm2q5snnf" path="res://Visuals/UI/MM/popups.tres" id="11_wfabv"]
 [ext_resource type="AudioStream" uid="uid://b014ge75ajta4" path="res://Sound/music/crunchyyv3.mp3" id="12_omng6"]
@@ -40,7 +42,6 @@ script/source = "extends Node2D
 "
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_omng6"]
-load_path = "res://.godot/imported/mm.png-17468b330235609047f5ce7cad1146c3.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omng6"]
 bg_color = Color(0.17842048, 0.12815902, 0.21888784, 0.87058824)
@@ -268,6 +269,12 @@ texture = SubResource("CompressedTexture2D_omng6")
 [node name="PD" type="GPUParticles2D" parent="main/particles"]
 visible = false
 texture = SubResource("CompressedTexture2D_omng6")
+
+[node name="blastgun" parent="main" instance=ExtResource("7_omng6")]
+position = Vector2(324, 148)
+
+[node name="Granade" parent="main" instance=ExtResource("8_wfabv")]
+position = Vector2(284, 231)
 
 [node name="UI" type="Control" parent="."]
 process_mode = 1

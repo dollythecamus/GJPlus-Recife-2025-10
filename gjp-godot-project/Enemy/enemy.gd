@@ -29,7 +29,13 @@ func _exit_tree() -> void:
 	died.emit()
 
 func die():
-	# vfx here
+	$visual.hide()
+	$Skeleton2D.hide()
+	$dead.show()
+	$dead.play()
+	$dead.global_position = pointer.n.global_position
+	$dead.global_rotation = pointer.n.global_rotation
+	await $dead.finished
 	queue_free()
 
 func _on_ai_state_change(v: Variant) -> void:

@@ -12,10 +12,14 @@ func explode():
 	
 	await rate.done
 	
+	$AudioStreamPlayer.play()
 	visual.hide()
 	effect.show()
 	effect.play()
-	hurt.hit_all_area()
+	await hurt.hit_all_area()
+	hurt.disable()
 	
 	await effect.finished
+	await $AudioStreamPlayer.finished
+	
 	n.queue_free()

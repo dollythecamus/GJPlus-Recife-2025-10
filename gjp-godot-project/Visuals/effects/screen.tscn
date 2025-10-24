@@ -83,21 +83,12 @@ _data = {
 &"transition": SubResource("Animation_5ggpf")
 }
 
-[node name="Screen" type="Control"]
-z_index = 10
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="Screen" type="CanvasLayer"]
 script = ExtResource("1_5ggpf")
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="ColorRect" parent="."]
 material = ExtResource("2_5ggpf")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

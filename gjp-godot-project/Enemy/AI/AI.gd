@@ -85,6 +85,7 @@ func do_ranged_mode():
 
 func do_melee_mode():
 	seek_distance = 70
+	seek_distance_close = 2.0
 	others_distance = 80
 	mode = MODES.MELEE
 

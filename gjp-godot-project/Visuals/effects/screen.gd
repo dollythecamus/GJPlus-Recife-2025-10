@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 signal change 
 var changed = false

@@ -13,7 +13,6 @@ func _ready():
 
 func hit_all_area():
 	collision_mask = 24 # to hurt all
-	collision_layer = 24 # to hurt all
 	await get_tree().physics_frame
 	await get_tree().create_timer(get_physics_process_delta_time()+.05).timeout
 	for i in get_overlapping_areas():

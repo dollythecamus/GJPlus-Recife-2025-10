@@ -6,7 +6,7 @@ class_name AnimatedASCII
 @export var looping = false
 @export var auto_start = false
 
-var fpf = 6
+@export var fpf = 6
 var f = 0
 
 var l = -1
@@ -16,6 +16,8 @@ signal finished
 
 func _ready() -> void:
 	get_children().all(func(x): x.hide())
+	
+	set_process(false)
 	
 	if auto_start:
 		play()

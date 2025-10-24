@@ -3,31 +3,33 @@ class_name Pickup
 
 @onready var n := get_parent()
 
-var picked = null
+var did_pick = false
+var node_picked = null
 @export var is_player = false
 
 func release(other = false):
-	if picked != null:
+	if node_picked != null:
+		node_picked.get_node("Pickable").disconnect("released", _on_released)
 		if not other:
-			picked.get_node("Pickable").release()
-		picked.get_node("Pickable").disconnect("released", _on_released)
-		picked = null
+			node_picked.get_node("Pickable").release()
+		node_picked = null
+		did_pick = false
 
-func _process(_delta: float) -> void:
-	if not is_player:
-		return
-	
-	if Input.is_action_just_pressed("pick"):
-		var a = get_overlapping_areas()
-		if a.size() > 0:
-			if a[0] is Pickable:
-				if not a[0].picked:
-					a[0].pick(n)
-					a[0].owns(n)
-					a[0].connect("released", _on_released)
-					picked = a[0].get_parent()
-				else:
-					release()
+func pick_first(owns):
+	var a = get_overlapping_areas()
+	if a.size() > 0:
+		if a[0] is Pickable:
+			pick(a[0], owns)
+
+func pick(area, owns = n):
+	if not area.is_picked:
+		area.pick(n)
+		area.owns(owns)
+		area.connect("released", _on_released)
+		node_picked = area.get_parent()
+		did_pick = true
+	else:
+		release()
 
 func _on_released():
 	release(true)

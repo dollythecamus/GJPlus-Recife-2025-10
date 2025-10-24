@@ -13,11 +13,10 @@ var objects = {
 var weapons = {
 	"pistol": preload("res://Objects/Weapons/pistol.tscn"),
 	"melee": preload("res://Objects/Weapons/melee.tscn"),
-	"blastgun": preload("res://Objects/Weapons/blastgun.tscn")
+	"blastgun": preload("res://Objects/Weapons/blastgun.tscn"),
+	"granade": preload("res://Objects/Weapons/granade.tscn")
 }
-
 const progression = [
-	"power:upgrade:Defense",
 	"weapon:melee",
 	"enemy:ZeroI:1",
 	"story:the monsters kill me",
@@ -38,6 +37,7 @@ const progression = [
 	"enemy:ZeroVI:1",
 	"weapon:blastgun",
 	"story:terrorized by the Beyond",
+	"weapon:granade",
 	"enemy:ZeroVI:1",
 	"power:health:2",
 	"enemy:ZeroVII:1",

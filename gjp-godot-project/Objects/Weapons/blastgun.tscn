@@ -200,12 +200,13 @@ position = Vector2(43, 0)
 script = ExtResource("3_lec0r")
 color = Color(0.74509805, 0.08235294, 0.8784314, 1)
 
-[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point", "shooter")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_nlyoc")
 move = NodePath("../Mover")
 point = NodePath("../Pointer")
+shooter = NodePath("../Attack")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]
 shape = SubResource("CircleShape2D_7fmhn")
@@ -216,11 +217,12 @@ speed = 400.0
 acceleration = 900.0
 friction = 0.9
 
-[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "rate", "point")]
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("pointer", "rate", "pickable", "point")]
 script = ExtResource("5_qetip")
 projectile = ExtResource("6_igdab")
-p = NodePath("../Pointer")
+pointer = NodePath("../Pointer")
 rate = NodePath("../Pointer/Rate")
+pickable = NodePath("../Pickable")
 point = NodePath("../Pointer/point")
 fire_rate = 1.0
 

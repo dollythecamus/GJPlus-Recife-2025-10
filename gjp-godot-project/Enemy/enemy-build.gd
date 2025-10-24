@@ -55,13 +55,14 @@ func build(instruction):
 
 func build_gun(offset):
 	var new = Globals.builds["gun"].instantiate()
-	root.add_child(new)
 	new.position = offset
+	new.mover = n.mover
+	new.n = get_parent()
+	root.add_child(new)
 	new.pointer.target = n.target
-	#new.n = get_parent()
 
 func build_arm(offset):
 	var new = Globals.builds["arm"].instantiate()
-	root.add_child(new)
 	new.position = offset
 	new.n = get_parent()
+	root.add_child(new)

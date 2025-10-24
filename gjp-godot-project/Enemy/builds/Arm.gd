@@ -19,9 +19,7 @@ var release_cycle = 9.0
 var rc = randf()/release_cycle
 
 var detection
-var picked
 var has_detected = false
-var picked_item = false
 
 func _ready() -> void:
 	$Skeleton.get_modification_stack().enabled = true
@@ -30,27 +28,30 @@ func _process(delta: float) -> void:
 	c += delta
 	rc += delta
 	
-	if has_detected and not picked_item:
+	if has_detected and not pickup.did_pick:
 		return
 	
 	if n.target == null:
 		return
 	
-	if picked != null:
+	if pickup.node_picked != null:
 		if rc >= release_cycle:
-			release()
+			pickup.release()
 			rc = 0
 	
 	if c >= attack_cycle:
-		if picked != null:
-			var a = picked.get_node_or_null("Attack") 
+		if pickup.node_picked != null:
+			var a = pickup.node_picked.get_node_or_null("Attack") 
 			if a == null:
-				release()
+				pickup.release()
 			else:
 				a.attack()
 				if a is Shooter:
 					n.AI.do_ranged_mode()
 					iktarget.position = iktargetrest.position
+				elif a is Throwable:
+					n.AI.do_ranged_mode()
+					a.target.aim_at(n.target)
 				else:
 					n.AI.do_melee_mode()
 					stab()
@@ -59,13 +60,7 @@ func _process(delta: float) -> void:
 		c = 0
 
 func _exit_tree() -> void:
-	release()
-
-func release():
-	if picked:
-		picked.get_node("Pickable").release()
-		picked = null
-		n.AI.mode = BotAI.MODES.MELEE
+	pickup.release()
 
 func stab():
 	var p = iktarget.global_position
@@ -88,22 +83,15 @@ func grab(target):
 	
 	await t.finished
 	
-	var a = pickup.get_overlapping_areas()
-	if a.size() > 0:
-		if a[0] is Pickable:
-			if not a[0].picked:
-				a[0].pick(weapon_hook)
-				a[0].owns(n)
-				picked = a[0].get_parent()
-				picked_item = true
-				rc = 0
+	pickup.pick_first(n)
 
 func _on_detector_area_entered(area: Area2D) -> void:
 	#print("bot found item.")
-	if not picked_item:
+	if not pickup.did_pick:
 	# some randomness of whether or not the bot wants to pick up the thing or not
 		if randf() < .5:
 			return
+		
 		detection = area
 		has_detected = true
 		grab(area)

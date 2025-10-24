@@ -4,44 +4,48 @@ class_name Pickable
 @export var move : Mover
 @export var point : Pointer
 @export var hurt : Hurt
+@export var shooter : Shooter
 
 @onready var n := get_parent()
 var target
-var picked = false
+var is_picked = false
 
-signal PICKED(n)
+signal picked(n)
 signal released
 
-const enemy_is_owner = 8
-const player_is_owner = 16
+const player_hit = 8
+const enemy_hit = 16
 
 func release():
 	target = null
-	picked = false
-	point.to_point = picked
+	is_picked = false
+	point.to_point = is_picked
 	released.emit()
 	owns(null)
 
 func pick(node):
 	target = node
-	picked = true
-	point.to_point = picked
-	PICKED.emit(node)
+	is_picked = true
+	point.to_point = is_picked
+	picked.emit(node)
 
 func owns(_n):
 	if _n is PlayerControls:
 		if hurt != null:
-			hurt.collision_mask = player_is_owner # to hurt bots only
+			hurt.collision_mask = enemy_hit # to hurt bots only
 		point.aim = true
 		point.target = null
 	elif _n is EnemyAI:
 		if hurt != null:
-			hurt.collision_mask = enemy_is_owner # to hurt players only
+			hurt.collision_mask = player_hit # to hurt players only
 		point.target = _n.target
 	elif _n == null:
 		if hurt != null:
 			hurt.collision_mask = 0 # to hurt none
 		point.target = null
+	
+	if shooter != null:
+		shooter.owns = _n
 
 func _process(_delta: float) -> void:
 	move_to_target()

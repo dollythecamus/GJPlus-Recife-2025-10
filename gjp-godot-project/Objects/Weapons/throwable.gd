@@ -1,4 +1,5 @@
 extends Node
+class_name Throwable
 
 @export var mover : Mover
 @export var pointer : Pointer

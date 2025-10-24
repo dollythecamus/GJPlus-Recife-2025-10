@@ -13,7 +13,6 @@ class_name Pointer
 @export var rpm = -1
 @export var angle_offset := PI/2
 
-
 var clock = 0
 
 var last = Vector2.ZERO

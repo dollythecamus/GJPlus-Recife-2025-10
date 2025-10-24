@@ -197,10 +197,9 @@ label_settings = ExtResource("2_tf4ti")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shooter" type="Node" parent="." node_paths=PackedStringArray("p", "point")]
+[node name="Shooter" type="Node" parent="." node_paths=PackedStringArray("point")]
 script = ExtResource("2_0i6mo")
 projectile = ExtResource("5_uin3o")
-p = NodePath("../visual/Pointer")
 point = NodePath("../visual/Pointer/point")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Shooter"]
