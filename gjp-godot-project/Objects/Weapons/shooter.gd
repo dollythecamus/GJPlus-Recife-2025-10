@@ -10,7 +10,7 @@ class_name Shooter
 
 @export var fire_rate : = 2.0
 
-func attack(is_player = false):
+func attack():
 	if rate != null:
 		if rate.waiting:
 			return
@@ -22,7 +22,9 @@ func attack(is_player = false):
 	m.direction += bullet_spread()
 	m.mag(1000)
 	new.global_position = point.global_position + m.direction
-	new.is_player = is_player
+	
+	#new.is_player = is_player # fix 
+	
 	get_tree().current_scene.add_child(new)
 	
 	$AudioStreamPlayer.play()

@@ -5,8 +5,6 @@
 [ext_resource type="Script" uid="uid://dnwtw5wvliagv" path="res://Scenario/morse.gd" id="2_5vw27"]
 [ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="3_kek77"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="6_dg77c"]
-[ext_resource type="Texture2D" uid="uid://bxifnxsi516fj" path="res://Visuals/effects/mm.png" id="7_4c57u"]
-[ext_resource type="Script" uid="uid://bajr46twh0qcq" path="res://Visuals/effects/particles.gd" id="7_efxa6"]
 [ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://Scripts/spawner.gd" id="7_ycdy4"]
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://Visuals/ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://Visuals/UI/health_UI.gd" id="8_kek77"]
@@ -30,6 +28,19 @@ font_color = Color(0.9019608, 0.047058824, 0.03137255, 1)
 outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
+
+[sub_resource type="GDScript" id="GDScript_i8unl"]
+script/source = "extends Node2D
+
+@onready var p = [$P1, $P2, $P3] #player damage
+@onready var pd = $PD # player death
+@onready var pl = $PL # player lives
+@onready var e = [$E1, $E2, $E3] # enemy damage
+@onready var ed = $ED # enemy death
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_omng6"]
+load_path = "res://.godot/imported/mm.png-17468b330235609047f5ce7cad1146c3.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omng6"]
 bg_color = Color(0.17842048, 0.12815902, 0.21888784, 0.87058824)
@@ -220,43 +231,43 @@ vertical_alignment = 1
 
 [node name="particles" type="Node2D" parent="main"]
 visible = false
-script = ExtResource("7_efxa6")
+script = SubResource("GDScript_i8unl")
 
 [node name="E1" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="E2" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="E3" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="ED" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="P1" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="P2" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="P3" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="PL" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="PD" type="GPUParticles2D" parent="main/particles"]
 visible = false
-texture = ExtResource("7_4c57u")
+texture = SubResource("CompressedTexture2D_omng6")
 
 [node name="UI" type="Control" parent="."]
 process_mode = 1

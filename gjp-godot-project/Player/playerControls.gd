@@ -2,10 +2,9 @@ extends Node2D
 class_name PlayerControls
 
 @export var move : Mover
-@export var roll : Node
 @export var pickup : Pickup
 
-var upgrades = []
+var upgrades = {}
 
 var c = 0
 var dead = false
@@ -24,6 +23,7 @@ func die():
 
 func reborn():
 	# vfx!!! 
+	$AudioStreamPlayer.play()
 	move.enable()
 	$visual.show()
 	$Health.health = 3
@@ -46,17 +46,15 @@ func _process(delta: float) -> void:
 		if pickup.picked != null:
 			var attacking = pickup.picked.get_node("Attack")
 			if attacking != null:
-				attacking.attack(true)
+				attacking.attack()
 	
-	if upgrades.any(func(x): return x is Roll):
-		var r = upgrades.find_custom(func(x): return x is Roll)
+	if upgrades.has("Roll"):
 		if Input.is_action_just_pressed("roll") and not move.direction.is_zero_approx():
-			upgrades[r].roll()
+			upgrades.Roll.roll()
 	
-	if upgrades.any(func(x): return x is Defense):
-		var r = upgrades.find_custom(func(x): return x is Defense)
+	if upgrades.has("Defense"):
 		if Input.is_action_just_pressed("defend"):
-			upgrades[r].defend()
+			upgrades.Defense.defend()
 
 signal HIT
 
@@ -69,15 +67,15 @@ func add_health(i):
 
 func upgrade(string):
 	if string == "Roll":
-		roll = Globals.add_script(self, "roll.gd", func(_n): return)
+		var roll = Globals.add_script(self, "roll.gd", func(_n): return)
 		roll.visual = $visual
 		roll.hit = $Hit
 		roll.pointer = $Pointer
 		roll.pickup = $Pickup
 		roll.move = $Mover
-		upgrades.append(roll)
+		upgrades["Roll"] = roll
 	elif string == "Defense":
-		roll = Globals.add_script(self, "defense.gd", func(_n): return)
-		roll.p_hit = $Hit
-		roll.move = $Mover
-		upgrades.append(roll)
+		var def = Globals.add_script(self, "defense.gd", func(_n): return)
+		def.p_hit = $Hit
+		def.move = $Mover
+		upgrades["Defense"] = def

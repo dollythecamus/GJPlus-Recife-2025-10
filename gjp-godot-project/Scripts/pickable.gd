@@ -10,6 +10,7 @@ var target
 var picked = false
 
 signal PICKED(n)
+signal released
 
 const enemy_is_owner = 8
 const player_is_owner = 16
@@ -18,6 +19,7 @@ func release():
 	target = null
 	picked = false
 	point.to_point = picked
+	released.emit()
 	owns(null)
 
 func pick(node):
@@ -38,7 +40,7 @@ func owns(_n):
 		point.target = _n.target
 	elif _n == null:
 		if hurt != null:
-			hurt.collision_mask = 0 # to hurt players only
+			hurt.collision_mask = 0 # to hurt none
 		point.target = null
 
 func _process(_delta: float) -> void:

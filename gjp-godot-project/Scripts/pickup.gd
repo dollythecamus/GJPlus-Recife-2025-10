@@ -6,9 +6,11 @@ class_name Pickup
 var picked = null
 @export var is_player = false
 
-func release():
+func release(other = false):
 	if picked != null:
-		picked.get_node("Pickable").release()
+		if not other:
+			picked.get_node("Pickable").release()
+		picked.get_node("Pickable").disconnect("released", _on_released)
 		picked = null
 
 func _process(_delta: float) -> void:
@@ -22,7 +24,10 @@ func _process(_delta: float) -> void:
 				if not a[0].picked:
 					a[0].pick(n)
 					a[0].owns(n)
+					a[0].connect("released", _on_released)
 					picked = a[0].get_parent()
 				else:
-					a[0].release()
-					picked = null
+					release()
+
+func _on_released():
+	release(true)

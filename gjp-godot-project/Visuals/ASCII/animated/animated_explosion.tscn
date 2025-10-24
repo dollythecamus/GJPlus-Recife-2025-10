@@ -5,10 +5,9 @@
 
 [node name="AnimatedExplosion" type="Node2D"]
 script = ExtResource("1_sfwp3")
-looping = true
-auto_start = true
 
 [node name="frame0" type="Node2D" parent="."]
+visible = false
 
 [node name="ASCII2" type="Label" parent="frame0"]
 texture_filter = 1
@@ -367,6 +366,222 @@ label_settings = ExtResource("2_xkgio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ASCII8" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.777725
+offset_top = 24.429836
+offset_right = -11.777725
+offset_bottom = 61.42984
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.0207165
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(62.77773, -23.429836)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII17" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.10396
+offset_top = 25.38956
+offset_right = -17.103958
+offset_bottom = 62.38956
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.5228353
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(68.10396, -24.389557)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII18" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.197853
+offset_top = 30.75613
+offset_right = -11.197853
+offset_bottom = 67.756134
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -4.4283113
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(62.197853, -29.75613)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII9" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.207207
+offset_top = 1.3036499
+offset_right = -9.207207
+offset_bottom = 38.30365
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.54365176
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(60.20721, -0.30365026)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII10" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.356575
+offset_top = 7.628956
+offset_right = -12.356575
+offset_bottom = 44.628956
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.1120106
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(63.356583, -6.6289573)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "+"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII11" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.354965
+offset_top = 1.8522968
+offset_right = -19.354961
+offset_bottom = 38.852295
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.310535
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(70.354965, -0.8522956)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII19" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.43146
+offset_top = 1.7235336
+offset_right = -45.431458
+offset_bottom = 38.723534
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.310535
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(96.43145, -0.7235305)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII20" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.741787
+offset_top = 25.363934
+offset_right = 20.25821
+offset_bottom = 62.363934
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.310535
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(30.741787, -24.363928)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII12" type="Label" parent="frame2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.305176
+offset_top = -12.50132
+offset_right = -8.305176
+offset_bottom = 24.49868
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.9330997
+scale = Vector2(0.6945328, 0.7792089)
+pivot_offset = Vector2(59.305176, 13.50132)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "+"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ASCII7" type="Label" parent="frame2"]
 texture_filter = 1
 anchors_preset = 8
@@ -388,7 +603,9 @@ label_settings = ExtResource("2_xkgio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII8" type="Label" parent="frame2"]
+[node name="Node2D" type="Node2D" parent="frame2"]
+
+[node name="ASCII8" type="Label" parent="frame2/Node2D"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -409,7 +626,7 @@ label_settings = ExtResource("2_xkgio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII9" type="Label" parent="frame2"]
+[node name="ASCII9" type="Label" parent="frame2/Node2D"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -432,7 +649,7 @@ label_settings = ExtResource("2_xkgio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII10" type="Label" parent="frame2"]
+[node name="ASCII10" type="Label" parent="frame2/Node2D"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -455,7 +672,7 @@ label_settings = ExtResource("2_xkgio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII11" type="Label" parent="frame2"]
+[node name="ASCII11" type="Label" parent="frame2/Node2D"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -478,7 +695,7 @@ label_settings = ExtResource("2_xkgio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII12" type="Label" parent="frame2"]
+[node name="ASCII12" type="Label" parent="frame2/Node2D"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -674,6 +891,222 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.6140581
 pivot_offset = Vector2(24.723385, 10.60865)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "´"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII20" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.1379
+offset_top = -0.7589226
+offset_right = -35.1379
+offset_bottom = 36.241077
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.14205599
+scale = Vector2(0.55895823, 0.6987107)
+pivot_offset = Vector2(92.13789, -3.2410789)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII21" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.42044
+offset_top = -55.468925
+offset_right = -54.42044
+offset_bottom = -18.468918
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.14205599
+scale = Vector2(0.55895835, 0.6987107)
+pivot_offset = Vector2(111.42042, 51.468925)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII23" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.66482
+offset_top = 43.357826
+offset_right = -28.664818
+offset_bottom = 80.35783
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.0980724
+scale = Vector2(0.55895823, 0.6987106)
+pivot_offset = Vector2(85.66482, -47.35781)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "´"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII22" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.1379
+offset_top = -0.7589226
+offset_right = -35.1379
+offset_bottom = 36.241077
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.3918493
+scale = Vector2(0.55895823, 0.6987107)
+pivot_offset = Vector2(92.13789, -3.2410789)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII24" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.42044
+offset_top = -55.468925
+offset_right = -54.42044
+offset_bottom = -18.468918
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.3918493
+scale = Vector2(0.55895835, 0.6987107)
+pivot_offset = Vector2(111.42042, 51.468925)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII25" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.66482
+offset_top = 43.357826
+offset_right = -28.664818
+offset_bottom = 80.35783
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.1517209
+scale = Vector2(0.55895823, 0.6987106)
+pivot_offset = Vector2(85.66482, -47.35781)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "´"
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII26" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.1379
+offset_top = -0.7589226
+offset_right = -35.1379
+offset_bottom = 36.241077
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 5.2840753
+scale = Vector2(0.6148085, 0.7299425)
+pivot_offset = Vector2(92.13789, -3.2410789)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII27" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.42044
+offset_top = -55.468925
+offset_right = -54.42044
+offset_bottom = -18.468918
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 5.2840753
+scale = Vector2(0.6148087, 0.7299425)
+pivot_offset = Vector2(111.42042, 51.468925)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = ExtResource("2_xkgio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII28" type="Label" parent="frame3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.66482
+offset_top = 43.357826
+offset_right = -28.664818
+offset_bottom = 80.35783
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.0439467
+scale = Vector2(0.6148087, 0.72994244)
+pivot_offset = Vector2(85.66482, -47.35781)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20

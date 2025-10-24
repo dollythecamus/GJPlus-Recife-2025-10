@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://27ex2tehfssw"]
+[gd_scene load_steps=17 format=3 uid="uid://27ex2tehfssw"]
 
 [ext_resource type="Script" uid="uid://b1m8s1s8kes6l" path="res://Player/playerControls.gd" id="1_4ntmi"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://Visuals/ASCII/player_ascii.tres" id="2_gwnis"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="7_vtle1"]
 [ext_resource type="AudioStream" uid="uid://bypyh60cp7pso" path="res://Sound/sfx/Audio 1.mp3" id="8_00tjw"]
 [ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://Scripts/hit.gd" id="8_od3ui"]
+[ext_resource type="AudioStream" uid="uid://dt37q17jga7ey" path="res://Sound/sfx/live.mp3" id="11_apopc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtle1"]
 line_spacing = -20.0
@@ -185,5 +186,9 @@ text = "o
 label_settings = SubResource("LabelSettings_od3ui")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_apopc")
+volume_db = -6.0
 
 [connection signal="HIT" from="Hit" to="." method="_on_hit"]

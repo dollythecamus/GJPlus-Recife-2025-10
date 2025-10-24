@@ -7,7 +7,7 @@ extends Node
 
 @export var reach := 60
 
-func attack(_x = false):
+func attack():
 	var dir = Vector2.from_angle(pointer.rotation)
 	mover.velocity += dir * reach
 	
