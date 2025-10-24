@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 	
 	if pickup.node_picked != null:
 		if rc >= release_cycle:
+			n.AI.do_melee_mode()
 			pickup.release()
 			rc = 0
 	
