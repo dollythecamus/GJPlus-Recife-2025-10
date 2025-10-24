@@ -24,15 +24,20 @@ signal state_change(v)
 var fire_cycle = .7
 var fc = randf()/fire_cycle
 
+var guns
+
 func _init() -> void:
 	Globals.other_AIs.append(self)
+
+func _ready() -> void:
+	guns = get_guns()
 
 func run(delta):
 	fc += delta
 	
 	get_close_avoid()
 	balance_others_distances()
-	get_guns().all(func(x): x.run(delta))
+	guns.all(func(x): x.run(delta))
 
 func get_close_avoid():
 	if target == null:

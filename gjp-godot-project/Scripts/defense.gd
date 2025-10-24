@@ -35,7 +35,7 @@ func defend():
 	p_hit.disable()
 	defense.show()
 	
-	rate.start(duration * 3.0)
+	rate.start(duration * 2.0)
 
 func stop():
 	rate.interrupt()

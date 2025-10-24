@@ -1,15 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=25 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
 [ext_resource type="Script" uid="uid://dnwtw5wvliagv" path="res://Scenario/morse.gd" id="2_5vw27"]
 [ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="3_kek77"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="6_dg77c"]
-[ext_resource type="PackedScene" uid="uid://bljg0qbrjfr5n" path="res://Objects/Weapons/blastgun.tscn" id="7_omng6"]
+[ext_resource type="Script" uid="uid://d4bnohr44uqyt" path="res://Scripts/aim.gd" id="7_omng6"]
 [ext_resource type="Script" uid="uid://d4jwdccldddex" path="res://Scripts/spawner.gd" id="7_ycdy4"]
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://Visuals/ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://Visuals/UI/health_UI.gd" id="8_kek77"]
-[ext_resource type="PackedScene" uid="uid://bb8dqhjq6njea" path="res://Objects/Weapons/granade.tscn" id="8_wfabv"]
+[ext_resource type="Script" uid="uid://bbh1fg15p5oi6" path="res://Visuals/UI/upgrades_ui.gd" id="10_3c5q2"]
+[ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://Visuals/ASCII/player_ascii.tres" id="10_wfabv"]
 [ext_resource type="FontFile" uid="uid://d16a6qnqcwagp" path="res://Visuals/UI/texgyreadventor-bolditalic.otf" id="11_omng6"]
 [ext_resource type="Theme" uid="uid://bbs6bm2q5snnf" path="res://Visuals/UI/MM/popups.tres" id="11_wfabv"]
 [ext_resource type="AudioStream" uid="uid://b014ge75ajta4" path="res://Sound/music/crunchyyv3.mp3" id="12_omng6"]
@@ -31,17 +32,49 @@ outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
 
-[sub_resource type="GDScript" id="GDScript_i8unl"]
-script/source = "extends Node2D
+[sub_resource type="LabelSettings" id="LabelSettings_omng6"]
+font = ExtResource("1_272bh")
+font_size = 48
+font_color = Color(0.9019608, 0.047058824, 0.03137255, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
 
-@onready var p = [$P1, $P2, $P3] #player damage
-@onready var pd = $PD # player death
-@onready var pl = $PL # player lives
-@onready var e = [$E1, $E2, $E3] # enemy damage
-@onready var ed = $ED # enemy death
-"
+[sub_resource type="LabelSettings" id="LabelSettings_ogmly"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 54
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_omng6"]
+[sub_resource type="LabelSettings" id="LabelSettings_4d5u6"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 36
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0wu0"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 38
+font_color = Color(0.1764706, 0.8980392, 0.92941177, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2qr3"]
+line_spacing = -20.0
+font = ExtResource("1_272bh")
+font_size = 28
+font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omng6"]
 bg_color = Color(0.17842048, 0.12815902, 0.21888784, 0.87058824)
@@ -230,51 +263,104 @@ label_settings = SubResource("LabelSettings_mbk3n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="particles" type="Node2D" parent="main"]
-visible = false
-script = SubResource("GDScript_i8unl")
+[node name="control_hints" type="Node2D" parent="main"]
+position = Vector2(317, 214)
+script = ExtResource("7_omng6")
 
-[node name="E1" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
+[node name="Shoot" type="Label" parent="main/control_hints"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -82.0
+offset_right = 23.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+label_settings = SubResource("LabelSettings_omng6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="E2" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
+[node name="Grab" type="Label" parent="main/control_hints"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -82.0
+offset_right = 23.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+label_settings = SubResource("LabelSettings_omng6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="E3" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
+[node name="Roll" type="Label" parent="main/control_hints"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -82.0
+offset_right = 23.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+label_settings = SubResource("LabelSettings_omng6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ED" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
+[node name="Defend" type="Label" parent="main/control_hints"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -82.0
+offset_right = 23.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+label_settings = SubResource("LabelSettings_omng6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="P1" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
-
-[node name="P2" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
-
-[node name="P3" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
-
-[node name="PL" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
-
-[node name="PD" type="GPUParticles2D" parent="main/particles"]
-visible = false
-texture = SubResource("CompressedTexture2D_omng6")
-
-[node name="blastgun" parent="main" instance=ExtResource("7_omng6")]
-position = Vector2(324, 148)
-
-[node name="Granade" parent="main" instance=ExtResource("8_wfabv")]
-position = Vector2(284, 231)
+[node name="Move-Aim" type="Label" parent="main/control_hints"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -82.0
+offset_right = 23.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+label_settings = SubResource("LabelSettings_omng6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UI" type="Control" parent="."]
 process_mode = 1
@@ -292,8 +378,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 15.0
-offset_bottom = -382.0
+offset_top = 21.0
+offset_bottom = -376.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -302,7 +388,7 @@ script = ExtResource("8_kek77")
 player_health = NodePath("../../main/Player/Health")
 
 [node name="heart" type="Control" parent="UI/health"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(25, 30)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/health/heart"]
@@ -321,6 +407,197 @@ grow_vertical = 2
 rotation = -1.0460035
 text = "<3"
 label_settings = ExtResource("8_5vw27")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="upgrades" type="HBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 416.0
+offset_top = 387.0
+offset_right = -8.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("10_3c5q2")
+
+[node name="Roll" type="Node2D" parent="UI/upgrades"]
+position = Vector2(74, 17)
+script = ExtResource("6_dg77c")
+to_point = true
+
+[node name="ASCII" type="Label" parent="UI/upgrades/Roll"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "@"
+label_settings = ExtResource("10_wfabv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="UI/upgrades/Roll"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -42.0
+offset_right = 22.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("10_wfabv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="UI/upgrades/Roll"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -17.0
+offset_right = 18.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("10_wfabv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Defense" type="Node2D" parent="UI/upgrades"]
+position = Vector2(126, 15)
+
+[node name="ASCII" type="Label" parent="UI/upgrades/Defense"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "O"
+label_settings = SubResource("LabelSettings_ogmly")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="UI/upgrades/Defense"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = SubResource("LabelSettings_4d5u6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="UI/upgrades/Defense"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -39.0
+offset_right = 32.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3034436, 1.3034436)
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "()"
+label_settings = SubResource("LabelSettings_n0wu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII2" type="Label" parent="UI/upgrades/Defense"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.0
+offset_right = 25.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="UI/upgrades/Defense"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.1415927
+pivot_offset = Vector2(25, 39)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "''"
+label_settings = SubResource("LabelSettings_r2qr3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -434,5 +711,6 @@ stream = ExtResource("12_omng6")
 volume_db = -6.0
 autoplay = true
 
-[connection signal="HIT" from="main/Player" to="UI/health" method="_on_player_hit"]
+[connection signal="hit" from="main/Player" to="UI/health" method="_on_player_hit"]
 [connection signal="update_health" from="main/Player" to="UI/health" method="update"]
+[connection signal="upgraded" from="main/Player" to="UI/upgrades" method="show_upgrade"]

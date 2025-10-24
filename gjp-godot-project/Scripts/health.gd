@@ -7,6 +7,7 @@ signal health_changed(v)
 
 @export var is_player = false
 
+const dmg_boost_def = .7
 var damage_boost = false
 var damage_boost_time = .7
 
@@ -36,4 +37,10 @@ func _process(delta):
 	c += delta
 	if damage_boost and c >= damage_boost_time:
 		damage_boost = false
+		damage_boost_time = dmg_boost_def # change time it back after invul
 		c = 0
+
+func invul(time):
+	c = 0
+	damage_boost = true
+	damage_boost_time = time

@@ -8,7 +8,9 @@ var upgrades = {}
 
 var c = 0
 var dead = false
+
 signal update_health
+signal upgraded(which)
 
 func die():
 	if dead:
@@ -59,10 +61,10 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("defend"):
 			upgrades.Defense.defend()
 
-signal HIT
+signal hit
 
 func _on_hit() -> void:
-	HIT.emit()
+	hit.emit()
 
 func add_health(i):
 	$Health.health += i
@@ -82,3 +84,4 @@ func upgrade(string):
 		def.p_hit = $Hit
 		def.move = $Mover
 		upgrades["Defense"] = def
+	upgraded.emit(string)

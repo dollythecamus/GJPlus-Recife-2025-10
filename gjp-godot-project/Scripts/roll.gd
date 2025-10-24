@@ -10,11 +10,12 @@ var pickup
 var visual
 var pointer
 var move
+var health
 
 var roll_visual = preload("res://Player/roll.tscn").instantiate()
 
 var duration = .4
-var length = 1500
+var length = 1000
 
 var rate = Rate.new()
 
@@ -32,6 +33,7 @@ func roll():
 	
 	rate.start(duration * 1.1)
 	move.mag(length)
+	health.invul(duration*1.3)
 	
 	await rate.done
 	

@@ -16,8 +16,10 @@
 radius = 14.0
 height = 48.0
 
-[node name="Base0" type="Skeleton2D"]
+[node name="Base0" type="Skeleton2D" node_paths=PackedStringArray("mover", "pointer")]
 script = ExtResource("1_0it37")
+mover = NodePath("root/Mover")
+pointer = NodePath("root/Pointer")
 
 [node name="t2R" type="Node2D" parent="."]
 position = Vector2(37, 10)
@@ -44,7 +46,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
 [node name="leg2" type="Bone2D" parent="root"]
-position = Vector2(18.000061, 12.000022)
+position = Vector2(4.000003, 7.000002)
 rotation = -0.3168919
 scale = Vector2(0.9999994, 0.9999994)
 rest = Transform2D(1, 0, 0, 1, 18, 12)
@@ -74,7 +76,7 @@ remote_path = NodePath("../../../../visual/root/leg2/leg1")
 remote_path = NodePath("../../../visual/root/leg2")
 
 [node name="leg3" type="Bone2D" parent="root"]
-position = Vector2(-17.000046, 13.00002)
+position = Vector2(-6, 7.999999)
 rotation = 0.4192467
 scale = Vector2(0.9999989, 0.9999989)
 rest = Transform2D(1, 0, 0, 1, -17, 13)
@@ -143,17 +145,17 @@ stream = ExtResource("9_ddkov")
 [node name="root" type="Node2D" parent="visual"]
 
 [node name="leg2" type="Node2D" parent="visual/root"]
-position = Vector2(18.000061, 12.000022)
+position = Vector2(4.000003, 7.000002)
 rotation = -0.3168919
 scale = Vector2(0.9999994, 0.9999994)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg2"]
-position = Vector2(13, -15.000013)
+position = Vector2(13.000002, -15.000012)
 rotation = 0.42402956
 scale = Vector2(0.9999995, 0.9999995)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg2/leg1"]
-position = Vector2(13.000004, 15)
+position = Vector2(13, 15.000001)
 scale = Vector2(1.0000001, 1.0000001)
 
 [node name="l2" type="Label" parent="visual/root/leg2/leg1/leg2"]
@@ -163,17 +165,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -4.0
-offset_right = 23.0
-offset_bottom = 25.0
+offset_left = -25.89414
+offset_top = -16.32469
+offset_right = 24.10586
+offset_bottom = 12.67531
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.09123182
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
-text = "\""
+text = "."
 label_settings = ExtResource("10_fq7k3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -224,17 +226,17 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="leg3" type="Node2D" parent="visual/root"]
-position = Vector2(-17.000046, 13.00002)
+position = Vector2(-6, 7.999999)
 rotation = 0.4192467
 scale = Vector2(0.9999989, 0.9999989)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg3"]
-position = Vector2(-11.999994, -16.000004)
+position = Vector2(-11.999993, -16.000004)
 rotation = -0.31041124
 scale = Vector2(0.9999999, 0.9999999)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg3/leg1"]
-position = Vector2(-13, 15.000001)
+position = Vector2(-13, 15)
 
 [node name="l2" type="Label" parent="visual/root/leg3/leg1/leg2"]
 texture_filter = 1
@@ -243,17 +245,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.999998
-offset_top = -6.0
-offset_right = 24.000002
-offset_bottom = 23.0
+offset_left = -25.253601
+offset_top = -19.37158
+offset_right = 24.746399
+offset_bottom = 9.62842
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.030005932
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
-text = "\""
+text = "."
 label_settings = ExtResource("10_fq7k3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -320,7 +322,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
-text = "[I]"
+text = "o"
 label_settings = ExtResource("10_fq7k3")
 horizontal_alignment = 1
 vertical_alignment = 1

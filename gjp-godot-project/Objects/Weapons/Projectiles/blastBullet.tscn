@@ -72,7 +72,7 @@ metadata/_custom_type_script = "uid://c06bwdrxfw41f"
 
 [node name="AnimatedASCII" type="Node2D" parent="."]
 script = ExtResource("5_0o4an")
-fpf = 8
+fpf = 4
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="AnimatedASCII"]
