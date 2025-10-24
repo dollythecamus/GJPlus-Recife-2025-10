@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://coj7d070c25ue"]
+[gd_scene load_steps=12 format=3 uid="uid://coj7d070c25ue"]
 
 [ext_resource type="Script" uid="uid://benal3xfughne" path="res://prototyping.gd" id="1_cxwu1"]
 [ext_resource type="PackedScene" uid="uid://27ex2tehfssw" path="res://Player/player.tscn" id="1_v7tyh"]
 [ext_resource type="PackedScene" uid="uid://cv4xqjfglbvhk" path="res://Objects/upgrade.tscn" id="4_44wxn"]
 [ext_resource type="PackedScene" uid="uid://d4jpd37sy667b" path="res://Objects/healthpack.tscn" id="5_imp1g"]
 [ext_resource type="PackedScene" uid="uid://bc8xhsymu8msk" path="res://Enemy/bases/base2.tscn" id="5_pgtm1"]
+[ext_resource type="PackedScene" uid="uid://bb8dqhjq6njea" path="res://Objects/Weapons/granade.tscn" id="6_pgtm1"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_snyu1"]
 target_nodepath = NodePath("../t1R")
@@ -74,147 +75,11 @@ modifications/1 = SubResource("SkeletonModification2DCCDIK_eratf")
 modifications/2 = SubResource("SkeletonModification2DCCDIK_626rt")
 modifications/3 = SubResource("SkeletonModification2DCCDIK_o7f6j")
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_olbv0"]
-target_nodepath = NodePath("../t1R")
-tip_nodepath = NodePath("root/leg0/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 1
-joint_data/0/bone2d_node = NodePath("root/leg0")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 2
-joint_data/1/bone2d_node = NodePath("root/leg0/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_gsbfv"]
-target_nodepath = NodePath("../t1L")
-tip_nodepath = NodePath("root/leg1/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 4
-joint_data/0/bone2d_node = NodePath("root/leg1")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 5
-joint_data/1/bone2d_node = NodePath("root/leg1/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_iqijj"]
-target_nodepath = NodePath("../t2R")
-tip_nodepath = NodePath("root/leg2/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 7
-joint_data/0/bone2d_node = NodePath("root/leg2")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 8
-joint_data/1/bone2d_node = NodePath("root/leg2/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_v4l7q"]
-target_nodepath = NodePath("../t2L")
-tip_nodepath = NodePath("root/leg3/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 10
-joint_data/0/bone2d_node = NodePath("root/leg3")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 11
-joint_data/1/bone2d_node = NodePath("root/leg3/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_0he6n"]
-resource_local_to_scene = true
-modification_count = 4
-modifications/0 = SubResource("SkeletonModification2DCCDIK_olbv0")
-modifications/1 = SubResource("SkeletonModification2DCCDIK_gsbfv")
-modifications/2 = SubResource("SkeletonModification2DCCDIK_iqijj")
-modifications/3 = SubResource("SkeletonModification2DCCDIK_v4l7q")
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_imp1g"]
-target_nodepath = NodePath("../t1R")
-tip_nodepath = NodePath("root/leg0/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 1
-joint_data/0/bone2d_node = NodePath("root/leg0")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 2
-joint_data/1/bone2d_node = NodePath("root/leg0/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_pgtm1"]
-target_nodepath = NodePath("../t1L")
-tip_nodepath = NodePath("root/leg1/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 4
-joint_data/0/bone2d_node = NodePath("root/leg1")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 5
-joint_data/1/bone2d_node = NodePath("root/leg1/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_b1uta"]
-target_nodepath = NodePath("../t2R")
-tip_nodepath = NodePath("root/leg2/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 7
-joint_data/0/bone2d_node = NodePath("root/leg2")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 8
-joint_data/1/bone2d_node = NodePath("root/leg2/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_6w5po"]
-target_nodepath = NodePath("../t2L")
-tip_nodepath = NodePath("root/leg3/leg1/leg2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 10
-joint_data/0/bone2d_node = NodePath("root/leg3")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 11
-joint_data/1/bone2d_node = NodePath("root/leg3/leg1")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_olbv0"]
-resource_local_to_scene = true
-modification_count = 4
-modifications/0 = SubResource("SkeletonModification2DCCDIK_imp1g")
-modifications/1 = SubResource("SkeletonModification2DCCDIK_pgtm1")
-modifications/2 = SubResource("SkeletonModification2DCCDIK_b1uta")
-modifications/3 = SubResource("SkeletonModification2DCCDIK_6w5po")
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_cxwu1")
 
 [node name="Player" parent="." instance=ExtResource("1_v7tyh")]
-position = Vector2(430, 134)
+position = Vector2(68, 237)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.636, 0.636)
@@ -227,11 +92,11 @@ position = Vector2(304, 102)
 upgrade = "Defense"
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_pgtm1")]
-position = Vector2(184, 198)
+position = Vector2(603, 256)
 target = NodePath("../Player")
 
 [node name="Build" parent="Enemy" index="6"]
-build_ready = "ZeroV"
+build_ready = "DEBUG_I"
 
 [node name="Skeleton2D" parent="Enemy" index="7"]
 modification_stack = SubResource("SkeletonModificationStack2D_b1uta")
@@ -240,133 +105,46 @@ modification_stack = SubResource("SkeletonModificationStack2D_b1uta")
 scale = Vector2(0.99999696, 0.99999696)
 
 [node name="leg1" parent="Enemy/visual/root/leg0" index="0"]
-position = Vector2(12, -16.000015)
+position = Vector2(12.000061, -16.00003)
 
 [node name="leg2" parent="Enemy/visual/root/leg0/leg1" index="0"]
-position = Vector2(10.999985, 17)
+position = Vector2(11, 17.000015)
 
 [node name="leg1" parent="Enemy/visual/root" index="1"]
 scale = Vector2(0.99999696, 0.99999696)
 
 [node name="leg1" parent="Enemy/visual/root/leg1" index="0"]
-position = Vector2(-13.999992, -16.999985)
+position = Vector2(-13.999939, -17)
 
 [node name="leg2" parent="Enemy/visual/root/leg1/leg1" index="0"]
-position = Vector2(-13.0000305, 15.999985)
+position = Vector2(-13.000122, 16.00003)
 scale = Vector2(1, 1)
 
 [node name="leg2" parent="Enemy/visual/root" index="2"]
-position = Vector2(18.000061, 12.000015)
+position = Vector2(18.000061, 12.0000305)
 
 [node name="leg1" parent="Enemy/visual/root/leg2" index="0"]
 position = Vector2(13, -15)
 
 [node name="leg2" parent="Enemy/visual/root/leg2/leg1" index="0"]
-position = Vector2(12.999985, 15)
+position = Vector2(13.000061, 15.000015)
 
 [node name="leg3" parent="Enemy/visual/root" index="3"]
-position = Vector2(-17.000046, 13.000015)
+position = Vector2(-17.000061, 13.0000305)
 
 [node name="leg1" parent="Enemy/visual/root/leg3" index="0"]
-position = Vector2(-12.000015, -16)
+position = Vector2(-11.999939, -16)
 
 [node name="leg2" parent="Enemy/visual/root/leg3/leg1" index="0"]
-position = Vector2(-12.999985, 15)
-
-[node name="Enemy3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_pgtm1")]
-position = Vector2(497, 39)
-target = NodePath("../Player")
-
-[node name="Build" parent="Enemy3" index="6"]
-build_ready = "ZeroV"
-
-[node name="Skeleton2D" parent="Enemy3" index="7"]
-modification_stack = SubResource("SkeletonModificationStack2D_0he6n")
-
-[node name="leg1" parent="Enemy3/Skeleton2D/root" index="1"]
-scale = Vector2(0.99999696, 0.99999696)
-
-[node name="leg1" parent="Enemy3/visual/root/leg0" index="0"]
-position = Vector2(12.0000305, -16.000015)
-
-[node name="leg2" parent="Enemy3/visual/root/leg0/leg1" index="0"]
-position = Vector2(11, 17.000008)
-
-[node name="leg1" parent="Enemy3/visual/root" index="1"]
-scale = Vector2(0.99999696, 0.99999696)
-
-[node name="leg1" parent="Enemy3/visual/root/leg1" index="0"]
-position = Vector2(-13.999939, -17.000008)
-
-[node name="leg2" parent="Enemy3/visual/root/leg1/leg1" index="0"]
-position = Vector2(-13.000061, 16.000015)
-scale = Vector2(1, 1)
-
-[node name="leg2" parent="Enemy3/visual/root" index="2"]
-position = Vector2(18.000061, 12.000023)
-
-[node name="leg1" parent="Enemy3/visual/root/leg2" index="0"]
-position = Vector2(13.0000305, -15)
-
-[node name="leg2" parent="Enemy3/visual/root/leg2/leg1" index="0"]
-position = Vector2(12.999939, 14.999983)
-
-[node name="leg3" parent="Enemy3/visual/root" index="3"]
-position = Vector2(-17.000061, 13.000019)
-
-[node name="leg1" parent="Enemy3/visual/root/leg3" index="0"]
-position = Vector2(-12, -16)
-
-[node name="leg2" parent="Enemy3/visual/root/leg3/leg1" index="0"]
-position = Vector2(-13, 15.000002)
-
-[node name="Enemy2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_pgtm1")]
-position = Vector2(268, 341)
-target = NodePath("../Player")
-
-[node name="Build" parent="Enemy2" index="6"]
-build_ready = "ZeroV"
-
-[node name="Skeleton2D" parent="Enemy2" index="7"]
-modification_stack = SubResource("SkeletonModificationStack2D_olbv0")
-
-[node name="leg1" parent="Enemy2/Skeleton2D/root" index="1"]
-scale = Vector2(0.99999696, 0.99999696)
-
-[node name="leg1" parent="Enemy2/visual/root/leg0" index="0"]
-position = Vector2(12, -15.999985)
-
-[node name="leg2" parent="Enemy2/visual/root/leg0/leg1" index="0"]
-position = Vector2(11, 17)
-
-[node name="leg1" parent="Enemy2/visual/root" index="1"]
-scale = Vector2(0.99999696, 0.99999696)
-
-[node name="leg2" parent="Enemy2/visual/root/leg1/leg1" index="0"]
-position = Vector2(-13.000015, 16.00003)
-scale = Vector2(1, 1)
-
-[node name="leg2" parent="Enemy2/visual/root" index="2"]
-position = Vector2(18.000061, 12.0000305)
-
-[node name="leg1" parent="Enemy2/visual/root/leg2" index="0"]
-position = Vector2(13, -14.9999695)
-
-[node name="leg2" parent="Enemy2/visual/root/leg2/leg1" index="0"]
-position = Vector2(13, 14.9999695)
-
-[node name="leg3" parent="Enemy2/visual/root" index="3"]
-position = Vector2(-17.000046, 13.0000305)
-
-[node name="leg1" parent="Enemy2/visual/root/leg3" index="0"]
-position = Vector2(-12.000015, -16.00003)
-
-[node name="leg2" parent="Enemy2/visual/root/leg3/leg1" index="0"]
-position = Vector2(-12.999985, 15)
+position = Vector2(-13.000061, 15)
 
 [node name="Healthpack" parent="." instance=ExtResource("5_imp1g")]
 position = Vector2(125, 114)
 
+[node name="Granade" parent="." instance=ExtResource("6_pgtm1")]
+position = Vector2(522, 265)
+
+[node name="Granade2" parent="." instance=ExtResource("6_pgtm1")]
+position = Vector2(52, 185)
+
 [editable path="Enemy"]
-[editable path="Enemy3"]
-[editable path="Enemy2"]

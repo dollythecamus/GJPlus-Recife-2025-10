@@ -12,6 +12,8 @@ var dead = false
 signal update_health
 signal upgraded(which)
 
+enum Actions {SHOOT, GRAB, ROLL, DEFEND, MOVEAIM}
+
 func die():
 	if dead:
 		return

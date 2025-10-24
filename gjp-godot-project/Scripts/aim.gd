@@ -4,7 +4,7 @@ var joysticking = false
 var has_clicked_with_mouse = false
 
 var speed = 300
-var target
+@export var target : Node2D
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and not has_clicked_with_mouse:
@@ -25,6 +25,7 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if target != null:
 		aim_at(target)
+		return
 	
 	if joysticking:
 		aim_with_joystick(delta)

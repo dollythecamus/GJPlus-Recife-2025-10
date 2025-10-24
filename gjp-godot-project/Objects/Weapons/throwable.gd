@@ -29,6 +29,7 @@ func throw():
 	mover.direction = d.normalized()
 	mover.distance = d.length()	
 	mover.mag(500)
+	pickable.release()
 	check_distance_loop()
 
 func check_distance_loop():
@@ -41,7 +42,6 @@ func check_distance_loop():
 	
 	hurt.enable()
 	
-	pickable.release()
 	pickable.set_process(true)
 	mover.direction = Vector2.ZERO
 	mover.distance = 1.0

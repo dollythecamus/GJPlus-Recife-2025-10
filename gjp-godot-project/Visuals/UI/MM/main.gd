@@ -15,9 +15,11 @@ func goto_main():
 func goto_tutorial():
 	$Main.hide()
 	$Tutorial.show()
-	$MTutorial/Quit.grab_focus.call_deferred()
+	$Tutorial/Quit.grab_focus.call_deferred()
+	Screen.visible = false
 
 func back():
 	$Main/Title/tutorial.grab_focus.call_deferred()
+	Screen.visible = true
 	$Main.show()
 	$Tutorial.hide()

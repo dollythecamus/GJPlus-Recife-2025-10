@@ -6,10 +6,11 @@ class_name Build
 @export var build_ready = ""
 
 const builds = {
+	"DEBUG_I": "base2+two_arm+set(mover.speed=50)",
 	"ZeroI": "base1",
 	"ZeroII": "base1+arm",
 	"ZeroIII": "base2",
-	"ZeroIV": "base2+two_arm+two_meelee",
+	"ZeroIV": "base2+two_arm",
 	"ZeroV": "base2+arm+set(mover.speed=300,mover.friction=0.98)",
 	"ZeroVI": "base2+arm+gun",
 	"ZeroVII": "base1+two_gun+set(mover.speed=150,health.health=15)"

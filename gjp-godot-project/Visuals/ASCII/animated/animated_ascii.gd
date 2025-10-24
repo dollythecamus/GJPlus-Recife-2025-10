@@ -5,6 +5,7 @@ class_name AnimatedASCII
 @onready var frames = get_children()
 @export var looping = false
 @export var auto_start = false
+@export var reverse = false
 
 @export var fpf = 6
 var f = 0
@@ -24,7 +25,7 @@ func _ready() -> void:
 
 func play():
 	i = 0
-	l = -1
+	l = -1 if not reverse else 1
 	f = 0
 	set_process(true)
 
@@ -33,8 +34,9 @@ func stop():
 	set_process(false)
 
 func next_frame():
-	i += 1 
-	l += 1 
+	var inc = -1 if reverse else 1
+	i += inc
+	l += inc
 	if looping:
 		i = wrapi(i, 0, get_child_count())
 		l = wrapi(l, 0, get_child_count())

@@ -21,6 +21,8 @@ var rc = randf()/release_cycle
 var detection
 var has_detected = false
 
+var prepare_throw = false
+
 func _ready() -> void:
 	$Skeleton.get_modification_stack().enabled = true
 
@@ -45,16 +47,25 @@ func _process(delta: float) -> void:
 			if a == null:
 				pickup.release()
 			else:
-				a.attack()
 				if a is Shooter:
 					n.AI.do_ranged_mode()
 					iktarget.position = iktargetrest.position
 				elif a is Throwable:
 					n.AI.do_ranged_mode()
 					a.target.aim_at(n.target)
+					stab()
+					if not prepare_throw:
+						prepare_throw = true
+						c = 0
+						return 
 				else:
 					n.AI.do_melee_mode()
 					stab()
+				
+				a.attack()
+				if prepare_throw:
+					prepare_throw = false
+					n.AI.do_melee_mode()
 		else:
 			stab()
 		c = 0
