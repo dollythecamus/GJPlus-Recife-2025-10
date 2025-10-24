@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bo7ywcd7gytsp"]
+[gd_scene load_steps=22 format=3 uid="uid://bo7ywcd7gytsp"]
 
 [ext_resource type="Script" uid="uid://c6a13x6tddn0b" path="res://Scenario/main.gd" id="1_4c57u"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="1_272bh"]
@@ -10,10 +10,10 @@
 [ext_resource type="LabelSettings" uid="uid://vjfwnx22f87w" path="res://Visuals/ASCII/heart.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dmwgse3nwa7ab" path="res://Visuals/UI/health_UI.gd" id="8_kek77"]
 [ext_resource type="Script" uid="uid://bbh1fg15p5oi6" path="res://Visuals/UI/upgrades_ui.gd" id="10_3c5q2"]
-[ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://Visuals/ASCII/player_ascii.tres" id="10_wfabv"]
 [ext_resource type="FontFile" uid="uid://d16a6qnqcwagp" path="res://Visuals/UI/texgyreadventor-bolditalic.otf" id="11_omng6"]
 [ext_resource type="Theme" uid="uid://bbs6bm2q5snnf" path="res://Visuals/UI/MM/popups.tres" id="11_wfabv"]
 [ext_resource type="AudioStream" uid="uid://b014ge75ajta4" path="res://Sound/music/crunchyyv3.mp3" id="12_omng6"]
+[ext_resource type="PackedScene" uid="uid://bb8dqhjq6njea" path="res://Objects/Weapons/granade.tscn" id="14_3c5q2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ixuk"]
 font = ExtResource("1_272bh")
@@ -40,38 +40,11 @@ outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
 
-[sub_resource type="LabelSettings" id="LabelSettings_ogmly"]
+[sub_resource type="LabelSettings" id="LabelSettings_jo754"]
 line_spacing = -20.0
 font = ExtResource("1_272bh")
-font_size = 54
-font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
-outline_size = 1
-outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
-shadow_size = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_4d5u6"]
-line_spacing = -20.0
-font = ExtResource("1_272bh")
-font_size = 36
-font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
-outline_size = 1
-outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
-shadow_size = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_n0wu0"]
-line_spacing = -20.0
-font = ExtResource("1_272bh")
-font_size = 38
-font_color = Color(0.1764706, 0.8980392, 0.92941177, 1)
-outline_size = 1
-outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
-shadow_size = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_r2qr3"]
-line_spacing = -20.0
-font = ExtResource("1_272bh")
-font_size = 28
-font_color = Color(0.9019608, 0.8980392, 0.078431375, 1)
+font_size = 24
+font_color = Color(0.101960786, 0.8980392, 0.89411765, 1)
 outline_size = 1
 outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
 shadow_size = 0
@@ -373,65 +346,30 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="health" type="HBoxContainer" parent="UI" node_paths=PackedStringArray("player_health")]
+[node name="V" type="VBoxContainer" parent="UI"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 21.0
-offset_bottom = -376.0
+offset_top = 12.0
+offset_bottom = 76.0
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-alignment = 1
-script = ExtResource("8_kek77")
-player_health = NodePath("../../main/Player/Health")
 
-[node name="heart" type="Control" parent="UI/health"]
-custom_minimum_size = Vector2(25, 30)
+[node name="upgrades" type="HBoxContainer" parent="UI/V"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/health/heart"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = 12.5
-offset_right = 23.0
-offset_bottom = 61.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.0460035
-text = "<3"
-label_settings = ExtResource("8_5vw27")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="upgrades" type="HBoxContainer" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 416.0
-offset_top = 387.0
-offset_right = -8.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 script = ExtResource("10_3c5q2")
 
-[node name="Roll" type="Node2D" parent="UI/upgrades"]
-position = Vector2(74, 17)
-script = ExtResource("6_dg77c")
-to_point = true
+[node name="Roll" type="Control" parent="UI/V/upgrades"]
+visible = false
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
 
-[node name="ASCII" type="Label" parent="UI/upgrades/Roll"]
+[node name="Roll" type="Node2D" parent="UI/V/upgrades/Roll"]
+position = Vector2(35, 19)
+
+[node name="ASCII" type="Label" parent="UI/V/upgrades/Roll/Roll"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -447,11 +385,11 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "@"
-label_settings = ExtResource("10_wfabv")
+label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII2" type="Label" parent="UI/upgrades/Roll"]
+[node name="ASCII2" type="Label" parent="UI/V/upgrades/Roll/Roll"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -467,64 +405,71 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "`"
-label_settings = ExtResource("10_wfabv")
+label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII3" type="Label" parent="UI/upgrades/Roll"]
+[node name="ASCII3" type="Label" parent="UI/V/upgrades/Roll/Roll"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -17.0
-offset_right = 18.0
-offset_bottom = 61.0
+offset_left = -30.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "`"
-label_settings = ExtResource("10_wfabv")
+label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Defense" type="Node2D" parent="UI/upgrades"]
-position = Vector2(126, 15)
+[node name="Defense" type="Control" parent="UI/V/upgrades"]
+visible = false
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
 
-[node name="ASCII" type="Label" parent="UI/upgrades/Defense"]
+[node name="Defense" type="Node2D" parent="UI/V/upgrades/Defense"]
+position = Vector2(33, 17)
+scale = Vector2(0.8, 0.8)
+
+[node name="ASCII" type="Label" parent="UI/V/upgrades/Defense/Defense"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -39.0
-offset_right = 25.0
-offset_bottom = 39.0
+offset_left = -23.75
+offset_top = -38.75
+offset_right = 26.25
+offset_bottom = 39.25
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.3503559, 1.3503559)
 pivot_offset = Vector2(25, 39)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "O"
-label_settings = SubResource("LabelSettings_ogmly")
+label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII5" type="Label" parent="UI/upgrades/Defense"]
+[node name="ASCII5" type="Label" parent="UI/V/upgrades/Defense/Defense"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
+offset_left = -23.749985
 offset_top = -40.0
-offset_right = 26.0
+offset_right = 26.250015
 offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -532,64 +477,64 @@ pivot_offset = Vector2(25, 39)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "o"
-label_settings = SubResource("LabelSettings_4d5u6")
+label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII4" type="Label" parent="UI/upgrades/Defense"]
+[node name="ASCII4" type="Label" parent="UI/V/upgrades/Defense/Defense"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -39.0
-offset_right = 32.0
-offset_bottom = 39.0
+offset_left = -33.750008
+offset_top = -38.75
+offset_right = 31.249992
+offset_bottom = 39.25
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.3034436, 1.3034436)
 pivot_offset = Vector2(25, 39)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
-text = "()"
-label_settings = SubResource("LabelSettings_n0wu0")
+text = "( )"
+label_settings = SubResource("LabelSettings_jo754")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII2" type="Label" parent="UI/upgrades/Defense"]
+[node name="ASCII2" type="Label" parent="UI/V/upgrades/Defense/Defense"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -39.0
-offset_right = 25.0
-offset_bottom = 39.0
+offset_left = -22.5
+offset_top = -45.0
+offset_right = 27.5
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(25, 39)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "''"
-label_settings = SubResource("LabelSettings_r2qr3")
+label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ASCII3" type="Label" parent="UI/upgrades/Defense"]
+[node name="ASCII3" type="Label" parent="UI/V/upgrades/Defense/Defense"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -35.0
-offset_right = 25.0
-offset_bottom = 43.0
+offset_left = -23.75
+offset_top = -30.000004
+offset_right = 26.25
+offset_bottom = 47.999996
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.1415927
@@ -597,7 +542,38 @@ pivot_offset = Vector2(25, 39)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "''"
-label_settings = SubResource("LabelSettings_r2qr3")
+label_settings = ExtResource("8_5vw27")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="health" type="HBoxContainer" parent="UI/V" node_paths=PackedStringArray("player_health")]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("8_kek77")
+player_health = NodePath("../../../main/Player/Health")
+
+[node name="heart" type="Control" parent="UI/V/health"]
+custom_minimum_size = Vector2(25, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/V/health/heart"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 12.5
+offset_right = 23.0
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.0460035
+text = "<3"
+label_settings = ExtResource("8_5vw27")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -711,6 +687,9 @@ stream = ExtResource("12_omng6")
 volume_db = -6.0
 autoplay = true
 
-[connection signal="hit" from="main/Player" to="UI/health" method="_on_player_hit"]
-[connection signal="update_health" from="main/Player" to="UI/health" method="update"]
-[connection signal="upgraded" from="main/Player" to="UI/upgrades" method="show_upgrade"]
+[node name="Granade" parent="." instance=ExtResource("14_3c5q2")]
+position = Vector2(322, 226)
+
+[connection signal="hit" from="main/Player" to="UI/V/health" method="_on_player_hit"]
+[connection signal="update_health" from="main/Player" to="UI/V/health" method="update"]
+[connection signal="upgraded" from="main/Player" to="UI/V/upgrades" method="show_upgrade"]

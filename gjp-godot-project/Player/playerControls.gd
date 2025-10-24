@@ -78,6 +78,7 @@ func upgrade(string):
 		roll.pointer = $Pointer
 		roll.pickup = $Pickup
 		roll.move = $Mover
+		roll.health = $Health
 		upgrades["Roll"] = roll
 	elif string == "Defense":
 		var def = Globals.add_script(self, "defense.gd", func(_n): return)

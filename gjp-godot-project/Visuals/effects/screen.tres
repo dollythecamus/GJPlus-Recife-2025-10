@@ -6,14 +6,14 @@
 shader = ExtResource("1_ixkec")
 shader_parameter/resolution = Vector2(640, 440)
 shader_parameter/scan_line_amount = 0.050000002375
-shader_parameter/warp_amount = 1.200000057
+shader_parameter/warp_amount = 0.10000000475
 shader_parameter/noise_amount = 0.03
 shader_parameter/interference_amount = 0.2
 shader_parameter/grille_amount = 0.1
-shader_parameter/grille_size = 1.50000002375
+shader_parameter/grille_size = 1.0
 shader_parameter/vignette_amount = 0.70000003325
 shader_parameter/vignette_intensity = 0.6000000285
-shader_parameter/aberation_amount = 0.70000003325
+shader_parameter/aberation_amount = 0.90000004275
 shader_parameter/roll_line_amount = 0.30000001425
 shader_parameter/roll_speed = 0.5000004037500005
 shader_parameter/scan_line_strength = -8.0

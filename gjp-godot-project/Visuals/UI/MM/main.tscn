@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cx5cm77wde43g"]
+[gd_scene load_steps=18 format=3 uid="uid://cx5cm77wde43g"]
 
 [ext_resource type="LabelSettings" uid="uid://cx6gnx7fyselo" path="res://Visuals/UI/title.tres" id="1_dxapu"]
 [ext_resource type="Script" uid="uid://w5uh3wkxayhs" path="res://Visuals/UI/MM/main.gd" id="1_yflm0"]
@@ -10,6 +10,7 @@
 [ext_resource type="LabelSettings" uid="uid://do2l65wm7p2ae" path="res://Visuals/ASCII/flash.tres" id="6_hovv6"]
 [ext_resource type="Texture2D" uid="uid://bv4p2w4s8qqct" path="res://Visuals/UI/joystick.jpg" id="9_0mmqq"]
 [ext_resource type="AudioStream" uid="uid://4wud6vapjuk0" path="res://Sound/music/Bassline.wav" id="10_mplmn"]
+[ext_resource type="PackedScene" uid="uid://nx87c6v10n3d" path="res://Visuals/effects/screen.tscn" id="11_glf10"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1kuo"]
 line_spacing = -20.0
@@ -740,3 +741,10 @@ text = "X"
 stream = ExtResource("10_mplmn")
 volume_db = -15.0
 autoplay = true
+
+[node name="Screen" parent="." instance=ExtResource("11_glf10")]
+
+[node name="Tint" parent="Screen" index="0"]
+visible = false
+
+[editable path="Screen"]

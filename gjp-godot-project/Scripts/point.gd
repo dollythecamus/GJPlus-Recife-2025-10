@@ -25,6 +25,12 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and not has_clicked_with_mouse:
 		has_clicked_with_mouse = true
 		joysticking = false
+	elif event is InputEventMouseMotion and not has_clicked_with_mouse:
+		# check if moved enough to detect user
+		if event.relative.length() > 5.0:
+			has_clicked_with_mouse = true
+			joysticking = false
+	
 	if event is InputEventJoypadMotion:
 		if event.axis_value > .1:
 			joysticking = true

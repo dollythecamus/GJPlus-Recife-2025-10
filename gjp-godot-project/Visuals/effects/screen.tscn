@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://nx87c6v10n3d"]
+[gd_scene load_steps=7 format=3 uid="uid://nx87c6v10n3d"]
 
 [ext_resource type="Script" uid="uid://cq74q2kx6jesq" path="res://Visuals/effects/screen.gd" id="1_5ggpf"]
 [ext_resource type="Material" uid="uid://inaowq8yb5dh" path="res://Visuals/effects/screen.tres" id="2_5ggpf"]
+[ext_resource type="Material" uid="uid://dfw1780bnmy5k" path="res://Visuals/effects/tint.tres" id="3_4w7vl"]
 
 [sub_resource type="Animation" id="Animation_4w7vl"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:material:shader_parameter/resolution")
+tracks/0/path = NodePath("CRT/CRT:material:shader_parameter/resolution")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,7 +21,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:material:shader_parameter/noise_amount")
+tracks/1/path = NodePath("CRT/CRT:material:shader_parameter/noise_amount")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -29,35 +30,45 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.03]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CRT/CRT:material:shader_parameter/warp_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.10000000475]
+}
 
 [sub_resource type="Animation" id="Animation_5ggpf"]
 resource_name = "transition"
-length = 0.5000042
-loop_mode = 2
 step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:material:shader_parameter/resolution")
+tracks/0/path = NodePath("CRT/CRT:material:shader_parameter/resolution")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.010416667, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(640, 440), Vector2(160, 110)]
+"values": [Vector2(640, 440), Vector2(160, 110), Vector2(640, 440)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:material:shader_parameter/noise_amount")
+tracks/1/path = NodePath("CRT/CRT:material:shader_parameter/noise_amount")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.010416667, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.03, 0.30000001192093]
+"values": [0.03, 0.30000001192093, 0.03]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -66,15 +77,24 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"stop"
-}, {
 "args": [],
 "method": &"to_change"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CRT/CRT:material:shader_parameter/warp_amount")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.10000000475, 2.50000011875]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4w7vl"]
@@ -87,7 +107,18 @@ _data = {
 script = ExtResource("1_5ggpf")
 metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="ColorRect" parent="."]
+[node name="Tint" type="ColorRect" parent="."]
+material = ExtResource("3_4w7vl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="CRT" type="ColorRect" parent="CRT"]
 material = ExtResource("2_5ggpf")
 anchors_preset = 15
 anchor_right = 1.0
