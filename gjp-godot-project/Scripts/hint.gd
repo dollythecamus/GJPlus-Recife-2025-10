@@ -32,7 +32,7 @@ func player_acted(what):
 	
 	learned += int(pow(2, what))
 	
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(1.5).timeout
 	
 	match what:
 		PlayerControls.Actions.GRAB:
@@ -43,7 +43,6 @@ func player_acted(what):
 			defend.hide()
 		PlayerControls.Actions.MOVEAIM:
 			move_aim.hide()
-			teach_grab()
 		PlayerControls.Actions.ATTACK:
 			attack.hide()
 
@@ -72,17 +71,5 @@ func is_bit_set(x, pos):
 func _on_player_act(what: Variant) -> void:
 	player_acted(what)
 
-func teach_grab():
-	await get_tree().create_timer(3.0).timeout
-	expect_player(PlayerControls.Actions.GRAB)
-
-func trigger_hint(string):
-	var what
-	match string:
-		"Roll":
-			what = PlayerControls.Actions.ROLL
-		"Defense":
-			what = PlayerControls.Actions.DEFEND
-		"Attack":
-			what = PlayerControls.Actions.ATTACK
+func _on_player_expect(what: Variant) -> void:
 	expect_player(what)

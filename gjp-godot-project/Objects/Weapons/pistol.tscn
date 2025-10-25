@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://g1jidhsjrkag"]
+[gd_scene load_steps=11 format=3 uid="uid://g1jidhsjrkag"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="2_wqlkq"]
 [ext_resource type="Script" uid="uid://cweog4vcvfmuc" path="res://Scripts/rate.gd" id="3_3nlhr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="6_wqlkq"]
 [ext_resource type="PackedScene" uid="uid://b8ahs3owuq1lg" path="res://Objects/Weapons/Projectiles/bullet1.tscn" id="7_i040i"]
 [ext_resource type="AudioStream" uid="uid://cxlfx6rw3egby" path="res://Sound/sfx/Audio 5.mp3" id="8_3nlhr"]
+[ext_resource type="Script" uid="uid://wab1thmx4eyf" path="res://Objects/Weapons/pistol_hint.gd" id="9_7kgv7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
 radius = 19.026299
@@ -167,3 +168,8 @@ fire_rate = 0.2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Attack"]
 stream = ExtResource("8_3nlhr")
 volume_db = -6.5
+
+[node name="hint" type="Node" parent="."]
+script = ExtResource("9_7kgv7")
+
+[connection signal="picked" from="Pickable" to="hint" method="_on_pickable_picked"]

@@ -14,6 +14,7 @@ signal upgraded(which)
 signal hit
 
 signal act(what)
+signal expect(what)
 
 enum Actions {GRAB, ROLL, DEFEND, MOVEAIM, ATTACK, max}
 
@@ -89,10 +90,12 @@ func upgrade(string):
 		roll.pickup = $Pickup
 		roll.move = $Mover
 		roll.health = $Health
+		expect.emit(Actions.ROLL)
 		upgrades["Roll"] = roll
 	elif string == "Defense":
 		var def = Globals.add_script(self, "defense.gd", func(_n): return)
 		def.p_hit = $Hit
 		def.move = $Mover
+		expect.emit(Actions.DEFEND)
 		upgrades["Defense"] = def
 	upgraded.emit(string)

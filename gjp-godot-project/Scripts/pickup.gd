@@ -9,11 +9,11 @@ var node_picked = null
 
 func release(other = false):
 	if node_picked != null:
+		did_pick = false
 		node_picked.get_node("Pickable").disconnect("released", _on_released)
 		if not other:
 			node_picked.get_node("Pickable").release()
 		node_picked = null
-		did_pick = false
 
 func pick_first(owns):
 	var a = get_overlapping_areas()
@@ -34,3 +34,7 @@ func pick(area, owns = n):
 
 func _on_released():
 	release(true)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Pickable:
+		n.expect.emit(PlayerControls.Actions.GRAB)

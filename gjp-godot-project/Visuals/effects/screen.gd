@@ -67,9 +67,11 @@ func transition():
 
 func down():
 	x = 0
+	set_visual()
 
-func normal():
-	x = 2
+func default():
+	x = 3
+	set_visual()
 
 func to_change():
 	change.emit()
