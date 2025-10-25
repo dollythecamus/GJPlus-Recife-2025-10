@@ -12,6 +12,7 @@ func _ready():
 	connect("area_exited", _on_area_exited)
 
 func hit_all_area():
+	enable()
 	collision_mask = 24 # to hurt all
 	await get_tree().physics_frame
 	await get_tree().create_timer(get_physics_process_delta_time()+.05).timeout

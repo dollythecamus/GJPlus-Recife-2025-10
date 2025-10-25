@@ -38,6 +38,7 @@ metadata/_custom_type_script = "uid://taq2rij2glt4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
 shape = SubResource("CircleShape2D_pxopx")
+disabled = true
 
 [node name="AnimatedExplosion" parent="." instance=ExtResource("2_cf8ke")]
 visible = false
