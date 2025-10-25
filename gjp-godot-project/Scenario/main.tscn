@@ -1169,6 +1169,7 @@ text = "'"
 label_settings = SubResource("LabelSettings_c4riy")
 
 [node name="frame3" type="Node2D" parent="UI/Tutorial/control_hints/controller/Grab/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(-10, -6)
 
 [node name="obj" type="Node2D" parent="UI/Tutorial/control_hints/controller/Grab/H/C2/C/AnimatedASCII/frame3"]
@@ -2468,6 +2469,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame4" type="Node2D" parent="UI/Tutorial/control_hints/controller/Defend/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="ASCII" type="Label" parent="UI/Tutorial/control_hints/controller/Defend/H/C2/C/AnimatedASCII/frame4"]
 texture_filter = 1
@@ -2659,6 +2661,7 @@ text = "-"
 label_settings = ExtResource("13_eakse")
 
 [node name="frame2" type="Node2D" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C/C/AnimatedASCII/frame2"]
 offset_right = 40.0
@@ -2683,7 +2686,6 @@ text = "-"
 label_settings = ExtResource("13_eakse")
 
 [node name="frame3" type="Node2D" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C/C/AnimatedASCII/frame3"]
 offset_right = 40.0
@@ -2946,7 +2948,6 @@ text = "-"
 label_settings = ExtResource("13_eakse")
 
 [node name="frame5" type="Node2D" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII/frame5"]
 offset_right = 40.0
@@ -2971,6 +2972,7 @@ text = "-"
 label_settings = ExtResource("13_eakse")
 
 [node name="frame6" type="Node2D" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/control_hints/controller/MoveAim/H/C2/C/AnimatedASCII/frame6"]
 offset_right = 40.0
@@ -3046,6 +3048,7 @@ fpf = 48
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/control_hints/controller/Attack/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="UI/Tutorial/control_hints/controller/Attack/H/C/C/AnimatedASCII/frame0"]
 offset_left = -18.0
@@ -3536,6 +3539,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="frame3" type="Node2D" parent="UI/Tutorial/control_hints/controller/Attack/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="UI/Tutorial/control_hints/controller/Attack/H/C2/C/AnimatedASCII/frame3"]
 position = Vector2(-9, -16)
@@ -4624,7 +4628,6 @@ text = "-"
 label_settings = SubResource("LabelSettings_0rq0a")
 
 [node name="frame5" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="Node2D" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII/frame5"]
 scale = Vector2(0.7, 0.7)
@@ -4807,6 +4810,7 @@ text = "-"
 label_settings = SubResource("LabelSettings_0rq0a")
 
 [node name="frame6" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C/C/AnimatedASCII/frame6"]
 scale = Vector2(0.7, 0.7)
@@ -5339,7 +5343,6 @@ text = "*"
 label_settings = SubResource("LabelSettings_4nohq")
 
 [node name="frame5" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII"]
-visible = false
 position = Vector2(10, -52)
 
 [node name="Label3" type="Label" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII/frame5"]
@@ -5368,6 +5371,7 @@ text = "'"
 label_settings = SubResource("LabelSettings_khqs6")
 
 [node name="frame6" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(16, -45)
 
 [node name="Label3" type="Label" parent="UI/Tutorial/control_hints/keyboard/MoveAim/H/C2/C/AnimatedASCII/frame6"]
@@ -5457,6 +5461,7 @@ fpf = 36
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Grab/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="key" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame0"]
 position = Vector2(-8, -8)
@@ -5503,7 +5508,6 @@ text = "-"
 label_settings = SubResource("LabelSettings_0rq0a")
 
 [node name="frame1" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Grab/H/C/C/AnimatedASCII"]
-visible = false
 scale = Vector2(0.7584025, 0.7584025)
 
 [node name="key" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Grab/H/C/C/AnimatedASCII/frame1"]
@@ -5843,6 +5847,7 @@ text = "'"
 label_settings = SubResource("LabelSettings_c4riy")
 
 [node name="frame3" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(-10, -6)
 
 [node name="obj" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Grab/H/C2/C/AnimatedASCII/frame3"]
@@ -6715,6 +6720,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="frame3" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Attack/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Attack/H/C2/C/AnimatedASCII/frame3"]
 position = Vector2(-9, -16)
@@ -7105,6 +7111,7 @@ fpf = 36
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Defend/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="key" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Defend/H/C/C/AnimatedASCII/frame0"]
 position = Vector2(-8, -8)
@@ -7159,7 +7166,6 @@ text = "Q"
 label_settings = ExtResource("13_eakse")
 
 [node name="frame1" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Defend/H/C/C/AnimatedASCII"]
-visible = false
 scale = Vector2(0.7584025, 0.7584025)
 
 [node name="key" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Defend/H/C/C/AnimatedASCII/frame1"]
@@ -7668,6 +7674,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame4" type="Node2D" parent="UI/Tutorial/control_hints/keyboard/Defend/H/C3/C/AnimatedASCII"]
+visible = false
 
 [node name="ASCII" type="Label" parent="UI/Tutorial/control_hints/keyboard/Defend/H/C3/C/AnimatedASCII/frame4"]
 texture_filter = 1

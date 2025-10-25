@@ -17,7 +17,7 @@ func _ready() -> void:
 func get_nodes():
 	
 	var scheme = "keyboard"
-	if with_controller:
+	if with_controller or Input.get_connected_joypads().size() > 0:
 		scheme = "controller"
 	
 	attack =   get_node(scheme + "/Attack")

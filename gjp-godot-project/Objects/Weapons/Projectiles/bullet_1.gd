@@ -25,5 +25,6 @@ func _on_area_entered(area: Area2D) -> void:
 			$ASCII.hide()
 			anim.play()
 			$Col.set_deferred("disabled", true)
+			mover.disable()
 			await anim.finished
 			queue_free()

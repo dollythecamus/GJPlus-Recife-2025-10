@@ -40,12 +40,16 @@ func reborn():
 	update_health.emit()
 
 func _process(delta: float) -> void:
+	
 	move.direction  = Input.get_vector("move_left","move_right","move_up","move_down")
 	
 	global_position.x = clamp(global_position.x, 20, 600)
 	global_position.y = clamp(global_position.y, 10, 400)
 
 	c += delta
+	
+	if dead:
+		return
 	
 	if not move.direction.is_zero_approx():
 		$visual.rotation = sin(c * 10) * .2

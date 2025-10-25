@@ -35,7 +35,7 @@ func toggle_controls(toggle):
 	$Tutorial/Keyboard.visible = toggle
 
 func back():
-	$Main/Title/tutorial.grab_focus.call_deferred()
+	$Main/Title/Play.grab_focus.call_deferred()
 	Screen.default()
 	$Main.show()
 	$Tutorial.hide()
