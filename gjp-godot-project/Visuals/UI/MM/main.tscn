@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cx5cm77wde43g"]
+[gd_scene load_steps=34 format=3 uid="uid://cx5cm77wde43g"]
 
 [ext_resource type="LabelSettings" uid="uid://cx6gnx7fyselo" path="res://Visuals/UI/title.tres" id="1_dxapu"]
 [ext_resource type="Script" uid="uid://w5uh3wkxayhs" path="res://Visuals/UI/MM/main.gd" id="1_yflm0"]
@@ -53,6 +53,15 @@ shadow_size = 0
 line_spacing = -6.0
 font = ExtResource("3_yflm0")
 font_size = 44
+font_color = Color(0.92156863, 0.12156863, 0.18431373, 1)
+outline_size = 1
+outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvfnx"]
+line_spacing = -6.0
+font = ExtResource("3_yflm0")
+font_size = 36
 font_color = Color(0.92156863, 0.12156863, 0.18431373, 1)
 outline_size = 1
 outline_color = Color(0.84705883, 0.06666667, 0.8509804, 0.5411765)
@@ -203,7 +212,6 @@ grow_vertical = 2
 script = ExtResource("1_yflm0")
 
 [node name="Main" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,26 +238,41 @@ offset_left = 71.0
 offset_top = 236.0
 offset_right = 210.0
 offset_bottom = 286.0
-focus_next = NodePath("../Quit")
+focus_next = NodePath("../V/Quit")
 text = "Play"
 
-[node name="Quit" type="Button" parent="Main/Title"]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 304.0
-offset_right = 120.0
-offset_bottom = 354.0
-focus_previous = NodePath("../Play")
+[node name="V" type="HBoxContainer" parent="Main/Title"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 94.0
+offset_right = -39.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Quit" type="Button" parent="Main/Title/V"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_previous = NodePath("../../Play")
 text = "X"
 
-[node name="tutorial" type="Button" parent="Main/Title"]
-layout_mode = 0
-offset_left = 149.0
-offset_top = 304.0
-offset_right = 202.0
-offset_bottom = 354.0
-focus_previous = NodePath("../Play")
+[node name="Tutorial" type="Button" parent="Main/Title/V"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_previous = NodePath("../../Play")
 text = "?"
+
+[node name="Credits" type="Button" parent="Main/Title/V"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_previous = NodePath("../../Play")
+text = ":P"
 
 [node name="Ilustrations" type="Node2D" parent="Main"]
 metadata/_edit_lock_ = true
@@ -654,7 +677,6 @@ grow_vertical = 2
 color = Color(0.15602738, 0.101691194, 0.22574204, 1)
 
 [node name="Joycon" type="Label" parent="Tutorial"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -719,7 +741,6 @@ fpf = 12
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="Tutorial/Joycon/controller/MoveAim/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="Tutorial/Joycon/controller/MoveAim/H/C/C/AnimatedASCII/frame0"]
 offset_right = 40.0
@@ -893,6 +914,7 @@ text = "-"
 label_settings = ExtResource("10_3bdjo")
 
 [node name="frame7" type="Node2D" parent="Tutorial/Joycon/controller/MoveAim/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="Tutorial/Joycon/controller/MoveAim/H/C/C/AnimatedASCII/frame7"]
 offset_right = 40.0
@@ -932,7 +954,6 @@ fpf = 12
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="Tutorial/Joycon/controller/MoveAim/H/C2/C/AnimatedASCII"]
-visible = false
 
 [node name="Label" type="Label" parent="Tutorial/Joycon/controller/MoveAim/H/C2/C/AnimatedASCII/frame0"]
 offset_right = 40.0
@@ -957,6 +978,7 @@ text = "-"
 label_settings = ExtResource("10_3bdjo")
 
 [node name="frame1" type="Node2D" parent="Tutorial/Joycon/controller/MoveAim/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Label" type="Label" parent="Tutorial/Joycon/controller/MoveAim/H/C2/C/AnimatedASCII/frame1"]
 offset_right = 40.0
@@ -1438,7 +1460,6 @@ text = "O"
 label_settings = ExtResource("4_0mmqq")
 
 [node name="frame1" type="Node2D" parent="Tutorial/Joycon/controller/Grab/H/C2/C/AnimatedASCII"]
-visible = false
 position = Vector2(-10, -6)
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Joycon/controller/Grab/H/C2/C/AnimatedASCII/frame1"]
@@ -1911,6 +1932,7 @@ text = "'"
 label_settings = SubResource("LabelSettings_ydwjq")
 
 [node name="frame6" type="Node2D" parent="Tutorial/Joycon/controller/Grab/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(-28, -10)
 
 [node name="obj" type="Node2D" parent="Tutorial/Joycon/controller/Grab/H/C2/C/AnimatedASCII/frame6"]
@@ -2019,6 +2041,17 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Label" type="Label" parent="Tutorial/Joycon/controller/Attack"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -7.0
+offset_bottom = 35.0
+grow_horizontal = 2
+text = "Attack/Shoot"
+label_settings = SubResource("LabelSettings_r2coa")
+horizontal_alignment = 1
+
 [node name="H" type="HBoxContainer" parent="Tutorial/Joycon/controller/Attack"]
 layout_mode = 1
 anchors_preset = 15
@@ -2042,8 +2075,101 @@ fpf = 48
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII"]
+visible = false
+
+[node name="Label" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame0"]
+offset_left = -18.0
+offset_top = -28.5
+offset_right = 22.0
+offset_bottom = 8.5
+rotation = 0.35547742
+text = "("
+label_settings = SubResource("LabelSettings_yvfnx")
+
+[node name="Label5" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame0"]
+offset_left = -10.0
+offset_top = -16.5
+offset_right = 30.0
+offset_bottom = 20.5
+text = "RT"
+label_settings = ExtResource("10_3bdjo")
+
+[node name="Label2" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame0"]
+offset_left = 9.0
+offset_top = -20.5
+offset_right = 49.0
+offset_bottom = 16.5
+rotation = -0.47862506
+text = ")"
+label_settings = SubResource("LabelSettings_yvfnx")
+
+[node name="Label3" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame0"]
+offset_left = -5.0
+offset_top = -49.5
+offset_right = 35.0
+offset_bottom = -12.5
+rotation = -0.0032640994
+text = "_"
+label_settings = SubResource("LabelSettings_yvfnx")
+
+[node name="Label4" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame0"]
+offset_left = -15.0
+offset_top = -19.5
+offset_right = 25.0
+offset_bottom = 17.5
+rotation = -0.0032640994
+text = "__"
+label_settings = SubResource("LabelSettings_yvfnx")
 
 [node name="frame1" type="Node2D" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII"]
+
+[node name="Node2D" type="Node2D" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame1"]
+position = Vector2(7, 13.5)
+scale = Vector2(1.1770601, 0.70281434)
+
+[node name="Label" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame1/Node2D"]
+offset_left = -25.12259
+offset_top = -42.369446
+offset_right = 14.877411
+offset_bottom = -5.369446
+rotation = 0.35547742
+text = "("
+label_settings = SubResource("LabelSettings_yvfnx")
+
+[node name="Label5" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame1/Node2D"]
+offset_left = -17.12259
+offset_top = -30.369446
+offset_right = 22.87741
+offset_bottom = 6.630554
+text = "RT"
+label_settings = ExtResource("10_3bdjo")
+
+[node name="Label2" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame1/Node2D"]
+offset_left = 1.8774109
+offset_top = -34.369446
+offset_right = 41.87741
+offset_bottom = 2.6305542
+rotation = -0.47862506
+text = ")"
+label_settings = SubResource("LabelSettings_yvfnx")
+
+[node name="Label3" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame1/Node2D"]
+offset_left = -12.122589
+offset_top = -63.369446
+offset_right = 27.87741
+offset_bottom = -26.369446
+rotation = -0.0032640994
+text = "_"
+label_settings = SubResource("LabelSettings_yvfnx")
+
+[node name="Label4" type="Label" parent="Tutorial/Joycon/controller/Attack/H/C/C/AnimatedASCII/frame1/Node2D"]
+offset_left = -22.12259
+offset_top = -33.369446
+offset_right = 20.87741
+offset_bottom = 3.6305542
+rotation = -0.0032640994
+text = "__"
+label_settings = SubResource("LabelSettings_yvfnx")
 
 [node name="C2" type="CenterContainer" parent="Tutorial/Joycon/controller/Attack/H"]
 layout_mode = 2
@@ -2172,7 +2298,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame1" type="Node2D" parent="Tutorial/Joycon/controller/Attack/H/C2/C/AnimatedASCII"]
-visible = false
 rotation = -0.39774793
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Joycon/controller/Attack/H/C2/C/AnimatedASCII/frame1"]
@@ -2439,6 +2564,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="frame3" type="Node2D" parent="Tutorial/Joycon/controller/Attack/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Joycon/controller/Attack/H/C2/C/AnimatedASCII/frame3"]
 position = Vector2(-9, -16)
@@ -2569,17 +2695,6 @@ label_settings = ExtResource("4_0mmqq")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Tutorial/Joycon/controller/Attack"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = -7.0
-offset_bottom = 35.0
-grow_horizontal = 2
-text = "Attack/Shoot"
-label_settings = SubResource("LabelSettings_r2coa")
-horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="Tutorial/Joycon/controller"]
 layout_mode = 2
@@ -2938,7 +3053,6 @@ fpf = 48
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Label" parent="Tutorial/Joycon/controller/Defend/H/C/G/C2/C/Control/AnimatedASCII"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -2956,6 +3070,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame1" type="Label" parent="Tutorial/Joycon/controller/Defend/H/C/G/C2/C/Control/AnimatedASCII"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -3298,7 +3413,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame2" type="Node2D" parent="Tutorial/Joycon/controller/Defend/H/C2/C/AnimatedASCII"]
-visible = false
 
 [node name="ASCII" type="Label" parent="Tutorial/Joycon/controller/Defend/H/C2/C/AnimatedASCII/frame2"]
 texture_filter = 1
@@ -3408,6 +3522,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="frame3" type="Node2D" parent="Tutorial/Joycon/controller/Defend/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(8, -1.0000002)
 rotation = 0.38934237
 
@@ -3649,6 +3764,7 @@ focus_previous = NodePath("../Play")
 text = "X"
 
 [node name="Keyboard" type="Label" parent="Tutorial"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -4803,7 +4919,6 @@ text = "-"
 label_settings = SubResource("LabelSettings_k4qd6")
 
 [node name="frame6" type="Node2D" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C/C/AnimatedASCII/frame6"]
 scale = Vector2(0.7, 0.7)
@@ -4985,6 +5100,7 @@ text = "-"
 label_settings = SubResource("LabelSettings_k4qd6")
 
 [node name="frame7" type="Node2D" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C/C/AnimatedASCII"]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C/C/AnimatedASCII/frame7"]
 scale = Vector2(0.7, 0.7)
@@ -5364,7 +5480,6 @@ text = "'"
 label_settings = SubResource("LabelSettings_lkg6g")
 
 [node name="frame6" type="Node2D" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C2/C/AnimatedASCII"]
-visible = false
 position = Vector2(16, -45)
 
 [node name="Label3" type="Label" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C2/C/AnimatedASCII/frame6"]
@@ -5393,6 +5508,7 @@ text = "'"
 label_settings = SubResource("LabelSettings_lkg6g")
 
 [node name="frame7" type="Node2D" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(10, -35)
 
 [node name="Label3" type="Label" parent="Tutorial/Keyboard/keyboard/MoveAim/H/C2/C/AnimatedASCII/frame7"]
@@ -5463,7 +5579,6 @@ fpf = 36
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="key" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C/C/AnimatedASCII/frame0"]
 position = Vector2(-8, -8)
@@ -5510,6 +5625,7 @@ text = "-"
 label_settings = SubResource("LabelSettings_k4qd6")
 
 [node name="frame1" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C/C/AnimatedASCII"]
+visible = false
 scale = Vector2(0.7584025, 0.7584025)
 
 [node name="key" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C/C/AnimatedASCII/frame1"]
@@ -5944,6 +6060,7 @@ text = "'"
 label_settings = SubResource("LabelSettings_5ogy6")
 
 [node name="frame4" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C2/C/AnimatedASCII"]
+visible = false
 position = Vector2(-10, -6)
 
 [node name="obj" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C2/C/AnimatedASCII/frame4"]
@@ -6133,7 +6250,6 @@ text = "'"
 label_settings = SubResource("LabelSettings_5ogy6")
 
 [node name="frame6" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C2/C/AnimatedASCII"]
-visible = false
 position = Vector2(-28, -10)
 
 [node name="obj" type="Node2D" parent="Tutorial/Keyboard/keyboard/Grab/H/C2/C/AnimatedASCII/frame6"]
@@ -6353,7 +6469,6 @@ fpf = 32
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="Tutorial/Keyboard/keyboard/Attack/H/C2/C/AnimatedASCII"]
-visible = false
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Keyboard/keyboard/Attack/H/C2/C/AnimatedASCII/frame0"]
 position = Vector2(-9, -16)
@@ -6599,6 +6714,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="frame2" type="Node2D" parent="Tutorial/Keyboard/keyboard/Attack/H/C2/C/AnimatedASCII"]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="Tutorial/Keyboard/keyboard/Attack/H/C2/C/AnimatedASCII/frame2"]
 position = Vector2(-9, -16)
@@ -7145,7 +7261,6 @@ fpf = 36
 metadata/_custom_type_script = "uid://c1qdqmw14tovm"
 
 [node name="frame0" type="Node2D" parent="Tutorial/Keyboard/keyboard/Defend/H/C/C/AnimatedASCII"]
-visible = false
 
 [node name="key" type="Node2D" parent="Tutorial/Keyboard/keyboard/Defend/H/C/C/AnimatedASCII/frame0"]
 position = Vector2(-8, -8)
@@ -7200,6 +7315,7 @@ text = "Q"
 label_settings = ExtResource("10_3bdjo")
 
 [node name="frame1" type="Node2D" parent="Tutorial/Keyboard/keyboard/Defend/H/C/C/AnimatedASCII"]
+visible = false
 scale = Vector2(0.7584025, 0.7584025)
 
 [node name="key" type="Node2D" parent="Tutorial/Keyboard/keyboard/Defend/H/C/C/AnimatedASCII/frame1"]
@@ -7836,7 +7952,7 @@ anchor_right = 0.25
 anchor_bottom = 0.20454545
 metadata/_edit_use_anchors_ = true
 
-[node name="Tutorial2" type="Control" parent="."]
+[node name="Credits" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -7846,7 +7962,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_k1f1u")
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial2"]
+[node name="ColorRect" type="ColorRect" parent="Credits"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -7855,14 +7971,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.15602738, 0.101691194, 0.22574204, 1)
 
-[node name="Quit" type="Button" parent="Tutorial2"]
+[node name="Quit" type="Button" parent="Credits"]
 layout_mode = 0
 offset_left = 23.0
-offset_top = 366.0
+offset_top = 19.0
 offset_right = 76.0
-offset_bottom = 416.0
+offset_bottom = 69.0
 focus_previous = NodePath("../Play")
 text = "X"
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 94.0
+offset_right = 382.0
+offset_bottom = 181.0
+text = "a game by Chloe
+at GameJam Plus 2025/26"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_mplmn")

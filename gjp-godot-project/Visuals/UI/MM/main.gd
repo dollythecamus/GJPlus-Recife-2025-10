@@ -3,10 +3,15 @@ extends Control
 func _ready() -> void:
 	$Main/Title/Play.grab_focus.call_deferred()
 	$Main/Title/Play.connect("pressed", goto_main)
-	$Main/Title/Quit.connect("pressed", func(): get_tree().quit() )
-	$Main/Title/tutorial.connect("pressed", goto_tutorial)
+	
+	$Main/Title/V/Quit.connect("pressed", func(): get_tree().quit() )
+	$Main/Title/V/Tutorial.connect("pressed", goto_tutorial)
+	$Main/Title/V/Credits.connect("pressed", goto_credits)
+	
 	$Tutorial/Quit.connect("pressed", back)
 	$Tutorial/Toggle.connect("toggled", toggle_controls)
+	
+	$Credits/Quit.connect("pressed", back)
 
 func goto_main():
 	Screen.transition()
@@ -19,6 +24,12 @@ func goto_tutorial():
 	$Tutorial/Quit.grab_focus.call_deferred()
 	Screen.down()
 
+func goto_credits():
+	$Main.hide()
+	$Credits.show()
+	$Credits/Quit.grab_focus.call_deferred()
+	Screen.down()
+
 func toggle_controls(toggle):
 	$Tutorial/Joycon.visible = not toggle
 	$Tutorial/Keyboard.visible = toggle
@@ -28,3 +39,4 @@ func back():
 	Screen.default()
 	$Main.show()
 	$Tutorial.hide()
+	$Credits.hide()
