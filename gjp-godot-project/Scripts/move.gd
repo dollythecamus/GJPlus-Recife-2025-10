@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	last = inertia.global_position
 
 func mag(x):
-	velocity = direction * Vector2(x, x)
+	velocity = direction * x
 
 func enable():
 	set_process(true)

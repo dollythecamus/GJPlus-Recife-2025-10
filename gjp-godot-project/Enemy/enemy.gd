@@ -2,6 +2,7 @@ extends Node2D
 class_name EnemyAI
 
 @export var mover : Mover
+@export var pointer : Pointer
 @export var target : Node2D
 @onready var AI = $AI
 @onready var build = $Build
@@ -13,7 +14,7 @@ signal died
 func _ready() -> void:
 	get_feet()
 	$Skeleton2D.get_modification_stack().enabled = true
-	$Skeleton2D/root/Pointer.target = target
+	pointer.target = target
 
 func get_feet():
 	for i in get_children():
@@ -28,11 +29,15 @@ func _exit_tree() -> void:
 	died.emit()
 
 func die():
-	# vfx here
+	$visual.hide()
+	$Skeleton2D.hide()
+	$dead.show()
+	$dead.play()
+	$dead.global_position = pointer.n.global_position
+	$dead.global_rotation = pointer.n.global_rotation
+	await $dead.finished
 	queue_free()
 
 func _on_ai_state_change(v: Variant) -> void:
-	feet.all(change_feet_state.bind(v))
-
-func change_feet_state(x, v):
-	x.state = v
+	for i in feet:
+		i.state = v

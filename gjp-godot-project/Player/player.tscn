@@ -1,31 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://27ex2tehfssw"]
+[gd_scene load_steps=17 format=3 uid="uid://27ex2tehfssw"]
 
 [ext_resource type="Script" uid="uid://b1m8s1s8kes6l" path="res://Player/playerControls.gd" id="1_4ntmi"]
 [ext_resource type="LabelSettings" uid="uid://bki8e2ypy64do" path="res://Visuals/ASCII/player_ascii.tres" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="4_gwnis"]
+[ext_resource type="AudioStream" uid="uid://cfgbql4phfg7q" path="res://Sound/sfx/bwank.mp3" id="4_x3vf3"]
 [ext_resource type="FontFile" uid="uid://cmodjfq830mxj" path="res://Visuals/ASCII/FreeMono.ttf" id="5_fhl08"]
 [ext_resource type="Script" uid="uid://cb5we8r3eekv0" path="res://Scripts/pickup.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="7_vtle1"]
+[ext_resource type="AudioStream" uid="uid://bypyh60cp7pso" path="res://Sound/sfx/Audio 1.mp3" id="8_00tjw"]
 [ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://Scripts/hit.gd" id="8_od3ui"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fhl08"]
-line_spacing = -20.0
-font = ExtResource("5_fhl08")
-font_size = 48
-font_color = Color(0.1882353, 0.84313726, 0.8745098, 1)
-outline_size = 1
-outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
-shadow_size = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_od3ui"]
-line_spacing = -14.739
-font = ExtResource("5_fhl08")
-font_size = 28
-font_color = Color(1, 1, 1, 0.6156863)
-outline_size = 1
-outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
-shadow_size = 0
+[ext_resource type="AudioStream" uid="uid://dt37q17jga7ey" path="res://Sound/sfx/live.mp3" id="11_apopc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtle1"]
 line_spacing = -20.0
@@ -40,11 +25,97 @@ shadow_size = 0
 radius = 26.019224
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_od3ui"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fhl08"]
+line_spacing = -20.0
+font = ExtResource("5_fhl08")
+font_size = 48
+font_color = Color(0.1882353, 0.84313726, 0.8745098, 1)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_od3ui"]
+line_spacing = -14.739
+font = ExtResource("5_fhl08")
+font_size = 28
+font_color = Color(0, 0, 0, 0.78039217)
+outline_size = 1
+outline_color = Color(0.8627451, 0.20392157, 0.80784315, 1)
+shadow_size = 0
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("move", "pickup")]
 script = ExtResource("1_4ntmi")
 move = NodePath("Mover")
 pickup = NodePath("Pickup")
+
+[node name="Mover" type="Node" parent="."]
+script = ExtResource("3_btcbx")
+speed = 230.0
+acceleration = 2000.0
+friction = 0.96
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("7_vtle1")
+is_player = true
+health = 3
+metadata/_custom_type_script = "uid://cyo8c06s31fwq"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Health"]
+stream = ExtResource("4_x3vf3")
+
+[node name="Pointer" type="Node2D" parent="."]
+script = ExtResource("4_gwnis")
+to_point = true
+aim = true
+angle_offset = 0.0
+
+[node name="ASCII2" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -32.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "."
+label_settings = SubResource("LabelSettings_vtle1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pickup" type="Area2D" parent="."]
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_k53q1")
+is_player = true
+
+[node name="Col" type="CollisionShape2D" parent="Pickup"]
+shape = SubResource("CircleShape2D_gwnis")
+
+[node name="Hit" type="Area2D" parent="." node_paths=PackedStringArray("flash", "health", "mover")]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_od3ui")
+flash = NodePath("../visual/flash")
+health = NodePath("../Health")
+mover = NodePath("../Mover")
+metadata/_custom_type_script = "uid://bnrviih0008y5"
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Hit"]
+shape = SubResource("CapsuleShape2D_od3ui")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Hit"]
+stream = ExtResource("8_00tjw")
 
 [node name="visual" type="Node2D" parent="."]
 
@@ -116,63 +187,9 @@ label_settings = SubResource("LabelSettings_od3ui")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mover" type="Node" parent="."]
-script = ExtResource("3_btcbx")
-speed = 300.0
-acceleration = 3000.0
-friction = 0.96
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_apopc")
+volume_db = -6.0
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("7_vtle1")
-is_player = true
-health = 3
-metadata/_custom_type_script = "uid://cyo8c06s31fwq"
-
-[node name="Pointer" type="Node2D" parent="."]
-script = ExtResource("4_gwnis")
-to_point = true
-aim = true
-
-[node name="ASCII2" type="Label" parent="Pointer"]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -32.0
-offset_right = 53.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "."
-label_settings = SubResource("LabelSettings_vtle1")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Pickup" type="Area2D" parent="."]
-collision_mask = 2
-monitorable = false
-script = ExtResource("5_k53q1")
-is_player = true
-
-[node name="Col" type="CollisionShape2D" parent="Pickup"]
-shape = SubResource("CircleShape2D_gwnis")
-
-[node name="Hit" type="Area2D" parent="." node_paths=PackedStringArray("flash", "health", "mover")]
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-script = ExtResource("8_od3ui")
-flash = NodePath("../visual/flash")
-health = NodePath("../Health")
-mover = NodePath("../Mover")
-metadata/_custom_type_script = "uid://bnrviih0008y5"
-
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Hit"]
-shape = SubResource("CapsuleShape2D_od3ui")
-
+[connection signal="area_entered" from="Pickup" to="Pickup" method="_on_area_entered"]
 [connection signal="HIT" from="Hit" to="." method="_on_hit"]

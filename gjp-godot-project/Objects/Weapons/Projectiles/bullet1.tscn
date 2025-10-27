@@ -1,21 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8ahs3owuq1lg"]
+[gd_scene load_steps=7 format=3 uid="uid://b8ahs3owuq1lg"]
 
 [ext_resource type="Script" uid="uid://cbvolekq0sapx" path="res://Objects/Weapons/Projectiles/bullet_1.gd" id="1_beeso"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="1_r1npy"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="2_r1npy"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="4_efull"]
+[ext_resource type="Script" uid="uid://c1qdqmw14tovm" path="res://Visuals/ASCII/animated/animated_ascii.gd" id="5_mrlya"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_beeso"]
 a = Vector2(-39, 0)
 b = Vector2(13, 0)
 
 [node name="Bullet1" type="Area2D"]
-collision_layer = 24
+collision_layer = 4
 collision_mask = 24
 script = ExtResource("1_beeso")
 damage = 1
 
-[node name="ASCII2" type="Label" parent="."]
+[node name="ASCII" type="Label" parent="."]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,9 +24,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -25.0
-offset_top = -32.0
+offset_top = -34.0
 offset_right = 25.0
-offset_bottom = 20.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -49,6 +50,138 @@ script = ExtResource("4_efull")
 rotate_parent = true
 to_point = true
 mover_inertia = NodePath("../Mover")
+angle_offset = 0.0
 metadata/_custom_type_script = "uid://c06bwdrxfw41f"
+
+[node name="AnimatedASCII" type="Node2D" parent="."]
+script = ExtResource("5_mrlya")
+fpf = 4
+metadata/_custom_type_script = "uid://c1qdqmw14tovm"
+
+[node name="frame0" type="Node2D" parent="AnimatedASCII"]
+visible = false
+
+[node name="ASCII2" type="Label" parent="AnimatedASCII/frame0"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.0471976
+pivot_offset = Vector2(25, 34)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "'"
+label_settings = ExtResource("1_r1npy")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII2" type="Label" parent="AnimatedASCII/frame0/ASCII2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5625387
+anchor_top = 0.51564354
+anchor_right = 0.5625387
+anchor_bottom = 0.51564354
+offset_left = -29.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.0471976
+pivot_offset = Vector2(25, 34)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "'"
+label_settings = ExtResource("1_r1npy")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame1" type="Node2D" parent="AnimatedASCII"]
+visible = false
+
+[node name="ASCII2" type="Label" parent="AnimatedASCII/frame1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -52.0
+offset_right = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.9552853
+scale = Vector2(0.77033615, 0.77033615)
+pivot_offset = Vector2(25, 34)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("1_r1npy")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII2" type="Label" parent="AnimatedASCII/frame1/ASCII2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89274627
+anchor_top = 0.29180285
+anchor_right = 0.89274627
+anchor_bottom = 0.29180285
+offset_left = -29.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.5427222
+pivot_offset = Vector2(25, 34)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("1_r1npy")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII3" type="Label" parent="AnimatedASCII/frame1/ASCII2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89678025
+anchor_top = 0.101721175
+anchor_right = 0.89678025
+anchor_bottom = 0.101721175
+offset_left = -29.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.538275
+pivot_offset = Vector2(25, 34)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("1_r1npy")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame2" type="Node2D" parent="AnimatedASCII"]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

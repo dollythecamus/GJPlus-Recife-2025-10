@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_o2xll"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://bovesluih83yo" path="res://Enemy/Skeleton/base2.tres" id="2_cpwo2"]
-[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="2_pmg5d"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="2_sdcpi"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="3_v8n71"]
 [ext_resource type="Script" uid="uid://bnrviih0008y5" path="res://Scripts/hit.gd" id="4_mv0vr"]
@@ -12,17 +11,49 @@
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="8_8m5eh"]
 [ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="9_1up2p"]
 [ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="10_b1qns"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cpwo2"]
-radius = 7.000005
+[ext_resource type="AudioStream" uid="uid://bypyh60cp7pso" path="res://Sound/sfx/Audio 1.mp3" id="11_fyumk"]
+[ext_resource type="Script" uid="uid://c1qdqmw14tovm" path="res://Visuals/ASCII/animated/animated_ascii.gd" id="13_fyumk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6jha"]
 radius = 14.0
 height = 48.0
 
-[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover")]
+[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover", "pointer")]
 script = ExtResource("1_o2xll")
 mover = NodePath("Skeleton2D/root/Mover")
+pointer = NodePath("Skeleton2D/root/Pointer")
+
+[node name="t1R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(45, -15)
+script = ExtResource("7_y6b7q")
+settled_place_node = NodePath("../Skeleton2D/root/t1R")
+
+[node name="t1L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(-45, -15)
+script = ExtResource("7_y6b7q")
+settled_place_node = NodePath("../Skeleton2D/root/t1L")
+preference = -1.0
+
+[node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(35, 19)
+script = ExtResource("7_y6b7q")
+settled_place_node = NodePath("../Skeleton2D/root/t2R")
+
+[node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(-35, 19)
+script = ExtResource("7_y6b7q")
+settled_place_node = NodePath("../Skeleton2D/root/t2L")
+preference = 1.0
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("8_8m5eh")
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("9_1up2p")
+
+[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("10_b1qns")
+root = NodePath("../Skeleton2D/root")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 modification_stack = ExtResource("2_cpwo2")
@@ -52,19 +83,6 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg0/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg0/leg1/leg2")
 
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg0/leg1/leg2"]
-position = Vector2(3.0564325, 1.9126529)
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-script = ExtResource("2_pmg5d")
-knockback = 150
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg0/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_cpwo2")
-
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg0/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg0/leg1")
 
@@ -73,8 +91,8 @@ remote_path = NodePath("../../../../visual/root/leg0")
 
 [node name="leg1" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-15, -6)
-rotation = -0.1403512
-scale = Vector2(0.9999988, 0.9999988)
+rotation = -0.14035124
+scale = Vector2(0.9999981, 0.9999981)
 rest = Transform2D(1, 0, 0, 1, -15, -6)
 editor_settings/show_bone_gizmo = false
 
@@ -91,19 +109,6 @@ editor_settings/show_bone_gizmo = false
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg1/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg1/leg1/leg2")
-
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg1/leg1/leg2"]
-position = Vector2(-1.110399, 2.9609196)
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-script = ExtResource("2_pmg5d")
-knockback = 150
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg1/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_cpwo2")
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg1/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg1/leg1")
@@ -131,19 +136,6 @@ editor_settings/show_bone_gizmo = false
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg2/leg1/leg2")
-
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
-position = Vector2(-1.110399, 2.9609196)
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-script = ExtResource("2_pmg5d")
-knockback = 150
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg2/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_cpwo2")
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg2/leg1")
@@ -173,19 +165,6 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg3/leg1/leg2")
 
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
-position = Vector2(-1.110399, 2.9609196)
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-script = ExtResource("2_pmg5d")
-knockback = 150
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg3/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_cpwo2")
-
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg3/leg1")
 
@@ -202,10 +181,11 @@ acceleration = 1000.0
 friction = 0.93
 metadata/_custom_type_script = "uid://brtc2oowy8obq"
 
-[node name="Pointer" type="Node2D" parent="Skeleton2D/root"]
+[node name="Pointer" type="Node2D" parent="Skeleton2D/root" node_paths=PackedStringArray("mover_inertia")]
 script = ExtResource("3_v8n71")
 rotate_parent = true
 to_point = true
+mover_inertia = NodePath("../Mover")
 
 [node name="t1R" type="Node2D" parent="Skeleton2D/root"]
 position = Vector2(44, -1)
@@ -231,6 +211,9 @@ mover = NodePath("../Mover")
 [node name="Col" type="CollisionShape2D" parent="Skeleton2D/root/Hit"]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m6jha")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Skeleton2D/root/Hit"]
+stream = ExtResource("11_fyumk")
 
 [node name="visual" type="Node2D" parent="."]
 
@@ -317,17 +300,16 @@ vertical_alignment = 1
 
 [node name="leg1" type="Node2D" parent="visual/root"]
 position = Vector2(-15, -6)
-rotation = -0.1403512
-scale = Vector2(0.9999988, 0.9999988)
+rotation = -0.14035124
+scale = Vector2(0.9999981, 0.9999981)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg1"]
-position = Vector2(-14, -17.000004)
-rotation = 0.10545886
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(-13.999998, -16.999998)
+rotation = 0.10545888
 
 [node name="leg2" type="Node2D" parent="visual/root/leg1/leg1"]
-position = Vector2(-12.999996, 16)
-scale = Vector2(0.9999999, 0.9999999)
+position = Vector2(-13, 15.999999)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="l2" type="Label" parent="visual/root/leg1/leg1/leg2"]
 texture_filter = 1
@@ -402,7 +384,7 @@ scale = Vector2(0.9999996, 0.9999996)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg2"]
 position = Vector2(13.000004, -15.000002)
-rotation = -0.34075445
+rotation = -0.34075448
 
 [node name="leg2" type="Node2D" parent="visual/root/leg2/leg1"]
 position = Vector2(12.999996, 15)
@@ -629,39 +611,1630 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="t1R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(44, -1)
-script = ExtResource("7_y6b7q")
-settled_place_node = NodePath("../Skeleton2D/root/t1R")
-preference = 1.0
+[node name="dead" type="Node2D" parent="."]
+visible = false
+script = ExtResource("13_fyumk")
+fpf = 4
 
-[node name="t1L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(-44, -4)
-script = ExtResource("7_y6b7q")
-settled_place_node = NodePath("../Skeleton2D/root/t1L")
-preference = -1.0
+[node name="frame0" type="Node2D" parent="dead"]
+visible = false
 
-[node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(50, 21)
-script = ExtResource("7_y6b7q")
-settled_place_node = NodePath("../Skeleton2D/root/t2R")
-preference = 1.0
+[node name="root" type="Node2D" parent="dead/frame0"]
 
-[node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(-47, 15)
-script = ExtResource("7_y6b7q")
-settled_place_node = NodePath("../Skeleton2D/root/t2L")
-preference = -1.0
+[node name="leg2" type="Node2D" parent="dead/frame0/root"]
+position = Vector2(4, 9)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("8_8m5eh")
-health = 20
+[node name="leg1" type="Node2D" parent="dead/frame0/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = 0.4240296
+scale = Vector2(0.9999995, 0.9999995)
 
-[node name="AI" type="Node" parent="."]
-script = ExtResource("9_1up2p")
+[node name="leg2" type="Node2D" parent="dead/frame0/root/leg2/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.3235198
 
-[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("10_b1qns")
-root = NodePath("../Skeleton2D/root")
+[node name="l2" type="Label" parent="dead/frame0/root/leg2/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame0/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame0/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame0/root"]
+position = Vector2(-6, 8.999999)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame0/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = -0.31041124
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame0/root/leg3/leg1"]
+position = Vector2(-13, 15.000001)
+
+[node name="l2" type="Label" parent="dead/frame0/root/leg3/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame0/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame0/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg4" type="Node2D" parent="dead/frame0/root"]
+position = Vector2(6, 4)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame0/root/leg4"]
+position = Vector2(13.000002, -15.000013)
+rotation = 0.4240296
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="leg2" type="Node2D" parent="dead/frame0/root/leg4/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.3235198
+
+[node name="l2" type="Label" parent="dead/frame0/root/leg4/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame0/root/leg4/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame0/root/leg4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg5" type="Node2D" parent="dead/frame0/root"]
+position = Vector2(-7, 1)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame0/root/leg5"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 0.20639017
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame0/root/leg5/leg1"]
+position = Vector2(-13, 15.000001)
+
+[node name="l2" type="Label" parent="dead/frame0/root/leg5/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame0/root/leg5/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame0/root/leg5"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame0/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame0/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "' '
+' '"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame1" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame1"]
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root"]
+position = Vector2(3, 9)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame1/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = -0.73899233
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root/leg2/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.4986398
+
+[node name="l2" type="Label" parent="dead/frame1/root/leg2/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame1/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame1/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame1/root"]
+position = Vector2(-5, 7.999999)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame1/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 0.7891704
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root/leg3/leg1"]
+position = Vector2(-13, 15.000001)
+
+[node name="l2" type="Label" parent="dead/frame1/root/leg3/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame1/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame1/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame1/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg4" type="Node2D" parent="dead/frame1/root"]
+position = Vector2(4, -2.0000005)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame1/root/leg4"]
+position = Vector2(13.000002, -15.000013)
+rotation = -1.663584
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root/leg4/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.4986398
+
+[node name="l2" type="Label" parent="dead/frame1/root/leg4/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame1/root/leg4/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame1/root/leg4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg5" type="Node2D" parent="dead/frame1/root"]
+position = Vector2(-6, -1)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame1/root/leg5"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 0.59524417
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root/leg5/leg1"]
+position = Vector2(-13, 15.000001)
+rotation = 1.5174139
+
+[node name="l2" type="Label" parent="dead/frame1/root/leg5/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame1/root/leg5/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame1/root/leg5"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame2" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame2"]
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root"]
+position = Vector2(4, 6.9999995)
+rotation = 0.6965038
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame2/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = -1.2067833
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root/leg2/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.4986398
+
+[node name="l2" type="Label" parent="dead/frame2/root/leg2/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame2/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame2/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame2/root"]
+position = Vector2(-4, 7.9999995)
+rotation = -0.4219596
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame2/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 1.1145904
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root/leg3/leg1"]
+position = Vector2(-13, 15.000001)
+rotation = 0.6109463
+
+[node name="l2" type="Label" parent="dead/frame2/root/leg3/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame2/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame2/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame2/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg4" type="Node2D" parent="dead/frame2/root"]
+position = Vector2(5, -4.7683716e-07)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame2/root/leg4"]
+position = Vector2(13.000002, -15.000013)
+rotation = 0.4738593
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root/leg4/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.4986398
+
+[node name="l2" type="Label" parent="dead/frame2/root/leg4/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame2/root/leg4/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame2/root/leg4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg5" type="Node2D" parent="dead/frame2/root"]
+position = Vector2(-5, 0.9999995)
+rotation = -0.30375353
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame2/root/leg5"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 0.8416117
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root/leg5/leg1"]
+position = Vector2(-13, 15.000001)
+
+[node name="l2" type="Label" parent="dead/frame2/root/leg5/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame2/root/leg5/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame2/root/leg5"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame3" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame3"]
+
+[node name="leg2" type="Node2D" parent="dead/frame3/root"]
+position = Vector2(3, 5.9999995)
+rotation = 0.6965038
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame3/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = -1.2067833
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="l1" type="Label" parent="dead/frame3/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame3/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame3/root"]
+position = Vector2(-4, 9)
+rotation = -0.4219596
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame3/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 1.1145904
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="l1" type="Label" parent="dead/frame3/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame3/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame3/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame3/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg4" type="Node2D" parent="dead/frame3/root"]
+position = Vector2(4, -0.9999995)
+rotation = 0.41928512
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame3/root/leg4"]
+position = Vector2(13.000002, -15.000013)
+rotation = -1.2067833
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="l1" type="Label" parent="dead/frame3/root/leg4/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame3/root/leg4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg5" type="Node2D" parent="dead/frame3/root"]
+position = Vector2(-6.000002, -1)
+rotation = -0.69917834
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame3/root/leg5"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 1.1145904
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="l1" type="Label" parent="dead/frame3/root/leg5/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame3/root/leg5"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame4" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame4"]
+
+[node name="leg2" type="Node2D" parent="dead/frame4/root"]
+position = Vector2(4.000107, 7)
+rotation = 1.1303575
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="l0" type="Label" parent="dead/frame4/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame4/root"]
+position = Vector2(-4.000004, 7.9999986)
+rotation = -0.92993915
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="l0" type="Label" parent="dead/frame4/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame4/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame4/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg4" type="Node2D" parent="dead/frame4/root"]
+position = Vector2(5, -1)
+rotation = 1.1303575
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="l0" type="Label" parent="dead/frame4/root/leg4"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg5" type="Node2D" parent="dead/frame4/root"]
+position = Vector2(-4.000002, -4.7683716e-07)
+rotation = -0.92993915
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="l0" type="Label" parent="dead/frame4/root/leg5"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame5" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame5"]
+position = Vector2(3, 7)
+rotation = 0.6312499
+
+[node name="ASCII" type="Label" parent="dead/frame5/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame5/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame6" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame6"]
+position = Vector2(3, 7)
+rotation = 0.6312499
+
+[node name="ASCII" type="Label" parent="dead/frame6/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame6/root/ASCII"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("5_iix6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame7" type="Node2D" parent="dead"]
+visible = false
 
 [connection signal="state_change" from="AI" to="." method="_on_ai_state_change"]

@@ -6,10 +6,11 @@ class_name Build
 @export var build_ready = ""
 
 const builds = {
+	"DEBUG_I": "base2+two_gun+set(mover.speed=50)",
 	"ZeroI": "base1",
 	"ZeroII": "base1+arm",
 	"ZeroIII": "base2",
-	"ZeroIV": "base2+two_arm+two_meelee",
+	"ZeroIV": "base2+two_arm",
 	"ZeroV": "base2+arm+set(mover.speed=300,mover.friction=0.98)",
 	"ZeroVI": "base2+arm+gun",
 	"ZeroVII": "base1+two_gun+set(mover.speed=150,health.health=15)"
@@ -52,16 +53,19 @@ func build(instruction):
 				var vs = w[0].split(".")
 				# magic at work, folks
 				n.get(vs[0]).set(vs[1], float(value))
+	
+	n.AI._built()
 
 func build_gun(offset):
 	var new = Globals.builds["gun"].instantiate()
-	root.add_child(new)
 	new.position = offset
+	new.mover = n.mover
+	new.n = get_parent()
+	root.add_child(new)
 	new.pointer.target = n.target
-	#new.n = get_parent()
 
 func build_arm(offset):
 	var new = Globals.builds["arm"].instantiate()
-	root.add_child(new)
 	new.position = offset
 	new.n = get_parent()
+	root.add_child(new)

@@ -1,13 +1,14 @@
 extends Node
+class_name BotAI
 
 @onready var target = get_parent().target
 @onready var mover = get_parent().mover
 @onready var root = get_parent().get_node("Build").root
 
-static var others = []
 
-const seek_distance = 80
-const others_distance = 100
+var seek_distance = 80.0
+var seek_distance_close = 2.0
+var others_distance = 100.0
 
 enum STATES {WALK, IDLE, RUN}
 var state = STATES.WALK:
@@ -15,24 +16,28 @@ var state = STATES.WALK:
 		state = v
 		state_change.emit(v)
 
+enum MODES {MELEE, RANGED}
+var mode = MODES.MELEE
+
 signal state_change(v)
 
 var fire_cycle = .7
-var fc = 0
+var fc = randf()/fire_cycle
+
+var guns = []
 
 func _init() -> void:
-	others.append(self)
+	Globals.other_AIs.append(self)
+
+func _built():
+	guns = get_guns()
 
 func run(delta):
 	fc += delta
 	
 	get_close_avoid()
 	balance_others_distances()
-	var gun = root.get_node_or_null("Guns")
-	if gun != null:
-		if fc >= fire_cycle:
-			gun.fire()
-			fc = 0
+	guns.all(func(x): x.run(delta))
 
 func get_close_avoid():
 	if target == null:
@@ -44,6 +49,9 @@ func get_close_avoid():
 	else:
 		mover.direction = Vector2.ZERO
 		state = STATES.IDLE
+		if d.length() < seek_distance / seek_distance_close:
+			mover.direction = -d.normalized()
+			state = STATES.WALK
 
 func balance_others_distances():
 	if target == null:
@@ -51,7 +59,7 @@ func balance_others_distances():
 	
 	var resulting = Vector2.ZERO
 	
-	for i in others:
+	for i in Globals.other_AIs:
 		if i == self:
 			continue
 		
@@ -65,5 +73,26 @@ func balance_others_distances():
 	
 	mover.direction += resulting.normalized() * .5
 
+func get_guns():
+	var r = []
+	for i in root.get_children():
+		if i is BotGun:
+			r.append(i)
+	if r.size() > 0 && mode != MODES.MELEE:
+		do_ranged_mode()
+	return r
+
+func do_ranged_mode():
+	seek_distance = 300
+	seek_distance_close = 1.35
+	others_distance = 150
+	mode = MODES.RANGED
+
+func do_melee_mode():
+	seek_distance = 70
+	seek_distance_close = 2.0
+	others_distance = 80
+	mode = MODES.MELEE
+
 func _exit_tree() -> void:
-	others.erase(self)
+	Globals.other_AIs.erase(self)

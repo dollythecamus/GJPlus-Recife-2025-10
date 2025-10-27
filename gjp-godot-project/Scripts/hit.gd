@@ -5,6 +5,8 @@ class_name Hit
 @export var health : Health
 @export var mover : Mover
 
+@onready var c = Globals.first_child_of_type(self, "CollisionShape2D")
+
 signal HIT
 
 var flashed = false:
@@ -22,3 +24,10 @@ func hit(dmg, knock, dir):
 	if mover != null:
 		mover.velocity += dir * dmg * knock
 	HIT.emit()
+	$AudioStreamPlayer.play()
+
+func disable():
+	c.disabled = true
+
+func enable():
+	c.disabled = false

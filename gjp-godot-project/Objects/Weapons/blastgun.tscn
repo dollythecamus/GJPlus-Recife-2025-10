@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bljg0qbrjfr5n"]
+[gd_scene load_steps=10 format=3 uid="uid://bljg0qbrjfr5n"]
 
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="1_igdab"]
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="2_n1ebl"]
+[ext_resource type="Script" uid="uid://cweog4vcvfmuc" path="res://Scripts/rate.gd" id="3_lec0r"]
 [ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://Scripts/pickable.gd" id="3_nlyoc"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="4_v83hv"]
 [ext_resource type="Script" uid="uid://cyu3wkwgwcpgk" path="res://Objects/Weapons/shooter.gd" id="5_qetip"]
 [ext_resource type="PackedScene" uid="uid://7lgnorjhco0c" path="res://Objects/Weapons/Projectiles/blastBullet.tscn" id="6_igdab"]
+[ext_resource type="AudioStream" uid="uid://b2dx4vrslyhu7" path="res://Sound/sfx/Audio 7.mp3" id="8_lec0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fmhn"]
 radius = 19.026299
@@ -16,6 +18,7 @@ radius = 19.026299
 script = ExtResource("1_igdab")
 aim = true
 flips_at_half = true
+angle_offset = 0.0
 
 [node name="ASCII4" type="Label" parent="Pointer"]
 texture_filter = 1
@@ -191,11 +194,19 @@ vertical_alignment = 1
 [node name="point" type="Node2D" parent="Pointer"]
 position = Vector2(49, 0)
 
-[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
+[node name="Rate" type="Node2D" parent="Pointer"]
+visible = false
+position = Vector2(43, 0)
+script = ExtResource("3_lec0r")
+color = Color(0.74509805, 0.08235294, 0.8784314, 1)
+
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point", "shooter")]
 collision_layer = 2
+collision_mask = 0
 script = ExtResource("3_nlyoc")
 move = NodePath("../Mover")
 point = NodePath("../Pointer")
+shooter = NodePath("../Attack")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]
 shape = SubResource("CircleShape2D_7fmhn")
@@ -206,8 +217,15 @@ speed = 400.0
 acceleration = 900.0
 friction = 0.9
 
-[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("p", "point")]
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("pointer", "rate", "pickable", "point")]
 script = ExtResource("5_qetip")
 projectile = ExtResource("6_igdab")
-p = NodePath("../Pointer")
+pointer = NodePath("../Pointer")
+rate = NodePath("../Pointer/Rate")
+pickable = NodePath("../Pickable")
 point = NodePath("../Pointer/point")
+fire_rate = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Attack"]
+stream = ExtResource("8_lec0r")
+volume_db = -4.0

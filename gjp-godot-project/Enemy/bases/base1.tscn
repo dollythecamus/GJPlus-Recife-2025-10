@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://c34ykm2xq0oxw"]
+[gd_scene load_steps=15 format=3 uid="uid://c34ykm2xq0oxw"]
 
 [ext_resource type="Script" uid="uid://c8iv58vnj8gil" path="res://Enemy/enemy.gd" id="1_5uqmw"]
-[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="2_c3y0i"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://n5pxek3khv3i" path="res://Enemy/Skeleton/base1.tres" id="2_ht4ig"]
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="3_oe0k2"]
 [ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="4_wkrge"]
@@ -12,20 +11,40 @@
 [ext_resource type="Script" uid="uid://cyo8c06s31fwq" path="res://Scripts/health.gd" id="9_rvvtk"]
 [ext_resource type="Script" uid="uid://bff8uxohi857x" path="res://Enemy/AI/AI.gd" id="10_5rgmk"]
 [ext_resource type="Script" uid="uid://bi0bmo0vddfml" path="res://Enemy/enemy-build.gd" id="11_gttpy"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_11gi7"]
-height = 44.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ht4ig"]
-radius = 7.000005
+[ext_resource type="AudioStream" uid="uid://bypyh60cp7pso" path="res://Sound/sfx/Audio 1.mp3" id="11_v4srv"]
+[ext_resource type="Script" uid="uid://c1qdqmw14tovm" path="res://Visuals/ASCII/animated/animated_ascii.gd" id="13_v4srv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6jha"]
 radius = 14.0
 height = 48.0
 
-[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover")]
+[node name="Enemy" type="Node2D" node_paths=PackedStringArray("mover", "pointer")]
 script = ExtResource("1_5uqmw")
 mover = NodePath("Skeleton2D/root/Mover")
+pointer = NodePath("Skeleton2D/root/Pointer")
+
+[node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(37, 10)
+script = ExtResource("8_4kjaj")
+settled_place_node = NodePath("../Skeleton2D/root/t2R")
+preference = 1.0
+
+[node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
+position = Vector2(-36, 7)
+script = ExtResource("8_4kjaj")
+settled_place_node = NodePath("../Skeleton2D/root/t2L")
+preference = 1.0
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("10_5rgmk")
+
+[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("11_gttpy")
+root = NodePath("../Skeleton2D/root")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_rvvtk")
+health = 6
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 modification_stack = ExtResource("2_ht4ig")
@@ -33,13 +52,6 @@ modification_stack = ExtResource("2_ht4ig")
 [node name="root" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
-
-[node name="RB" type="RigidBody2D" parent="Skeleton2D/root"]
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/RB"]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_11gi7")
 
 [node name="leg2" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(18.000061, 12.000022)
@@ -63,18 +75,6 @@ editor_settings/show_bone_gizmo = false
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg2/leg1/leg2")
-
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg2/leg1/leg2"]
-position = Vector2(-1.0124142, 2.9958389)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("2_c3y0i")
-knockback = 200
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg2/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_ht4ig")
 
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg2/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg2/leg1")
@@ -106,18 +106,6 @@ editor_settings/show_bone_gizmo = false
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
 remote_path = NodePath("../../../../../../visual/root/leg3/leg1/leg2")
 
-[node name="Hurt" type="Area2D" parent="Skeleton2D/root/leg3/leg1/leg2"]
-position = Vector2(-0.7848253, 3.0633419)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("2_c3y0i")
-knockback = 200
-metadata/_custom_type_script = "uid://taq2rij2glt4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/root/leg3/leg1/leg2/Hurt"]
-position = Vector2(5.5006804e-08, 1.9065562e-06)
-shape = SubResource("CircleShape2D_ht4ig")
-
 [node name="rt1" type="RemoteTransform2D" parent="Skeleton2D/root/leg3/leg1"]
 remote_path = NodePath("../../../../../visual/root/leg3/leg1")
 
@@ -140,10 +128,10 @@ rotate_parent = true
 to_point = true
 
 [node name="t2R" type="Node2D" parent="Skeleton2D/root"]
-position = Vector2(50, 21)
+position = Vector2(34, 9)
 
 [node name="t2L" type="Node2D" parent="Skeleton2D/root"]
-position = Vector2(-47, 15)
+position = Vector2(-37, 10)
 
 [node name="Hit" type="Area2D" parent="Skeleton2D/root" node_paths=PackedStringArray("flash", "health", "mover")]
 collision_layer = 16
@@ -158,22 +146,25 @@ mover = NodePath("../Mover")
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m6jha")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Skeleton2D/root/Hit"]
+stream = ExtResource("11_v4srv")
+
 [node name="visual" type="Node2D" parent="."]
 
 [node name="root" type="Node2D" parent="visual"]
 
 [node name="leg2" type="Node2D" parent="visual/root"]
 position = Vector2(18.000061, 12.000022)
-rotation = 0.5524755
-scale = Vector2(0.9999994, 0.9999994)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg2"]
-position = Vector2(13.00005, -14.9999695)
-rotation = -0.5566186
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(13.000002, -15.000013)
+rotation = 0.4240296
+scale = Vector2(0.9999995, 0.9999995)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg2/leg1"]
-position = Vector2(13, 15.000002)
+position = Vector2(12.999998, 15.000001)
 
 [node name="l2" type="Label" parent="visual/root/leg2/leg1/leg2"]
 texture_filter = 1
@@ -244,17 +235,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="leg3" type="Node2D" parent="visual/root"]
 position = Vector2(-17.000046, 13.00002)
-rotation = -0.28124472
-scale = Vector2(0.9999992, 0.9999992)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
 
 [node name="leg1" type="Node2D" parent="visual/root/leg3"]
-position = Vector2(-12.000015, -16.000011)
-rotation = 0.35219103
-scale = Vector2(1.0000002, 1.0000002)
+position = Vector2(-11.999994, -16.000004)
+rotation = -0.31041124
+scale = Vector2(0.9999999, 0.9999999)
 
 [node name="leg2" type="Node2D" parent="visual/root/leg3/leg1"]
-position = Vector2(-13.000004, 14.999998)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-13, 15.000001)
 
 [node name="l2" type="Label" parent="visual/root/leg3/leg1/leg2"]
 texture_filter = 1
@@ -373,27 +363,976 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="t2R" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(50, 21)
-script = ExtResource("8_4kjaj")
-settled_place_node = NodePath("../Skeleton2D/root/t2R")
-preference = 1.0
+[node name="dead" type="Node2D" parent="."]
+visible = false
+script = ExtResource("13_v4srv")
+fpf = 4
 
-[node name="t2L" type="Node2D" parent="." node_paths=PackedStringArray("settled_place_node")]
-position = Vector2(-47, 15)
-script = ExtResource("8_4kjaj")
-settled_place_node = NodePath("../Skeleton2D/root/t2L")
-preference = -1.0
+[node name="frame0" type="Node2D" parent="dead"]
+visible = false
 
-[node name="AI" type="Node" parent="."]
-script = ExtResource("10_5rgmk")
+[node name="root" type="Node2D" parent="dead/frame0"]
 
-[node name="Build" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("11_gttpy")
-root = NodePath("../Skeleton2D/root")
+[node name="leg2" type="Node2D" parent="dead/frame0/root"]
+position = Vector2(4, 7.9999995)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("9_rvvtk")
+[node name="leg1" type="Node2D" parent="dead/frame0/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = 0.4240296
+scale = Vector2(0.9999995, 0.9999995)
 
-[connection signal="state_change" from="AI" to="t2R" method="_on_state_change"]
-[connection signal="state_change" from="AI" to="t2L" method="_on_state_change"]
+[node name="leg2" type="Node2D" parent="dead/frame0/root/leg2/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.3235198
+
+[node name="l2" type="Label" parent="dead/frame0/root/leg2/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame0/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame0/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame0/root"]
+position = Vector2(-5, 7.999999)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame0/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = -0.31041124
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame0/root/leg3/leg1"]
+position = Vector2(-13, 15.000001)
+
+[node name="l2" type="Label" parent="dead/frame0/root/leg3/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame0/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame0/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame0/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame0/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "' '
+' '"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame1" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame1"]
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root"]
+position = Vector2(4, 7.9999995)
+rotation = -0.31689197
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame1/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = -0.73899233
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root/leg2/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.4986398
+
+[node name="l2" type="Label" parent="dead/frame1/root/leg2/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame1/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame1/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame1/root"]
+position = Vector2(-4, 7.999999)
+rotation = 0.4192467
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame1/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 0.7891704
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame1/root/leg3/leg1"]
+position = Vector2(-13, 15.000001)
+
+[node name="l2" type="Label" parent="dead/frame1/root/leg3/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame1/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame1/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame1/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame2" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame2"]
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root"]
+position = Vector2(2, 7.9999995)
+rotation = 0.6965038
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame2/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = -1.2067833
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root/leg2/leg1"]
+position = Vector2(12.999998, 15.000001)
+rotation = -1.4986398
+
+[node name="l2" type="Label" parent="dead/frame2/root/leg2/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.09123182
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame2/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame2/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame2/root"]
+position = Vector2(-4, 7.9999995)
+rotation = -0.4219596
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame2/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 1.1145904
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="leg2" type="Node2D" parent="dead/frame2/root/leg3/leg1"]
+position = Vector2(-13, 15.000001)
+rotation = 0.6109463
+
+[node name="l2" type="Label" parent="dead/frame2/root/leg3/leg1/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.999998
+offset_top = -6.0
+offset_right = 24.000002
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.030005932
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "\""
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l1" type="Label" parent="dead/frame2/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame2/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame2/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame3" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame3"]
+
+[node name="leg2" type="Node2D" parent="dead/frame3/root"]
+position = Vector2(1, 7.9999995)
+rotation = 0.6965038
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="leg1" type="Node2D" parent="dead/frame3/root/leg2"]
+position = Vector2(13.000002, -15.000013)
+rotation = -1.2067833
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="l1" type="Label" parent="dead/frame3/root/leg2/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.999996
+offset_top = 7.999999
+offset_right = 27.000004
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.61718297
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="l0" type="Label" parent="dead/frame3/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame3/root"]
+position = Vector2(-3, 9)
+rotation = -0.4219596
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="leg1" type="Node2D" parent="dead/frame3/root/leg3"]
+position = Vector2(-11.999994, -16.000004)
+rotation = 1.1145904
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="l1" type="Label" parent="dead/frame3/root/leg3/leg1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.999998
+offset_top = -20.999998
+offset_right = 35.0
+offset_bottom = 8.000002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.68997866
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="l0" type="Label" parent="dead/frame3/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame3/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame3/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame4" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame4"]
+
+[node name="leg2" type="Node2D" parent="dead/frame4/root"]
+position = Vector2(0, 7.000001)
+rotation = 1.1303575
+scale = Vector2(0.99999934, 0.99999934)
+
+[node name="l0" type="Label" parent="dead/frame4/root/leg2"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -36.000004
+offset_right = 48.0
+offset_bottom = -7.000004
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.6720084
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="leg3" type="Node2D" parent="dead/frame4/root"]
+position = Vector2(-4.000002, 9)
+rotation = -0.92993915
+scale = Vector2(0.9999989, 0.9999989)
+
+[node name="l0" type="Label" parent="dead/frame4/root/leg3"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.66755104
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "|"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame4/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame4/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame5" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame5"]
+position = Vector2(3, 7)
+rotation = 0.6312499
+
+[node name="ASCII" type="Label" parent="dead/frame5/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame5/root/ASCII"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame6" type="Node2D" parent="dead"]
+visible = false
+
+[node name="root" type="Node2D" parent="dead/frame6"]
+position = Vector2(3, 7)
+rotation = 0.6312499
+
+[node name="ASCII" type="Label" parent="dead/frame6/root"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ASCII" type="Label" parent="dead/frame6/root/ASCII"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6551724
+anchor_right = 0.5
+anchor_bottom = 0.6551724
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("6_dv5h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="frame7" type="Node2D" parent="dead"]
+visible = false
+
+[connection signal="state_change" from="AI" to="." method="_on_ai_state_change"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djvxh5kwqm6x"]
+[gd_scene load_steps=10 format=3 uid="uid://djvxh5kwqm6x"]
 
 [ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="1_5u7jf"]
 [ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="1_n2gs1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="4_l1odu"]
 [ext_resource type="Script" uid="uid://2kff3scadu5f" path="res://Objects/Weapons/attack.gd" id="5_cw8v0"]
 [ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://Scripts/pickable.gd" id="6_8nosm"]
+[ext_resource type="AudioStream" uid="uid://cshiltn1hmd44" path="res://Sound/sfx/Audio 4.mp3" id="6_uix2a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n2gs1"]
 radius = 4.0
@@ -18,6 +19,7 @@ height = 36.0
 [node name="Pointer" type="Node2D" parent="."]
 script = ExtResource("3_5ek7h")
 flips_at_half = true
+angle_offset = 0.0
 
 [node name="visual" type="Node2D" parent="Pointer"]
 position = Vector2(14.000002, 0)
@@ -107,7 +109,7 @@ vertical_alignment = 1
 [node name="Hurt" type="Area2D" parent="Pointer" node_paths=PackedStringArray("mover")]
 position = Vector2(44, 1)
 collision_layer = 0
-collision_mask = 16
+collision_mask = 0
 monitorable = false
 script = ExtResource("1_n2gs1")
 mover = NodePath("../../Mover")
@@ -125,9 +127,9 @@ position = Vector2(57, 0)
 [node name="Mover" type="Node" parent="." node_paths=PackedStringArray("inertia")]
 script = ExtResource("4_l1odu")
 inertia = NodePath("../Pointer/Inertia")
-speed = 900.0
+speed = 500.0
 acceleration = 1500.0
-friction = 0.88
+friction = 0.82
 metadata/_custom_type_script = "uid://brtc2oowy8obq"
 
 [node name="Attack" type="Node" parent="." node_paths=PackedStringArray("pointer", "mover")]
@@ -136,12 +138,18 @@ pointer = NodePath("../Pointer")
 mover = NodePath("../Mover")
 reach = 900
 
-[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Attack"]
+stream = ExtResource("6_uix2a")
+volume_db = -6.0
+
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point", "hurt")]
 collision_layer = 2
+collision_mask = 0
 monitoring = false
 script = ExtResource("6_8nosm")
 move = NodePath("../Mover")
 point = NodePath("../Pointer")
+hurt = NodePath("../Pointer/Hurt")
 metadata/_custom_type_script = "uid://dvttpxrkbop7h"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]

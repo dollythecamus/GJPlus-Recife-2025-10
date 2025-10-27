@@ -7,14 +7,12 @@ class_name FootIKTarget
 @onready var settled_place : = settled_place_node.global_position
 @onready var n = get_parent()
 
-static var all_feet = {}
-
 enum STATES {WALK, IDLE, RUN}
 var state = STATES.WALK
 
 const settle_threshold = 5
 
-const step_threshold = 35
+const step_threshold = 30
 var step_duration = .25
 
 var settled = true
@@ -22,10 +20,10 @@ var is_stepping = false
 
 
 func _ready() -> void:
-	if all_feet.has(n):
-		all_feet[n].append(self)
+	if Globals.all_feet.has(n):
+		Globals.all_feet[n].append(self)
 	else:
-		all_feet[n] = []
+		Globals.all_feet[n] = []
 
 func _process(_delta: float) -> void:
 	settled_place = settled_place_node.global_position
@@ -45,15 +43,10 @@ func solve_walk():
 
 func solve_idle():
 	var distance = settled_place - self.global_position
-	# preference to which side it's on
-	distance.x += preference * settle_threshold
 	
 	if settled and distance.length() > settle_threshold:
 		settled = false
 		settle()
-
-func _on_set_state(v):
-	state = v
 
 func settle():
 	var t = get_tree().create_tween() 
@@ -67,6 +60,8 @@ func settle():
 	settled = true
 
 func _step():
+	Globals.all_feet[n].shuffle()
+	
 	settled = false
 	is_stepping = true
 	
@@ -75,7 +70,7 @@ func _step():
 	var p = self.global_position
 	var direction = (settled_place - self.global_position)
 	
-	var step = direction * 1.65
+	var step = direction * 1.8
 	var side = direction.rotated((PI/2) * preference) / 3
 	
 	t.tween_property(self, "global_position", p + step + side, step_duration/2)
@@ -86,19 +81,22 @@ func _step():
 	settled = true
 
 func any_2_stepping():
-	return not all_feet[n].all(_is_stepping)
+	var many = Globals.all_feet[n].filter(_is_stepping).size()
+	if many > 2:
+		return false
+	return true
+
+# used to swing the guy from side to side when stepping
+# didn't work now
+func collective():
+	var c = 0
+	for i in Globals.all_feet[n]:
+		if i.is_stepping:
+			c += i.preference
+	return c
 
 func _is_stepping(other):
 	return other.is_stepping
 
-func pos(x):
-	if x < 0:
-		return -1
-	else:
-		return 1
-
-func _on_state_change(v: Variant) -> void:
-	state = v
-
 func remove(x):
-	all_feet.erase(x)
+	Globals.all_feet.erase(x)

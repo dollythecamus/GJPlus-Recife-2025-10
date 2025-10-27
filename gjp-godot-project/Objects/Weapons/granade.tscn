@@ -1,0 +1,252 @@
+[gd_scene load_steps=15 format=3 uid="uid://bb8dqhjq6njea"]
+
+[ext_resource type="Script" uid="uid://brtc2oowy8obq" path="res://Scripts/move.gd" id="1_3w4co"]
+[ext_resource type="PackedScene" uid="uid://dg0jsqq6ndksc" path="res://Visuals/ASCII/animated/animated_explosion.tscn" id="2_cf8ke"]
+[ext_resource type="Script" uid="uid://c06bwdrxfw41f" path="res://Scripts/point.gd" id="2_guooj"]
+[ext_resource type="Script" uid="uid://dvttpxrkbop7h" path="res://Scripts/pickable.gd" id="2_ja7po"]
+[ext_resource type="Script" uid="uid://taq2rij2glt4" path="res://Scripts/hurt.gd" id="3_iw4kg"]
+[ext_resource type="Script" uid="uid://cweog4vcvfmuc" path="res://Scripts/rate.gd" id="3_lnnpt"]
+[ext_resource type="LabelSettings" uid="uid://koca7cgr8xi2" path="res://Objects/Weapons/explosion_effects.tres" id="4_iw4kg"]
+[ext_resource type="Script" uid="uid://d4bnohr44uqyt" path="res://Scripts/aim.gd" id="4_ja7po"]
+[ext_resource type="LabelSettings" uid="uid://dmim8nkbsapak" path="res://Objects/Weapons/weapons.tres" id="5_0hr8e"]
+[ext_resource type="Script" uid="uid://c27t8rf4oln5j" path="res://Objects/Weapons/throwable.gd" id="8_cf8ke"]
+[ext_resource type="Script" uid="uid://cirhyjfeguggm" path="res://Objects/Weapons/explode.gd" id="10_pxopx"]
+[ext_resource type="AudioStream" uid="uid://c77mna4yuyhbv" path="res://Sound/sfx/boom.mp3" id="12_ayhup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pxopx"]
+radius = 93.0215
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3w4co"]
+radius = 18.110771
+
+[node name="Granade" type="Node2D"]
+
+[node name="Mover" type="Node" parent="."]
+script = ExtResource("1_3w4co")
+speed = 550.0
+acceleration = 1500.0
+friction = 0.85
+metadata/_custom_type_script = "uid://brtc2oowy8obq"
+
+[node name="Hurt" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_iw4kg")
+damage = 5
+knockback = 200
+metadata/_custom_type_script = "uid://taq2rij2glt4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
+shape = SubResource("CircleShape2D_pxopx")
+disabled = true
+
+[node name="AnimatedExplosion" parent="." instance=ExtResource("2_cf8ke")]
+visible = false
+position = Vector2(-4, -4)
+scale = Vector2(1.6, 1.6)
+
+[node name="Pointer" type="Node2D" parent="."]
+script = ExtResource("2_guooj")
+metadata/_custom_type_script = "uid://c06bwdrxfw41f"
+
+[node name="ASCII2" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 35.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("5_0hr8e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 39.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "*"
+label_settings = ExtResource("5_0hr8e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="Pointer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -21.0
+offset_right = 39.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "o"
+label_settings = ExtResource("5_0hr8e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pickable" type="Area2D" parent="." node_paths=PackedStringArray("move", "point", "hurt")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_ja7po")
+move = NodePath("../Mover")
+point = NodePath("../Pointer")
+hurt = NodePath("../Hurt")
+metadata/_custom_type_script = "uid://dvttpxrkbop7h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]
+shape = SubResource("CircleShape2D_3w4co")
+
+[node name="Rate" type="Node2D" parent="."]
+script = ExtResource("3_lnnpt")
+color = Color(0.8601492, 0.15919688, 0.09404836, 1)
+radius = 15
+metadata/_custom_type_script = "uid://cweog4vcvfmuc"
+
+[node name="Free" type="Node" parent="."]
+
+[node name="Aim" type="Node2D" parent="Free"]
+visible = false
+position = Vector2(47, 30)
+script = ExtResource("4_ja7po")
+
+[node name="ASCII2" type="Label" parent="Free/Aim"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("4_iw4kg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII3" type="Label" parent="Free/Aim"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+pivot_offset = Vector2(28, 13)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("4_iw4kg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII4" type="Label" parent="Free/Aim"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(28, 13)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("4_iw4kg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ASCII5" type="Label" parent="Free/Aim"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.712389
+pivot_offset = Vector2(28, 13)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "`"
+label_settings = ExtResource("4_iw4kg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("mover", "pointer", "target", "pickable", "hurt")]
+script = ExtResource("8_cf8ke")
+mover = NodePath("../Mover")
+pointer = NodePath("../Pointer")
+target = NodePath("../Free/Aim")
+pickable = NodePath("../Pickable")
+hurt = NodePath("../Hurt")
+
+[node name="Explode" type="Node" parent="." node_paths=PackedStringArray("effect", "hurt", "rate", "visual")]
+script = ExtResource("10_pxopx")
+effect = NodePath("../AnimatedExplosion")
+hurt = NodePath("../Hurt")
+rate = NodePath("../Rate")
+visual = NodePath("../Pointer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Explode"]
+stream = ExtResource("12_ayhup")
+volume_db = -8.0
+pitch_scale = 1.3
+
+[connection signal="picked" from="Pickable" to="Free/Aim" method="_on_picked"]
+[connection signal="landed" from="Attack" to="Explode" method="explode"]
